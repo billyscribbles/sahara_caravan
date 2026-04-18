@@ -20,6 +20,7 @@ const SPEC_ORDER = [
 
 export default function ModelPage() {
   const { slug } = useParams()
+  if (slug === 'custom-builds') return <Navigate to="/range#our-range" replace />
   const model = getModelBySlug(slug)
 
   if (!model) return <Navigate to="/range" replace />

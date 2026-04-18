@@ -14,3 +14,5 @@
 - Replaced the small Australia picture on the "Find your nearest dealer" section with a proper map of the country, with dealer markers placed in the right states.
 - The Sahara X-Master and Sahara Horizon now show their real photos in the range, and their descriptions have been updated to match the copy on the main Sahara Caravans website.
 - Added a new "Our Range" section on the home page and range page showcasing the custom motorhome fit-outs — with a gallery of real interior photos and a short description of how Sahara turns a bare van into a little home on wheels with a proper kitchen, bed, bathroom, and thoughtful storage.
+- The range now shows a fifth option alongside the four caravans — a custom van build — that jumps straight to the section explaining how we can turn a bare van into a home on wheels.
+- Fixed the washed-out hover on the "Call us" and "Email us" cards on the Contact page (and a couple of other buttons) so icons and text now read clearly when you roll over them.

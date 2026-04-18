@@ -3,6 +3,7 @@ import SectionHeader from '../ui/SectionHeader.jsx'
 import ModelCard from '../ui/ModelCard.jsx'
 import CTAButton from '../ui/CTAButton.jsx'
 import { models } from '../../content/models.js'
+import { customBuilds } from '../../content/customBuilds.js'
 import './RangeGrid.css'
 
 export default function RangeGrid({ showCta = true }) {
@@ -11,8 +12,8 @@ export default function RangeGrid({ showCta = true }) {
       <div className="container">
         <SectionHeader
           eyebrow="The Range"
-          heading="Four vans. One standard of build."
-          sub="From the sealed highway to the red dirt, there's a Sahara shaped to the way you travel."
+          heading="Four vans. And one bespoke fit-out."
+          sub="From the sealed highway to the red dirt — and a custom motorhome build for those who want a home on wheels all their own."
           align="center"
         />
         <div className="range__grid">
@@ -21,6 +22,9 @@ export default function RangeGrid({ showCta = true }) {
               <ModelCard model={model} eager={i === 0} />
             </RevealOnScroll>
           ))}
+          <RevealOnScroll key={customBuilds.card.slug} delay={models.length * 0.06}>
+            <ModelCard model={customBuilds.card} />
+          </RevealOnScroll>
         </div>
         {showCta && (
           <RevealOnScroll className="range__foot" delay={0.2}>

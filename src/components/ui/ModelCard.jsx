@@ -3,12 +3,13 @@ import { ArrowRight } from 'lucide-react'
 import './ModelCard.css'
 
 export default function ModelCard({ model, eager = false }) {
+  const to = model.href ?? `/models/${model.slug}`
   return (
-    <Link to={`/models/${model.slug}`} className="model-card" aria-label={`${model.name} — ${model.type}`}>
+    <Link to={to} className="model-card" aria-label={`${model.name} — ${model.type}`}>
       <div className="model-card__media">
         <img
           src={model.heroImage}
-          alt={`${model.name} — ${model.type} caravan`}
+          alt={`${model.name} — ${model.type}`}
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
         />

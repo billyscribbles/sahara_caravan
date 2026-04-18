@@ -1,6 +1,15 @@
 export const customBuilds = {
   eyebrow: 'Our Range',
   heading: 'A home, quietly built into your van.',
+  card: {
+    slug: 'custom-builds',
+    name: 'Custom Van Builds',
+    type: 'Bespoke',
+    tagline: 'A home, quietly built into your van.',
+    heroImage: '/images/range-interiors/interior-2282.jpg',
+    highlights: ['Bespoke fit-out', 'Full kitchen', 'Bed & bathroom', 'Custom joinery'],
+    href: '/range#our-range',
+  },
   body: [
     'Beyond our caravans, we design and build full motorhome fit-outs — turning a bare van into a small, considered home you can drive anywhere in the country.',
     'Hand-finished joinery, a proper kitchen, a bed made for long trips, a shower that actually works, and every cupboard earning its place. Built to live in, not just travel in.',

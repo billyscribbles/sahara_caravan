@@ -4,6 +4,7 @@ import ModelCard from '../components/ui/ModelCard.jsx'
 import CustomBuilds from '../components/sections/CustomBuilds.jsx'
 import EnquiryForm from '../components/sections/EnquiryForm.jsx'
 import { models } from '../content/models.js'
+import { customBuilds } from '../content/customBuilds.js'
 import './RangePage.css'
 
 export default function RangePage() {
@@ -18,7 +19,7 @@ export default function RangePage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-eyebrow">The Full Range</span>
-            <h1 className="range-page__title">Four vans. One standard of build.</h1>
+            <h1 className="range-page__title">Four vans. And one bespoke fit-out.</h1>
             <p className="range-page__sub">
               Every Sahara is built to the same uncompromising standard — the difference between the models is simply where you want to take them.
             </p>
@@ -34,6 +35,9 @@ export default function RangePage() {
                 <ModelCard model={model} eager={i < 2} />
               </RevealOnScroll>
             ))}
+            <RevealOnScroll key={customBuilds.card.slug} delay={models.length * 0.06}>
+              <ModelCard model={customBuilds.card} />
+            </RevealOnScroll>
           </div>
         </div>
       </section>
