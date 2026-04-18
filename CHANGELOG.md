@@ -12,3 +12,5 @@
 - The icons on the "Why Sahara" cards now stand out clearly against the light background so you can read them at a glance.
 - Added a new "The Build" page (linked from the top menu and footer) that walks through the eight stages every Sahara goes through — chassis welding, body shell, insulation, plumbing, electrics, cabinetry, kitchen and bathroom, and a final road test.
 - Replaced the small Australia picture on the "Find your nearest dealer" section with a proper map of the country, with dealer markers placed in the right states.
+- The Sahara X-Master and Sahara Horizon now show their real photos in the range, and their descriptions have been updated to match the copy on the main Sahara Caravans website.
+- Added a new "Our Range" section on the home page and range page showcasing the custom motorhome fit-outs — with a gallery of real interior photos and a short description of how Sahara turns a bare van into a little home on wheels with a proper kitchen, bed, bathroom, and thoughtful storage.

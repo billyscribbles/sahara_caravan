@@ -1,6 +1,7 @@
 import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import ModelCard from '../components/ui/ModelCard.jsx'
+import CustomBuilds from '../components/sections/CustomBuilds.jsx'
 import EnquiryForm from '../components/sections/EnquiryForm.jsx'
 import { models } from '../content/models.js'
 import './RangePage.css'
@@ -36,6 +37,8 @@ export default function RangePage() {
           </div>
         </div>
       </section>
+
+      <CustomBuilds />
 
       <EnquiryForm
         eyebrow="Ready to talk?"

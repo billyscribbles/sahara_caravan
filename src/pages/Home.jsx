@@ -3,6 +3,7 @@ import Hero from '../components/sections/Hero.jsx'
 import Heritage from '../components/sections/Heritage.jsx'
 import WhySahara from '../components/sections/WhySahara.jsx'
 import RangeGrid from '../components/sections/RangeGrid.jsx'
+import CustomBuilds from '../components/sections/CustomBuilds.jsx'
 import BuildPhilosophy from '../components/sections/BuildPhilosophy.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
 import DealerTeaser from '../components/sections/DealerTeaser.jsx'
@@ -17,6 +18,7 @@ export default function Home() {
       <Heritage />
       <WhySahara />
       <RangeGrid />
+      <CustomBuilds />
       <BuildPhilosophy />
       <Testimonials />
       <DealerTeaser />
