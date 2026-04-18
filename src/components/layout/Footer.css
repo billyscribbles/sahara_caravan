@@ -26,7 +26,6 @@
   height: 56px;
   width: auto;
   display: block;
-  filter: invert(1) hue-rotate(180deg);
 }
 
 .footer__logo-text {

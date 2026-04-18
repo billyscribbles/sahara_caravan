@@ -5,7 +5,7 @@ export const site = {
     name: 'Sahara Caravans',
     logoText: 'SAHARA',
     tagline: 'Driven by Experience. Built for Adventure.',
-    logoSrc: '/brand/logo.jpg',
+    logoSrc: '/brand/logo-light.png',
   },
 
   nav: [

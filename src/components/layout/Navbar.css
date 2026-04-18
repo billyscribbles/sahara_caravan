@@ -60,12 +60,6 @@
   height: 42px;
   width: auto;
   display: block;
-  border-radius: 6px;
-}
-
-.navbar--solid .navbar__logo-img,
-.navbar--scrolled .navbar__logo-img {
-  filter: invert(1) hue-rotate(180deg);
 }
 
 .navbar__logo-text {

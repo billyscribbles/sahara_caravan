@@ -13,7 +13,9 @@ Status legend:
 
 | Path | Dimensions | Purpose | Priority | Status |
 |---|---|---|---|---|
-| `public/brand/logo.jpg` | 1080×294 | Primary logo (navbar + footer) | P0 | ✅ |
+| `public/brand/logo.jpg` | 1080×294 | Original logo (dark on white) — kept for light backgrounds | P0 | ✅ |
+| `public/brand/logo.png` | 1080×294 | Logo with transparent background (dark variant) | P0 | ✅ |
+| `public/brand/logo-light.png` | 1080×294 | Logo with transparent background (white + gold) — used in navbar/footer | P0 | ✅ |
 | `public/brand/favicon.png` | 192×192 | Browser tab favicon | P0 | ✅ |
 | `public/brand/og-image.jpg` | Mirage header | Social share card | P0 | ✅ |
 | `public/brand/logo.svg` | 240×64 | Unused legacy placeholder | — | 🧩 |
