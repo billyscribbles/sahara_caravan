@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="mhbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F1A14"/>
+      <stop offset="55%" stop-color="#8B5024"/>
+      <stop offset="100%" stop-color="#D99765"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#mhbg)"/>
+  <circle cx="1220" cy="340" r="100" fill="#F5EDE0" opacity="0.35"/>
+  <path d="M0 600 Q320 540 640 600 T1280 580 T1600 620 L1600 900 L0 900 Z" fill="#3A2A18"/>
+  <path d="M0 760 Q400 720 800 760 T1600 780 L1600 900 L0 900 Z" fill="#1F1A14"/>
+  <g transform="translate(720 640)">
+    <rect x="0" y="0" width="340" height="170" rx="16" fill="#1F1A14"/>
+    <rect x="24" y="28" width="92" height="68" rx="6" fill="#D99765" opacity="0.9"/>
+    <rect x="130" y="28" width="72" height="68" rx="6" fill="#D99765" opacity="0.7"/>
+    <rect x="216" y="28" width="96" height="68" rx="6" fill="#D99765" opacity="0.85"/>
+    <rect x="-40" y="160" width="420" height="22" rx="8" fill="#1F1A14"/>
+    <circle cx="60" cy="184" r="22" fill="#1F1A14" stroke="#4A3420" stroke-width="4"/>
+    <circle cx="280" cy="184" r="22" fill="#1F1A14" stroke="#4A3420" stroke-width="4"/>
+  </g>
+  <text x="80" y="140" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#D99765" letter-spacing="0.24em">SAHARA MIRAGE</text>
+  <text x="80" y="180" font-family="Georgia, serif" font-style="italic" font-size="32" font-weight="400" fill="#F5EDE0" opacity="0.85">On-Road</text>
+</svg>

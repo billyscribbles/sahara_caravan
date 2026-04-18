@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="dh" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2A1E12"/><stop offset="55%" stop-color="#6A4A28"/><stop offset="100%" stop-color="#B8884A"/></linearGradient></defs>
+  <rect width="1600" height="900" fill="url(#dh)"/>
+  <circle cx="1300" cy="320" r="105" fill="#F5EDE0" opacity="0.3"/>
+  <path d="M0 580 Q360 520 720 580 T1440 560 T1600 600 L1600 900 L0 900 Z" fill="#3A2A18"/>
+  <path d="M0 720 Q400 680 800 720 T1600 740 L1600 900 L0 900 Z" fill="#1F1A14"/>
+  <g transform="translate(720 620)">
+    <rect x="0" y="0" width="360" height="190" rx="16" fill="#1F1A14"/>
+    <rect x="28" y="28" width="98" height="74" rx="6" fill="#E3A574" opacity="0.9"/>
+    <rect x="140" y="28" width="78" height="74" rx="6" fill="#E3A574" opacity="0.7"/>
+    <rect x="232" y="28" width="102" height="74" rx="6" fill="#E3A574" opacity="0.9"/>
+    <rect x="-44" y="180" width="450" height="24" rx="10" fill="#1F1A14"/>
+    <circle cx="68" cy="208" r="24" fill="#1F1A14" stroke="#4A3420" stroke-width="5"/>
+    <circle cx="296" cy="208" r="24" fill="#1F1A14" stroke="#4A3420" stroke-width="5"/>
+  </g>
+  <text x="80" y="140" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#E3A574" letter-spacing="0.24em">SAHARA DUNE</text>
+  <text x="80" y="180" font-family="Georgia, serif" font-style="italic" font-size="32" font-weight="400" fill="#F5EDE0" opacity="0.85">Semi-Off-Road</text>
+</svg>

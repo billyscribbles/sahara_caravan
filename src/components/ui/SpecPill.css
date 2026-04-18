@@ -1,0 +1,38 @@
+.spec-pill {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  min-width: 140px;
+}
+
+.spec-pill__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.spec-pill__value {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.spec-pill--accent {
+  background: var(--color-bg-muted);
+  border-color: var(--color-border-strong);
+}
+
+.spec-pill--dark {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.spec-pill--dark .spec-pill__label { color: rgba(255, 255, 255, 0.55); }
+.spec-pill--dark .spec-pill__value { color: #fff; }

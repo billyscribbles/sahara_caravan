@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="xg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#14110D"/><stop offset="100%" stop-color="#9C5E2E"/></linearGradient></defs>
+  <rect width="1200" height="800" fill="url(#xg1)"/>
+  <path d="M0 500 L200 440 L400 500 L600 420 L800 480 L1000 400 L1200 460 L1200 800 L0 800 Z" fill="#2A241C"/>
+  <g transform="translate(440 520)">
+    <rect x="0" y="0" width="320" height="160" rx="16" fill="#1F1A14" stroke="#4A3420" stroke-width="3"/>
+    <rect x="24" y="26" width="80" height="60" rx="5" fill="#D99765" opacity="0.85"/>
+    <rect x="114" y="26" width="62" height="60" rx="5" fill="#D99765" opacity="0.6"/>
+    <rect x="186" y="26" width="110" height="60" rx="5" fill="#D99765" opacity="0.85"/>
+  </g>
+  <text x="60" y="740" font-family="Helvetica, Arial" font-size="13" font-weight="600" fill="#F5EDE0" opacity="0.65" letter-spacing="0.24em">X-MASTER — OUTBACK</text>
+</svg>
