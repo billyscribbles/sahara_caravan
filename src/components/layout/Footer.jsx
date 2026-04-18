@@ -11,8 +11,7 @@ export default function Footer() {
       <div className="footer__top">
         <div className="footer__brand">
           <div className="footer__logo">
-            <span className="footer__logo-text">{brand.logoText}</span>
-            <span className="footer__logo-sub">CARAVANS</span>
+            <img src={brand.logoSrc} alt={brand.name} className="footer__logo-img" />
           </div>
           <p className="footer__tagline">{brand.tagline}</p>
           <div className="footer__socials">

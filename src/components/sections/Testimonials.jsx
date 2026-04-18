@@ -6,7 +6,7 @@ import './Testimonials.css'
 
 export default function Testimonials() {
   return (
-    <section className="testimonials section" id="testimonials">
+    <section className="testimonials section section--alt" id="testimonials">
       <div className="container">
         <SectionHeader
           eyebrow={testimonials.eyebrow}

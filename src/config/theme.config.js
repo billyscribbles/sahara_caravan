@@ -3,30 +3,36 @@
 
 export const theme = {
   colors: {
-    // Surfaces — warm, sand-toned
-    bg: '#F5EDE0',
-    'bg-alt': '#FFFFFF',
-    'bg-card': '#FFFFFF',
-    'bg-muted': '#EFE6D4',
+    // Surfaces — dark-dominant
+    bg: '#0E0E0F',          // page baseline; near-black with depth
+    'bg-alt': '#FAFAF7',    // white "breather" surface; warm off-white
+    'bg-card': '#161618',   // lifted card surface on dark
+    'bg-muted': '#1C1C1F',  // subtle lift for inset / hover
 
-    // Text
-    text: '#1A1A1A',
-    'text-soft': '#4A4A4A',
-    muted: '#8A8A8A',
+    // Text on dark (default)
+    text: '#F2EFE9',
+    'text-soft': 'rgba(242, 239, 233, 0.72)',
+    muted: 'rgba(242, 239, 233, 0.50)',
 
-    // Accent — rust / ochre
-    accent: '#C67B3F',
-    'accent-dark': '#9C5E2E',
-    'accent-light': '#D99765',
-    'accent-glow': 'rgba(198, 123, 63, 0.35)',
+    // Text on light (inside .section--alt breathers)
+    'text-on-light': '#0E0E0F',
+    'text-on-light-soft': 'rgba(14, 14, 15, 0.68)',
 
-    // Structural
-    border: '#E8DDCB',
-    'border-strong': '#C6B59A',
+    // Accent — bone
+    accent: '#EAE4D8',
+    'accent-dark': '#D4CBB8',
+    'accent-light': '#F4EFE5',
+    'accent-glow': 'rgba(234, 228, 216, 0.18)',
+    'accent-overlay': 'rgba(234, 228, 216, 0.08)',
 
-    // Dark surface (footer + dark sections)
-    dark: '#1F1A14',
-    'dark-alt': '#2A241C',
+    // Structural — translucent
+    border: 'rgba(242, 239, 233, 0.10)',
+    'border-strong': 'rgba(242, 239, 233, 0.22)',
+    'border-on-light': 'rgba(14, 14, 15, 0.10)',
+
+    // Deepest sections (footer, hero peaks, CTA bands)
+    dark: '#08080A',
+    'dark-alt': '#131316',
   },
   fonts: {
     display: "'Fraunces', Georgia, 'Times New Roman', serif",
@@ -39,10 +45,10 @@ export const theme = {
     full: '9999px',
   },
   shadows: {
-    sm: '0 1px 3px rgba(31, 26, 20, 0.06), 0 1px 2px rgba(31, 26, 20, 0.04)',
-    md: '0 6px 20px rgba(31, 26, 20, 0.08), 0 2px 6px rgba(31, 26, 20, 0.05)',
-    lg: '0 16px 48px rgba(31, 26, 20, 0.12), 0 4px 12px rgba(31, 26, 20, 0.06)',
-    accent: '0 10px 32px rgba(198, 123, 63, 0.28)',
+    sm: '0 1px 3px rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.20)',
+    md: '0 6px 20px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.20)',
+    lg: '0 16px 48px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.25)',
+    accent: '0 10px 32px rgba(234, 228, 216, 0.10)',
   },
   transitions: {
     fast: '150ms cubic-bezier(0.4, 0, 0.2, 1)',

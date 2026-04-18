@@ -7,5 +7,5 @@ export const hero = {
   primaryCta: { label: 'Explore the Range', to: '/range' },
   secondaryCta: { label: 'Find a Dealer', to: '/dealers' },
   trust: ['30+ Years of Craftsmanship', 'Family-Owned', 'Australian-Made', 'Built in Victoria'],
-  image: '/images/hero/hero-main.svg',
+  image: '/images/hero/hero-main.png',
 }

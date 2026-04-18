@@ -7,7 +7,7 @@ export const heritage = {
     'We\'re not the biggest name in the industry, and we don\'t want to be. We\'d rather be the one you trust with the journey of a lifetime.',
   ],
   signature: '— The Sahara Caravans Team',
-  image: '/images/heritage/workshop.svg',
+  image: '/images/heritage/workshop.png',
   stats: [
     { value: '30+', label: 'Years in the industry' },
     { value: '4', label: 'Models in the range' },

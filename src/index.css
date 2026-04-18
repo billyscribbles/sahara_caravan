@@ -57,9 +57,24 @@ input, textarea, select { font-family: var(--font-body); }
   color: #fff;
 }
 
+/* White "breather" sections — scope token overrides so descendant cards,
+ * borders, and text inherit the inverted palette via the cascade. */
 .section--alt {
+  --color-bg-card: #FFFFFF;
+  --color-bg-muted: #F0EDE5;
+  --color-text: var(--color-text-on-light);
+  --color-text-soft: var(--color-text-on-light-soft);
+  --color-muted: rgba(14, 14, 15, 0.50);
+  --color-border: var(--color-border-on-light);
+  --color-border-strong: rgba(14, 14, 15, 0.20);
+  --color-accent-glow: rgba(14, 14, 15, 0.08);
+
   background: var(--color-bg-alt);
+  color: var(--color-text);
 }
+
+.section--alt .section-eyebrow { color: var(--color-text); opacity: 0.65; }
+.section--alt :focus-visible { outline-color: var(--color-text); }
 
 .section-label {
   font-family: var(--font-display);
@@ -107,7 +122,7 @@ input, textarea, select { font-family: var(--font-body); }
 
 .glow-card:hover {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 1px var(--color-accent-glow), 0 12px 36px rgba(31, 26, 20, 0.08);
+  box-shadow: 0 0 0 1px var(--color-accent-glow), 0 12px 36px rgba(0, 0, 0, 0.35);
   transform: translateY(-3px);
 }
 

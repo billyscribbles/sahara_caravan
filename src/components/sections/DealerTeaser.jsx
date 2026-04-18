@@ -5,7 +5,7 @@ import './DealerTeaser.css'
 
 export default function DealerTeaser() {
   return (
-    <section className="dealer-teaser section section--alt" id="dealer-teaser">
+    <section className="dealer-teaser section section--dark" id="dealer-teaser">
       <div className="container dealer-teaser__inner">
         <RevealOnScroll className="dealer-teaser__map">
           <img src="/images/dealers/australia-map.svg" alt="Map of Australia showing Sahara Caravans dealer states" loading="lazy" />

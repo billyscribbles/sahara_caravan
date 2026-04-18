@@ -5,7 +5,7 @@ export const site = {
     name: 'Sahara Caravans',
     logoText: 'SAHARA',
     tagline: 'Driven by Experience. Built for Adventure.',
-    logoSrc: '/brand/logo.svg',
+    logoSrc: '/brand/logo.jpg',
   },
 
   nav: [
@@ -62,7 +62,7 @@ export const site = {
     description:
       'Family-owned Australian caravan manufacturer. 30+ years of experience building on-road, off-road, semi-off-road, and family caravans. Driven by experience, built for adventure.',
     siteUrl: import.meta.env.VITE_SITE_URL || 'https://saharacaravans.com.au',
-    ogImage: '/brand/og-image.svg',
+    ogImage: '/brand/og-image.jpg',
     locale: 'en_AU',
   },
 

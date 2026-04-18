@@ -1,5 +1,3 @@
-.testimonials { background: var(--color-bg); }
-
 .testimonials__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

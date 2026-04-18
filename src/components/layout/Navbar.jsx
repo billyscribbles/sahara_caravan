@@ -41,8 +41,7 @@ export default function Navbar() {
     <header className={classes}>
       <div className="navbar__inner">
         <Link to="/" className="navbar__logo" aria-label={brand.name}>
-          <span className="navbar__logo-text">{brand.logoText}</span>
-          <span className="navbar__logo-sub" aria-hidden="true">CARAVANS</span>
+          <img src={brand.logoSrc} alt={brand.name} className="navbar__logo-img" />
         </Link>
 
         <nav className="navbar__links" aria-label="Main navigation">

@@ -10,12 +10,12 @@ export const models = [
     tagline: 'Comfort and convenience on the open road.',
     description:
       'The Mirage is designed for travellers who value comfort and ease above all. A sleek, streamlined build makes it effortless to tow, while the fully equipped kitchenette and spacious interior feel like home long before you\'ve unpacked.',
-    heroImage: '/images/models/mirage/hero.svg',
+    heroImage: '/images/models/mirage/hero.png',
     gallery: [
-      '/images/models/mirage/gallery-1.svg',
-      '/images/models/mirage/gallery-2.svg',
-      '/images/models/mirage/gallery-3.svg',
-      '/images/models/mirage/gallery-4.svg',
+      '/images/models/mirage/gallery-1.png',
+      '/images/models/mirage/gallery-2.png',
+      '/images/models/mirage/gallery-3.png',
+      '/images/models/mirage/gallery-4.png',
     ],
     features: [
       'Sleek, streamlined aerodynamic design',
@@ -35,7 +35,6 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Mirage',
-    accent: '#C67B3F',
   },
   {
     slug: 'x-master',
@@ -70,7 +69,6 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the X-Master',
-    accent: '#9C5E2E',
   },
   {
     slug: 'dune',
@@ -80,12 +78,12 @@ export const models = [
     tagline: 'Adventure and comfort in balance.',
     description:
       'The Dune is the versatile middle ground — a reinforced suspension soaks up the rougher roads, while the interior layout and ride feel just as at home on the highway. For travellers who want both sides of the country without committing to one.',
-    heroImage: '/images/models/dune/hero.svg',
+    heroImage: '/images/models/dune/hero.png',
     gallery: [
-      '/images/models/dune/gallery-1.svg',
-      '/images/models/dune/gallery-2.svg',
-      '/images/models/dune/gallery-3.svg',
-      '/images/models/dune/gallery-4.svg',
+      '/images/models/dune/gallery-1.png',
+      '/images/models/dune/gallery-2.png',
+      '/images/models/dune/gallery-3.png',
+      '/images/models/dune/gallery-4.png',
     ],
     features: [
       'Reinforced suspension for uneven terrain',
@@ -105,7 +103,6 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Dune',
-    accent: '#B8884A',
   },
   {
     slug: 'horizon',
@@ -140,7 +137,6 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Bunks'],
     ctaLabel: 'Enquire about the Horizon',
-    accent: '#D99765',
   },
 ]
 

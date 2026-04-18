@@ -1,6 +1,6 @@
 .build {
   background:
-    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(198, 123, 63, 0.14), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(234, 228, 216, 0.06), transparent 70%),
     var(--color-dark);
 }
 
@@ -35,10 +35,10 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  background: rgba(198, 123, 63, 0.15);
+  background: var(--color-accent-overlay);
   color: var(--color-accent-light);
   margin-bottom: 20px;
-  border: 1px solid rgba(198, 123, 63, 0.3);
+  border: 1px solid var(--color-border-strong);
 }
 
 .build__pillar-num {
