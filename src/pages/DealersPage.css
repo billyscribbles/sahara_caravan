@@ -51,7 +51,7 @@
 
 .dealers-page__tab:hover {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-dark);
 }
 
 .dealers-page__body {

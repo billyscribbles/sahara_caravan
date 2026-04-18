@@ -50,7 +50,7 @@
   align-items: center;
   gap: 10px;
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-dark);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;

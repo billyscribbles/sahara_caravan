@@ -64,7 +64,7 @@
 
 .contact-card:not(.contact-card--static):hover .contact-card__icon {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-dark);
 }
 
 .contact-card__label {
