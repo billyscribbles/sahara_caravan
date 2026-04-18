@@ -7,4 +7,5 @@
 - The logo looks sharper on high-resolution screens, and the faint white outline around the gold swirl and triangle is gone.
 - The site now has a strong black-and-white look with a soft bone-coloured accent — quieter, more premium, and easier to read.
 - Two bright white sections (Why Sahara and customer stories) now break up the page so it doesn't feel like one wall of dark.
-- A new band near the bottom of the home page slowly rotates through the logos of the brand-name parts used in every Sahara caravan.
+- A new brand near the bottom of the home page slowly rotates through the logos of the brand-name parts used in every Sahara caravan.
+- The browser tab icon now shows the gold Sahara flame on a dark rounded square, matching the brand instead of a plain "S".
