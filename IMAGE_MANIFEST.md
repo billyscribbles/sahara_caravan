@@ -39,8 +39,8 @@ Each model has a hero + 4 gallery tiles. Mirage and Dune have real photos. X-Mas
 |---|---|---|
 | Mirage | `public/images/models/mirage/{hero,gallery-1..4}.png` | ✅ |
 | Dune | `public/images/models/dune/{hero,gallery-1..4}.png` | ✅ |
-| X-Master | `public/images/models/x-master/{hero,gallery-1..4}.svg` | 🧩 |
-| Horizon | `public/images/models/horizon/{hero,gallery-1..4}.svg` | 🧩 |
+| X-Master | `public/images/models/x-master/hero.png` + gallery-2..4.svg placeholders | ✅ hero, 🧩 gallery |
+| Horizon | `public/images/models/horizon/hero.png` + gallery-2..4.svg placeholders | ✅ hero, 🧩 gallery |
 
 Target dimensions (when replacing): hero 1600×900, gallery 1200×800. Prefer JPEG quality ~82 or WebP. Keep aspect ratios tight to avoid layout shift.
 
