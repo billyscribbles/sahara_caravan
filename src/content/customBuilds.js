@@ -1,5 +1,5 @@
 export const customBuilds = {
-  eyebrow: 'Our Range',
+  eyebrow: 'Custom Van Builds',
   heading: 'A home, quietly built into your van.',
   card: {
     slug: 'custom-builds',
@@ -8,7 +8,7 @@ export const customBuilds = {
     tagline: 'A home, quietly built into your van.',
     heroImage: '/images/range-interiors/interior-2282.jpg',
     highlights: ['Bespoke fit-out', 'Full kitchen', 'Bed & bathroom', 'Custom joinery'],
-    href: '/range#our-range',
+    href: '/custom-builds',
   },
   body: [
     'Beyond our caravans, we design and build full motorhome fit-outs — turning a bare van into a small, considered home you can drive anywhere in the country.',

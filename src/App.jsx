@@ -28,6 +28,7 @@ if (typeof window !== 'undefined') {
 
 const RangePage = lazyWithRetry(() => import('./pages/RangePage.jsx'))
 const ModelPage = lazyWithRetry(() => import('./pages/ModelPage.jsx'))
+const CustomBuildsPage = lazyWithRetry(() => import('./pages/CustomBuildsPage.jsx'))
 const DealersPage = lazyWithRetry(() => import('./pages/DealersPage.jsx'))
 const AboutPage = lazyWithRetry(() => import('./pages/AboutPage.jsx'))
 const BuildPage = lazyWithRetry(() => import('./pages/BuildPage.jsx'))
@@ -58,6 +59,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/range" element={<RangePage />} />
+          <Route path="/custom-builds" element={<CustomBuildsPage />} />
           <Route path="/models/:slug" element={<ModelPage />} />
           <Route path="/build" element={<BuildPage />} />
           <Route path="/dealers" element={<DealersPage />} />

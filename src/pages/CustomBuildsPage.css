@@ -1,0 +1,9 @@
+.custom-builds-page .custom-builds.section {
+  padding-top: 160px;
+}
+
+@media (max-width: 768px) {
+  .custom-builds-page .custom-builds.section {
+    padding-top: 120px;
+  }
+}
