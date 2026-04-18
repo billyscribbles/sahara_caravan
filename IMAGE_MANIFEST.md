@@ -29,7 +29,7 @@ Status legend:
 |---|---|---|---|---|
 | `public/images/hero/hero-main.png` | 1920×1080-ish | Full-bleed homepage hero | P0 | ✅ |
 | `public/images/heritage/workshop.png` | About photo | Heritage section image | P1 | ✅ |
-| `public/images/dealers/australia-map.png` | Dealer network map | Dealer teaser + /dealers map | P1 | ✅ |
+| `public/images/dealers/australia-map.svg` | 1955×1795 viewBox | Dealer teaser map — outline adapted from Wikimedia Commons `File:Australia_states_blank.svg` (public domain), restyled for dark theme with dealer markers | P1 | ✅ |
 
 ## Model imagery
 

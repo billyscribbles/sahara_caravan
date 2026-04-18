@@ -9,3 +9,6 @@
 - Two bright white sections (Why Sahara and customer stories) now break up the page so it doesn't feel like one wall of dark.
 - A new brand near the bottom of the home page slowly rotates through the logos of the brand-name parts used in every Sahara caravan.
 - The browser tab icon now shows the gold Sahara flame on a dark rounded square, matching the brand instead of a plain "S".
+- The icons on the "Why Sahara" cards now stand out clearly against the light background so you can read them at a glance.
+- Added a new "The Build" page (linked from the top menu and footer) that walks through the eight stages every Sahara goes through — chassis welding, body shell, insulation, plumbing, electrics, cabinetry, kitchen and bathroom, and a final road test.
+- Replaced the small Australia picture on the "Find your nearest dealer" section with a proper map of the country, with dealer markers placed in the right states.

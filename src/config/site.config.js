@@ -10,6 +10,7 @@ export const site = {
 
   nav: [
     { label: 'Our Range', to: '/range' },
+    { label: 'The Build', to: '/build' },
     { label: 'Find a Dealer', to: '/dealers' },
     { label: 'About', to: '/about' },
     { label: 'Contact', to: '/contact' },
@@ -36,6 +37,7 @@ export const site = {
         title: 'Company',
         links: [
           { label: 'About', to: '/about' },
+          { label: 'The Build', to: '/build' },
           { label: 'Find a Dealer', to: '/dealers' },
           { label: 'Contact', to: '/contact' },
         ],
