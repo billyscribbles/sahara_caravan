@@ -1,4 +1,7 @@
-.brand-wheel { padding: 72px 0; }
+.brand-wheel {
+  padding: 72px 0;
+  background: #FFFFFF;
+}
 .brand-wheel .section-header { margin-bottom: 32px; }
 
 .brand-wheel__marquee {
