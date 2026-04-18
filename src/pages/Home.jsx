@@ -6,6 +6,7 @@ import RangeGrid from '../components/sections/RangeGrid.jsx'
 import BuildPhilosophy from '../components/sections/BuildPhilosophy.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
 import DealerTeaser from '../components/sections/DealerTeaser.jsx'
+import BrandWheel from '../components/sections/BrandWheel.jsx'
 import EnquiryForm from '../components/sections/EnquiryForm.jsx'
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <BuildPhilosophy />
       <Testimonials />
       <DealerTeaser />
+      <BrandWheel />
       <EnquiryForm />
     </main>
   )
