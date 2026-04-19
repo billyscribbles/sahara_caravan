@@ -1,38 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-  <!-- Floorplan outline (top-down) -->
-  <rect x="40" y="40" width="400" height="120" rx="14" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- Schematic corner ticks -->
+  <g opacity="0.35" stroke-width="1.6">
+    <path d="M24 24 L40 24 M24 24 L24 40"/>
+    <path d="M456 24 L440 24 M456 24 L456 40"/>
+    <path d="M24 176 L40 176 M24 176 L24 160"/>
+    <path d="M456 176 L440 176 M456 176 L456 160"/>
+  </g>
 
-  <!-- Bed (top left) -->
-  <rect x="50" y="50" width="110" height="80" rx="4" />
-  <line x1="50" y1="110" x2="160" y2="110" opacity="0.5" />
-  <text x="105" y="95" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">QUEEN BED</text>
+  <!-- Left recliner -->
+  <path d="M92 46 Q92 36 104 36 L166 36 Q178 36 178 46 L178 126 L92 126 Z" stroke-width="2.8"/>
+  <rect x="74" y="94" width="22" height="44" rx="6" stroke-width="2.6"/>
+  <rect x="174" y="94" width="22" height="44" rx="6" stroke-width="2.6"/>
+  <rect x="82" y="126" width="106" height="24" rx="5" stroke-width="2.6"/>
+  <line x1="100" y1="58" x2="170" y2="58" opacity="0.45"/>
+  <line x1="100" y1="112" x2="170" y2="112" opacity="0.35"/>
 
-  <!-- Galley (bottom middle) -->
-  <rect x="175" y="112" width="140" height="38" rx="3" />
-  <circle cx="205" cy="131" r="4" />
-  <circle cx="225" cy="131" r="4" />
-  <rect x="255" y="120" width="24" height="22" rx="2" />
-  <text x="245" y="108" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">GALLEY</text>
+  <!-- Shared side table -->
+  <ellipse cx="240" cy="104" rx="28" ry="7" stroke-width="2.6"/>
+  <line x1="240" y1="111" x2="240" y2="146" stroke-width="2.4"/>
+  <ellipse cx="240" cy="148" rx="13" ry="3.5" stroke-width="2.4"/>
 
-  <!-- Two individual recliners separated by a side table -->
-  <rect x="185" y="50" width="48" height="55" rx="6" />
-  <rect x="188" y="72" width="42" height="28" rx="4" opacity="0.55" />
-  <rect x="247" y="68" width="18" height="24" rx="2" />
-  <rect x="280" y="50" width="48" height="55" rx="6" />
-  <rect x="283" y="72" width="42" height="28" rx="4" opacity="0.55" />
-  <text x="255" y="44" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">TWIN RECLINERS</text>
-
-  <!-- Ensuite (right) -->
-  <rect x="340" y="50" width="90" height="100" rx="4" />
-  <circle cx="360" cy="75" r="7" />
-  <rect x="390" y="58" width="30" height="20" rx="2" />
-  <rect x="350" y="100" width="70" height="40" rx="2" />
-  <text x="385" y="44" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">ENSUITE</text>
-
-  <!-- Entry door -->
-  <path d="M330 150 L330 170" />
-  <path d="M330 170 A20 20 0 0 0 350 150" opacity="0.5" />
-
-  <!-- Badge -->
-  <text x="240" y="190" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.15em" fill="currentColor" stroke="none" text-anchor="middle">MIRAGE · RECLINER CHAIRS</text>
+  <!-- Right recliner (mirror) -->
+  <path d="M302 46 Q302 36 314 36 L376 36 Q388 36 388 46 L388 126 L302 126 Z" stroke-width="2.8"/>
+  <rect x="284" y="94" width="22" height="44" rx="6" stroke-width="2.6"/>
+  <rect x="384" y="94" width="22" height="44" rx="6" stroke-width="2.6"/>
+  <rect x="292" y="126" width="106" height="24" rx="5" stroke-width="2.6"/>
+  <line x1="310" y1="58" x2="380" y2="58" opacity="0.45"/>
+  <line x1="310" y1="112" x2="380" y2="112" opacity="0.35"/>
 </svg>

@@ -12,7 +12,7 @@ export const models = [
     tagline: 'Comfort and convenience on the open road.',
     description:
       'The Mirage is designed for travellers who value comfort and ease above all. A sleek, streamlined build makes it effortless to tow, while the fully equipped kitchenette and spacious interior feel like home long before you\'ve unpacked. Pick between two lounge layouts — a fixed cafe-style dinette for long family meals, or twin individual recliners for relaxed evenings on the road.',
-    heroImage: '/images/models/mirage-recliners/hero.jpg',
+    heroImage: '/images/models/mirage-cafe/exterior-03.jpg',
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Mirage',
     variants: [
@@ -23,7 +23,7 @@ export const models = [
         badge: 'Mirage · Cafe Lounge',
         blurb: 'Fixed L-shaped cafe dinette with pedestal table — seats the whole family for meals and folds out for an extra bed.',
         blueprint: '/images/blueprints/mirage-cafe.svg',
-        heroImage: '/images/models/mirage-cafe/hero.jpg',
+        heroImage: '/images/models/mirage-cafe/exterior-03.jpg',
         description:
           'The Cafe-style Mirage keeps things classic. A fixed L-shaped dinette with a solid pedestal table gives you a proper spot for meals, laptops, card games and long cups of tea on a rainy afternoon. Gloss white upper cabinetry, stone-look benchtops and a hex-tile ensuite give the whole space a bright, premium feel — while the rear queen bedroom stays tucked away for an easy night.',
         features: [
@@ -50,29 +50,30 @@ export const models = [
           exterior: [
             {
               src: '/images/models/mirage-cafe/exterior-01.jpg',
-              caption: 'Mirage 206 front — twin gas-bottle hitch, off-road-ready drawbar, white and charcoal exterior wrap.',
+              caption: 'Mirage 206 front-quarter — twin gas-bottle hitch, off-road-ready drawbar, white body with charcoal and green graphics.',
             },
             {
               src: '/images/models/mirage-cafe/exterior-02.jpg',
               caption: 'Rear view — reflective tail strip, spare wheel mount, full checker-plate stone guard along the underbody.',
             },
+            {
+              src: '/images/models/mirage-cafe/exterior-03.jpg',
+              caption: 'Mirage 186 front — twin gas bottles and off-road drawbar, Sahara Caravans branding in green and charcoal.',
+            },
           ],
           interior: [
-            { src: '/images/models/mirage-cafe/interior-01.jpg', caption: 'Cafe-style dinette — L-lounge in grey leather-look with a fixed pedestal table and soft overhead lighting.' },
-            { src: '/images/models/mirage-cafe/interior-02.jpg', caption: 'Looking across the dinette to the kitchen — gloss white uppers, dark lower drawers, stone benchtop.' },
-            { src: '/images/models/mirage-cafe/interior-03.jpg', caption: 'Galley detail — 4-burner gas cooktop with oven below, stainless sink and stone-look surfaces.' },
-            { src: '/images/models/mirage-cafe/interior-04.jpg', caption: 'Fridge and microwave column — black finish against the white cabinetry, overhead lockers within easy reach.' },
-            { src: '/images/models/mirage-cafe/interior-05.jpg', caption: 'Kitchen wide shot — full bench, drawer storage, window splashback looking out the curbside.' },
-            { src: '/images/models/mirage-cafe/interior-06.jpg', caption: 'Dinette wide angle — room for four at the table, with the rear bedroom just through the doorway.' },
-            { src: '/images/models/mirage-cafe/interior-07.jpg', caption: 'Private queen bedroom — quilted mattress, overhead cabinetry, reading lights on both sides.' },
-            { src: '/images/models/mirage-cafe/interior-08.jpg', caption: 'Bedroom from the foot of the bed — bright panoramic window on one side, ensuite access on the other.' },
-            { src: '/images/models/mirage-cafe/interior-09.jpg', caption: 'Bedside detail — built-in side table with reading light and charge points within arm\'s reach of the pillow.' },
-            { src: '/images/models/mirage-cafe/interior-10.jpg', caption: 'Looking back from the bedroom — the cafe dinette and galley framed by the internal archway.' },
-            { src: '/images/models/mirage-cafe/interior-11.jpg', caption: 'Ensuite — cassette toilet, shelving storage, marble-look vanity with vessel basin and matte black tapware.' },
-            { src: '/images/models/mirage-cafe/interior-12.jpg', caption: 'Bathroom from the shower side — full-height mirror, drawer storage, external window for natural light.' },
-            { src: '/images/models/mirage-cafe/interior-13.jpg', caption: 'Compact laundry — front-loading washing machine tucked into the ensuite column.' },
-            { src: '/images/models/mirage-cafe/interior-14.jpg', caption: 'Ensuite detail — separate shower, hex-tile floor, chrome and matte-black fittings.' },
-            { src: '/images/models/mirage-cafe/interior-15.jpg', caption: 'Vanity close-up — stone-look bench, vessel basin, generous drawer and cabinet storage below.' },
+            { src: '/images/models/mirage-cafe/interior-01.jpg', caption: 'Ensuite corner — gloss white cabinetry, hex-tile floor and the edge of the separate shower stall.' },
+            { src: '/images/models/mirage-cafe/interior-02.jpg', caption: 'Cafe dinette looking back to the bedroom — bench seats with a fixed stone-look table and a skylight over the lounge.' },
+            { src: '/images/models/mirage-cafe/interior-03.jpg', caption: 'Separate shower stall — chrome hand-held, slide rail and slip-resistant base set in bright white wet-wall panels.' },
+            { src: '/images/models/mirage-cafe/interior-04.jpg', caption: 'Dinette from the galley side — L-lounge with fixed table, fridge and microwave column on the right, skylight overhead.' },
+            { src: '/images/models/mirage-cafe/interior-05.jpg', caption: 'Cafe dinette from the kitchen — cushioned bench seats, fixed table, fridge column and entry door alongside.' },
+            { src: '/images/models/mirage-cafe/interior-06.jpg', caption: 'Dinette wide angle — cafe seating on the right, galley on the left, skylight drawing daylight into the main living.' },
+            { src: '/images/models/mirage-cafe/interior-07.jpg', caption: 'Galley wide — gloss white uppers, grey lower drawers, stone benchtop with under-bench oven and stainless sink.' },
+            { src: '/images/models/mirage-cafe/interior-08.jpg', caption: 'Ensuite — cassette toilet, front-loading washer column, marble-look vanity with vessel basin and mirrored cabinets.' },
+            { src: '/images/models/mirage-cafe/interior-09.jpg', caption: 'Private queen bedroom — quilted mattress, overhead cabinetry, bedside shelves with reading lights on both sides.' },
+            { src: '/images/models/mirage-cafe/interior-10.jpg', caption: 'Cafe dinette in detail — fixed stone-look table between padded bench seats, fridge column and entry door on the right.' },
+            { src: '/images/models/mirage-cafe/interior-11.jpg', caption: 'Kitchen from the rear — gloss uppers, stone benchtop, 4-burner cooktop with oven and a glimpse of the bed beyond.' },
+            { src: '/images/models/mirage-cafe/interior-12.jpg', caption: 'Ensuite detail — front-loading washer, marble-look vanity with vessel sink, mirror-fronted overhead cabinet.' },
           ],
         },
       },
@@ -114,6 +115,8 @@ export const models = [
           ],
           interior: [
             { src: '/images/models/mirage-recliners/interior-01.jpg', caption: 'Fridge / microwave column beside the ensuite entry — black appliances, gloss white cabinetry, wood-look flooring.' },
+            { src: '/images/models/mirage-recliners/interior-02.jpg', caption: 'Galley looking into the lounge — Dometic cassette air-con overhead, gloss white uppers, dark drawers, a recliner chair just catching the edge of frame.' },
+            { src: '/images/models/mirage-recliners/interior-03.jpg', caption: 'Twin recliner chairs with shared side-table — bucket seats, tall headrests, fridge tower and galley on the right.' },
           ],
         },
       },

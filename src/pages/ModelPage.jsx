@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import SpecPill from '../components/ui/SpecPill.jsx'
@@ -94,10 +94,6 @@ export default function ModelPage() {
           <div className="model-page__hero-gradient" />
         </div>
         <div className="container model-page__hero-inner">
-          <Link to="/range" className="model-page__back">
-            <ArrowLeft size={16} strokeWidth={2.2} aria-hidden="true" />
-            Back to range
-          </Link>
           <span className="model-page__type">{model.type}</span>
           <h1 className="model-page__name">{model.name}</h1>
           <p className="model-page__tagline">{model.tagline}</p>
