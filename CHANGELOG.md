@@ -16,3 +16,5 @@
 - Added a new "Custom Van Builds" page (reached by clicking the custom-build card in the range) that explains how Sahara turns a bare van into a little home on wheels — a proper kitchen, bed, bathroom, thoughtful storage, and a gallery of real interior photos.
 - The range page now shows a fifth option alongside the four caravans — a custom van build — that opens its own page with the full story.
 - Fixed the washed-out hover on the "Call us" and "Email us" cards on the Contact page (and a couple of other buttons) so icons and text now read clearly when you roll over them.
+- The X-Master page now lets you flip between the Standard 196 and the 226 Slide-Out with a big illustrated button — photos, description, features and specs all swap in place without changing page. Same for the Mirage between the Cafe-style lounge and the twin-recliner layout.
+- Each model's photo gallery is now split into "Outside" and "Inside" groups, and every photo has a short plain-English caption describing what you're looking at.

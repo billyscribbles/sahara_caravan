@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- Floorplan outline (top-down) -->
+  <rect x="40" y="40" width="400" height="120" rx="14" />
+
+  <!-- Bed (top left) -->
+  <rect x="50" y="50" width="110" height="80" rx="4" />
+  <line x1="50" y1="110" x2="160" y2="110" opacity="0.5" />
+  <text x="105" y="95" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">QUEEN BED</text>
+
+  <!-- Galley (bottom middle) -->
+  <rect x="175" y="112" width="140" height="38" rx="3" />
+  <circle cx="205" cy="131" r="4" />
+  <circle cx="225" cy="131" r="4" />
+  <rect x="255" y="120" width="24" height="22" rx="2" />
+  <text x="245" y="108" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">GALLEY</text>
+
+  <!-- Cafe L-lounge (top middle/right) with fixed pedestal table -->
+  <path d="M180 50 L180 95 L300 95 L300 50" />
+  <path d="M300 50 L300 70 L330 70 L330 95 L300 95" />
+  <!-- Pedestal table -->
+  <rect x="215" y="60" width="50" height="26" rx="2" />
+  <circle cx="240" cy="73" r="3" />
+  <text x="240" y="44" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">CAFE DINETTE</text>
+
+  <!-- Ensuite (right) -->
+  <rect x="340" y="50" width="90" height="100" rx="4" />
+  <circle cx="360" cy="75" r="7" />
+  <rect x="390" y="58" width="30" height="20" rx="2" />
+  <rect x="350" y="100" width="70" height="40" rx="2" />
+  <text x="385" y="44" font-family="Inter, system-ui, sans-serif" font-size="9" letter-spacing="0.08em" fill="currentColor" stroke="none" text-anchor="middle">ENSUITE</text>
+
+  <!-- Entry door -->
+  <path d="M330 150 L330 170" />
+  <path d="M330 170 A20 20 0 0 0 350 150" opacity="0.5" />
+
+  <!-- Badge -->
+  <text x="240" y="190" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.15em" fill="currentColor" stroke="none" text-anchor="middle">MIRAGE · CAFE STYLE</text>
+</svg>

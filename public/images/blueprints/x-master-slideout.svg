@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- Ground line -->
+  <line x1="20" y1="178" x2="460" y2="178" stroke-dasharray="2 6" opacity="0.35" />
+
+  <!-- Main body -->
+  <path d="M70 148 L70 70 L380 62 L410 62 L410 148 Z" />
+
+  <!-- Stone-guard nose overlay -->
+  <path d="M70 148 L70 110 L45 132 L45 148 Z" />
+
+  <!-- Roof line accent -->
+  <line x1="70" y1="70" x2="410" y2="70" />
+
+  <!-- Slide-out box extruded from the roadside wall -->
+  <path d="M160 82 L160 48 L300 42 L300 82" />
+  <line x1="160" y1="48" x2="300" y2="42" />
+  <!-- Slide-out window -->
+  <rect x="180" y="54" width="100" height="22" rx="3" />
+
+  <!-- Expansion arrow -->
+  <path d="M230 90 L230 108" stroke-dasharray="3 3" opacity="0.5" />
+  <path d="M225 104 L230 110 L235 104" opacity="0.7" />
+
+  <!-- Windows / door -->
+  <rect x="110" y="92" width="40" height="28" rx="3" />
+  <rect x="310" y="82" width="60" height="32" rx="3" />
+  <rect x="300" y="108" width="30" height="40" rx="2" />
+  <circle cx="323" cy="128" r="1.4" fill="currentColor" stroke="none" />
+
+  <!-- Checker-plate strip -->
+  <line x1="70" y1="128" x2="410" y2="128" opacity="0.45" />
+
+  <!-- Tandem wheels -->
+  <circle cx="170" cy="158" r="18" />
+  <circle cx="170" cy="158" r="7" />
+  <circle cx="220" cy="158" r="18" />
+  <circle cx="220" cy="158" r="7" />
+
+  <!-- Hitch / drawbar -->
+  <path d="M45 148 L25 160 L15 160" />
+  <circle cx="14" cy="160" r="3" />
+
+  <!-- Badge -->
+  <text x="240" y="175" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.15em" fill="currentColor" stroke="none" text-anchor="middle">X-MASTER 226 · SLIDE-OUT</text>
+</svg>
