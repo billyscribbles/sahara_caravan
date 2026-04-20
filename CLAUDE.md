@@ -10,6 +10,14 @@ Theme is a premium bone-on-black palette with real product photography.
 - Append new bullets to the existing list. Don't reorganise or remove past entries unless asked.
 - Stage the `CHANGELOG.md` update in the same commit as the change it describes.
 
+## Responsive design
+
+- All styling and CSS must work on mobile, tablet, and desktop. No desktop-only layouts.
+- Test at 320px, 375px, 768px, and 1440px before considering any UI change done.
+- Prefer fluid sizing (`clamp()`, `%`, `min/max-width`) over fixed pixels where reasonable.
+- Existing breakpoints in the codebase: 480, 560, 600, 620, 768, 900, 960, 1024, 1100 (px max-width). Reuse these rather than inventing new ones unless necessary.
+- Never introduce horizontal scroll at any viewport width.
+
 ## Source-of-truth files
 
 - `src/config/site.config.js` — brand info, nav, footer, SEO, contact
