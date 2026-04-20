@@ -37,3 +37,4 @@
 - The Sahara Horizon and Sahara Dune model pages now open with their own new hero photos.
 - On model pages the "Choose your…" layout picker now sits further below the hero so the section has more breathing room.
 - The small floor-plan drawings on the X-Master layout picker have been redrawn so the caravan silhouette, stone guard, windows, door and tandem wheels are all cleaner and easier to read.
+- The Custom Van Builds card in the range now shows a new hero image in keeping with the rest of the lineup.

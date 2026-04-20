@@ -6,7 +6,7 @@ export const customBuilds = {
     name: 'Custom Van Builds',
     type: 'Bespoke',
     tagline: 'A home, quietly built into your van.',
-    heroImage: '/images/range-interiors/interior-2282.jpg',
+    heroImage: '/images/hero/hero-custom-builds.png',
     highlights: ['Bespoke fit-out', 'Full kitchen', 'Bed & bathroom', 'Custom joinery'],
     href: '/custom-builds',
   },
