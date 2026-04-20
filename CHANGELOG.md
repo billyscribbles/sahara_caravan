@@ -21,3 +21,6 @@
 - Reworked the top of the Mirage page — brighter front photo, a softer overlay, and the title, pill and tagline now sit centred with room to breathe. Removed the stray "Back to range" link.
 - The two Mirage layout buttons now show clearer illustrations — a cafe booth with a pedestal table versus two individual recliner chairs — so it's obvious which lounge you're choosing.
 - Tidied up the Mirage photo galleries — a front-exterior shot that was filed as an interior is now with the other exteriors, and two twin-recliner photos that were mixed into the Cafe set have been moved to the Twin Recliner page.
+- Replaced the home-page hero with a new Mirage sunset shot, cropped clean, with the full width of the caravan always visible on wide screens.
+- Made the home hero a bit shorter, dropped the scroll-down arrow, and tucked the trust row ("30+ Years of Craftsmanship" etc.) neatly along the bottom of the image.
+- Added a soft dim behind the top menu (only over the hero) so the nav links stay readable against the bright sunset sky, without darkening the rest of the photo.

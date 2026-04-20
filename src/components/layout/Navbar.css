@@ -15,6 +15,15 @@
   background: transparent;
 }
 
+.navbar--overlay:not(.navbar--scrolled)::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -40px 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 .navbar--overlay:not(.navbar--scrolled) .navbar__link,
 .navbar--overlay:not(.navbar--scrolled) .navbar__logo-text,
 .navbar--overlay:not(.navbar--scrolled) .navbar__logo-sub,

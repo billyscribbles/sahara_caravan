@@ -1,9 +1,9 @@
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 78vh;
   display: flex;
   align-items: flex-end;
-  padding: 160px 32px 120px;
+  padding: 140px 32px 44px;
   overflow: hidden;
   color: #fff;
   isolation: isolate;
@@ -29,24 +29,15 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.28) 40%,
-    rgba(0, 0, 0, 0.55) 70%,
-    rgba(0, 0, 0, 0.85) 100%
+    transparent 0%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.35) 70%,
+    rgba(0, 0, 0, 0.75) 100%
   );
-}
-
-.hero__vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 30% 70%,
-    rgba(234, 228, 216, 0.08),
-    transparent 60%
-  );
-  mix-blend-mode: screen;
   pointer-events: none;
 }
+
+.hero__vignette { display: none; }
 
 .hero__inner {
   max-width: 1180px;
@@ -174,34 +165,6 @@
 
 .hero__trust-item svg { color: var(--color-accent-light); }
 
-.hero__scroll-hint {
-  position: absolute;
-  bottom: 36px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 22px;
-  height: 36px;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  border-radius: var(--radius-full);
-  display: flex;
-  justify-content: center;
-  padding-top: 7px;
-}
-
-.hero__scroll-dot {
-  width: 3px;
-  height: 7px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 2px;
-  animation: scrollHint 1.8s ease-in-out infinite;
-}
-
-@keyframes scrollHint {
-  0%   { transform: translateY(0); opacity: 1; }
-  70%  { transform: translateY(12px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 0; }
-}
-
 @keyframes heroFade {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -215,7 +178,7 @@
 @media (max-width: 768px) {
   .hero {
     min-height: 92vh;
-    padding: 128px 20px 100px;
+    padding: 128px 20px 36px;
     align-items: flex-end;
   }
   .hero__sub { font-size: 16px; margin-bottom: 32px; }
@@ -224,5 +187,4 @@
   .hero__cta-secondary { font-size: 14px; padding: 14px 22px; }
   .hero__trust { gap: 10px 20px; padding-top: 24px; }
   .hero__trust-item { font-size: 12px; }
-  .hero__scroll-hint { display: none; }
 }

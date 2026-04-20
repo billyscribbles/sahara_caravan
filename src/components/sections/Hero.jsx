@@ -59,9 +59,6 @@ export default function Hero() {
         )}
       </div>
 
-      <div className="hero__scroll-hint" aria-hidden="true">
-        <span className="hero__scroll-dot" />
-      </div>
     </section>
   )
 }
