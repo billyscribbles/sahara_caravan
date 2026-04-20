@@ -8,7 +8,7 @@ export default function Heritage() {
       <div className="container heritage__inner">
         <div className="heritage__media">
           <RevealOnScroll className="heritage__image-wrap">
-            <img src={heritage.image} alt="Sahara Mirage caravan parked in the Australian bush" loading="lazy" />
+            <img src={heritage.image} alt="Sahara Caravans van parked in an open Australian paddock" loading="lazy" />
           </RevealOnScroll>
         </div>
 
