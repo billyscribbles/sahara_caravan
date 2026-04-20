@@ -41,3 +41,5 @@
 - The Contact page now alternates white, black, white, black down the page — the top section is on the soft off-white background, then the enquiry form stays dark, the FAQ sits on white, and the dark footer completes the rhythm.
 - The Build page now alternates white, black, white, black down the page — the top section and the "How we build" pillars are on the soft off-white background, with the eight build stages and the enquiry form sitting on black between them.
 - Brought the gold from the Sahara logo through the rest of the site as a quiet secondary touch — the small capital labels above each section heading now sit in logo-gold, and the "+" markers on the FAQ answers open in the same gold.
+- Added a small "Site by Onrai Studio" credit to the footer bar, with the studio name linking out to onraistudio.com.
+- Fixed the four contact cards at the top of the Contact page — the little phone, email, pin and clock icons now sit in a dark chip in the logo-gold so they read clearly against the off-white background, and the four cards are now a consistent equal-width rectangle regardless of how short or long the text inside is.

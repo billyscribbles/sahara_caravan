@@ -147,6 +147,18 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
+.footer__credit {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer__credit-link {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition-fast);
+}
+
+.footer__credit-link:hover { color: var(--color-gold-light); }
+
 .footer__legal {
   display: flex;
   gap: 20px;

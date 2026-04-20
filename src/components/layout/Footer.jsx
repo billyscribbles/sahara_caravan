@@ -75,6 +75,17 @@ export default function Footer() {
 
       <div className="footer__bottom">
         <span className="footer__copyright">{footer.copyright}</span>
+        <span className="footer__credit">
+          Site by{' '}
+          <a
+            href="https://www.onraistudio.com"
+            className="footer__credit-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Onrai Studio
+          </a>
+        </span>
         <div className="footer__legal">
           <Link to="/privacy" className="footer__legal-btn">Privacy</Link>
           <Link to="/terms" className="footer__legal-btn">Terms</Link>
