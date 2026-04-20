@@ -8,11 +8,7 @@ export default function Heritage() {
       <div className="container heritage__inner">
         <div className="heritage__media">
           <RevealOnScroll className="heritage__image-wrap">
-            <img src={heritage.image} alt="Sahara Caravans workshop in Campbellfield, Victoria" loading="lazy" />
-            <div className="heritage__image-badge" aria-hidden="true">
-              <span className="heritage__image-badge-num">30+</span>
-              <span className="heritage__image-badge-label">Years<br/>in the trade</span>
-            </div>
+            <img src={heritage.image} alt="Sahara Mirage caravan parked in the Australian bush" loading="lazy" />
           </RevealOnScroll>
         </div>
 

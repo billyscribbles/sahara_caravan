@@ -26,3 +26,4 @@
 - Added a soft dim behind the top menu (only over the hero) so the nav links stay readable against the bright sunset sky, without darkening the rest of the photo.
 - The home hero now resizes cleanly on phones and tablets — the full caravan stays visible and the headline, buttons and tagline line up neatly underneath.
 - Tightened the home hero on phones so the dark space below the trust row is gone — the section ends right below the buttons and badges.
+- Swapped the photo on the "Our Story" section (home page and About page) for a fresh shot of a Sahara Mirage in the bush, and removed the "30+ Years in the trade" badge from the corner of the image.
