@@ -108,14 +108,22 @@
 }
 
 .model-card__highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-soft);
   background: var(--color-bg-muted);
-  padding: 5px 10px;
+  padding: 5px 10px 5px 8px;
   border-radius: var(--radius-full);
+}
+
+.model-card__highlight svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
 }
 
 @media (max-width: 600px) {
