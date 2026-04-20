@@ -30,3 +30,4 @@
 - On the "Four vans. One standard of build." lineup, the Sahara X-Master now sits first (before the Mirage) — toilet, shower, laundry and kitchenette features on each card now show small gold icons alongside their names.
 - Updated the "Our Story" photo to a new side-on shot of a Sahara van parked in an open paddock.
 - The Mirage page now offers four layouts to choose from — the existing Cafe and Twin Recliners, plus a new compact Queen Bed layout and a Twin Single Bed layout, each with its own photos, floor plan and description.
+- Every model's spec section now shows TARE, GTM and ATM (instead of just TARE and ATM) and a small note underneath reminding customers that weights vary between builds and are confirmed on the build plate. The Mirage Single Bed layout now has real weights — 2021 kg TARE, 2600 kg GTM, 2750 kg ATM. The Mirage Queen Bed layout now has real weights — 2180 kg TARE, 2626 kg GTM, 2800 kg ATM.

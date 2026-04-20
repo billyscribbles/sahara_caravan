@@ -14,6 +14,7 @@ const SPEC_ORDER = [
   ['sleeps', 'Sleeps'],
   ['length', 'Length'],
   ['tare', 'Tare'],
+  ['gtm', 'GTM'],
   ['atm', 'ATM'],
   ['suspension', 'Suspension'],
   ['water', 'Water'],
@@ -207,6 +208,9 @@ export default function ModelPage() {
                 <SpecPill key={key} label={label} value={fields.specs[key] || 'TBC'} tone="accent" />
               ))}
             </div>
+            <p className="model-page__specs-note">
+              Weights vary between builds — ATM, TARE and GTM figures are a guide only and are confirmed on your individual build plate.
+            </p>
           </RevealOnScroll>
         </div>
       </section>

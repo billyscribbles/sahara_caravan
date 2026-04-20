@@ -287,8 +287,9 @@ export const models = [
         specs: {
           sleeps: 'Up to 2',
           length: 'TBC',
-          tare: 'TBC',
-          atm: 'TBC',
+          tare: '2180 kg',
+          gtm: '2626 kg',
+          atm: '2800 kg',
           suspension: 'Standard independent',
           water: 'TBC',
           warranty: 'TBC',
@@ -339,8 +340,9 @@ export const models = [
         specs: {
           sleeps: 'Up to 2',
           length: 'TBC',
-          tare: 'TBC',
-          atm: 'TBC',
+          tare: '2021 kg',
+          gtm: '2600 kg',
+          atm: '2750 kg',
           suspension: 'Standard independent',
           water: 'TBC',
           warranty: 'TBC',

@@ -195,6 +195,15 @@
 
 .model-page__specs-grid .spec-pill { width: 100%; }
 
+.model-page__specs-note {
+  margin: 18px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted, var(--color-text-soft));
+  opacity: 0.72;
+  max-width: 620px;
+}
+
 .model-page__cta-inner { text-align: center; max-width: 720px; margin: 0 auto; }
 
 .model-page__cta-title {
