@@ -32,3 +32,8 @@
 - The Mirage page now offers four layouts to choose from — the existing Cafe and Twin Recliners, plus a new compact Queen Bed layout and a Twin Single Bed layout, each with its own photos, floor plan and description.
 - Every model's spec section now shows TARE, GTM and ATM (instead of just TARE and ATM) and a small note underneath reminding customers that weights vary between builds and are confirmed on the build plate. The Mirage Single Bed layout now has real weights — 2021 kg TARE, 2600 kg GTM, 2750 kg ATM. The Mirage Queen Bed layout now has real weights — 2180 kg TARE, 2626 kg GTM, 2800 kg ATM.
 - On desktop the layout picker on model pages now fits all four options in one row (instead of a 2 x 2 grid), and the small floor-plan illustrations inside each button are now drawn in bright white lines so they are easy to read at a glance. Tablet and mobile still stack the options to keep everything readable on smaller screens.
+- The Mirage page now opens with the same outback Mirage photo used on the home page, and the hero stays put when you click between the four floor plans.
+- The Sahara X-Master page now opens with a new hero photo of the van, and the hero stays put when you switch between the Standard and Slide-Out layouts.
+- The Sahara Horizon and Sahara Dune model pages now open with their own new hero photos.
+- On model pages the "Choose your…" layout picker now sits further below the hero so the section has more breathing room.
+- The small floor-plan drawings on the X-Master layout picker have been redrawn so the caravan silhouette, stone guard, windows, door and tandem wheels are all cleaner and easier to read.

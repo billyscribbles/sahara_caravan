@@ -132,7 +132,7 @@
   flex-shrink: 0;
 }
 
-.model-page__variants { padding-top: 0; }
+.model-page__variants { padding-top: 64px; }
 .model-page__variants + .model-page__intro { padding-top: 64px; }
 
 .model-page__gallery-group + .model-page__gallery-group { margin-top: 48px; }

@@ -12,7 +12,7 @@ export const models = [
     tagline: 'Explore the wild without leaving comfort behind.',
     description:
       'The X-Master is your ultimate companion for off-grid adventures. Matte-black body, checker-plate armor, tandem off-road suspension and a fully stocked electrical bay mean you can head well past the blacktop and stay out for weeks. Pick between the compact Standard 196 single-body tourer or the 226 Slide-Out — where a roadside wall extrudes at camp to double the living space.',
-    heroImage: '/images/models/x-master-slideout/hero.jpg',
+    heroImage: '/images/hero/hero-xmaster.png',
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the X-Master',
     variants: [
@@ -23,7 +23,6 @@ export const models = [
         badge: 'X-Master 196',
         blurb: 'Compact single-body off-road tourer — tandem axle, full ensuite, designed to go anywhere.',
         blueprint: '/images/blueprints/x-master-standard.svg',
-        heroImage: '/images/models/x-master-standard/hero.jpg',
         description:
           'The X-Master 196 Standard is the tight, trail-ready version of the range. A single-body off-road tourer on a tandem off-road chassis, with every serious go-anywhere feature you\'d expect — DO35-style hitch, stone-guard nose, checker-plate armor along the underbody, reinforced coil suspension and a full external electrical bay. Inside it\'s every bit as finished as the on-road vans: cafe dinette, 4-burner cooktop with oven, full rear ensuite with laundry, and a private queen bed at the back.',
         features: [
@@ -87,7 +86,6 @@ export const models = [
         badge: 'X-Master 226',
         blurb: 'Extended 226 body with a side wall that extrudes at camp — markedly wider inside when the slide is deployed.',
         blueprint: '/images/blueprints/x-master-slideout.svg',
-        heroImage: '/images/models/x-master-slideout/hero.jpg',
         description:
           'The X-Master 226 Slide-Out is the room-to-breathe version of the same off-road tourer. A roadside wall section extrudes at camp to markedly widen the living area — a larger U-lounge with a slide-back table, more floor space for dressing, and the galley no longer sharing a walkway. The same off-road chassis, the same fit-out quality, the same electrical grunt — just a bigger footprint when you\'re settled in.',
         features: [
@@ -155,7 +153,7 @@ export const models = [
     tagline: 'Comfort and convenience on the open road.',
     description:
       'The Mirage is designed for travellers who value comfort and ease above all. A sleek, streamlined build makes it effortless to tow, while the fully equipped kitchenette and spacious interior feel like home long before you\'ve unpacked. Four floor plans to choose from — two lounge-led layouts (cafe-style dinette or twin recliners) and two compact bedroom-led layouts (rear queen bed or twin singles) — so the Mirage can match the way you actually travel.',
-    heroImage: '/images/models/mirage-cafe/exterior-03.jpg',
+    heroImage: '/images/hero/hero-mirage-outback.png',
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Mirage',
     variants: [
@@ -166,7 +164,6 @@ export const models = [
         badge: 'Mirage · Cafe Lounge',
         blurb: 'Fixed L-shaped cafe dinette with pedestal table — seats the whole family for meals and folds out for an extra bed.',
         blueprint: '/images/blueprints/mirage-cafe.svg',
-        heroImage: '/images/models/mirage-cafe/exterior-03.jpg',
         description:
           'The Cafe-style Mirage keeps things classic. A fixed L-shaped dinette with a solid pedestal table gives you a proper spot for meals, laptops, card games and long cups of tea on a rainy afternoon. Gloss white upper cabinetry, stone-look benchtops and a hex-tile ensuite give the whole space a bright, premium feel — while the rear queen bedroom stays tucked away for an easy night.',
         features: [
@@ -227,7 +224,6 @@ export const models = [
         badge: 'Mirage · Recliner Lounge',
         blurb: 'Two individual reclining chairs with a shared side table — the relaxed evenings-in layout for couples.',
         blueprint: '/images/blueprints/mirage-recliners.svg',
-        heroImage: '/images/models/mirage-recliners/hero.jpg',
         description:
           'The Recliner-layout Mirage swaps the fixed dinette for two individual reclining lounge chairs with a small shared side table. It\'s the evenings-in, movie-night layout — everyone gets their own seat, and there\'s nothing hard to knock a knee on. Everything else is the same Mirage you know: full galley, ensuite with laundry and a private rear queen bedroom.',
         features: [
@@ -270,7 +266,6 @@ export const models = [
         badge: 'Mirage · Queen Bed',
         blurb: 'Compact Mirage 166 built around a rear queen bed — a simple padded bench lounge keeps the floor plan tidy for couples.',
         blueprint: '/images/blueprints/mirage-queenbed.svg',
-        heroImage: '/images/models/mirage-queenbed/exterior-01.jpg',
         description:
           'The Queen Bed Mirage is the compact couples\' floor plan. A full-size rear queen bed sits under gloss white overhead cabinetry with a padded headboard and reading lights on either side, and a simple cushioned bench lounge keeps the living area uncluttered. The full galley, ensuite with separate shower and twin-gas-bottle off-road hitch all stay — just in a shorter, lighter body that\'s easier to tow and park.',
         features: [
@@ -323,7 +318,6 @@ export const models = [
         badge: 'Mirage · Twin Singles',
         blurb: 'Compact Mirage 166 with two rear single beds split by a central cabinet — flexible for families, friends or gear.',
         blueprint: '/images/blueprints/mirage-singlebed.svg',
-        heroImage: '/images/models/mirage-singlebed/exterior-01.jpg',
         description:
           'The Single Bed Mirage swaps the queen for two independent single beds at the rear, split by a central cabinet column with overhead storage and an oversized skylight above. It\'s the flexible layout — two friends who want their own space, parents sharing with a teenager, or anyone who needs the extra stowage the central column provides. The rest of the build stays true to the Mirage: full galley, ensuite with separate shower and a cushioned lounge in the living area.',
         features: [
@@ -380,7 +374,7 @@ export const models = [
     tagline: 'Adventure and comfort in balance.',
     description:
       'The Dune is the versatile middle ground — a reinforced suspension soaks up the rougher roads, while the interior layout and ride feel just as at home on the highway. For travellers who want both sides of the country without committing to one.',
-    heroImage: '/images/models/dune/hero.png',
+    heroImage: '/images/hero/hero-dune.png',
     gallery: [
       '/images/models/dune/gallery-1.png',
       '/images/models/dune/gallery-2.png',
@@ -414,7 +408,7 @@ export const models = [
     tagline: 'Making memories — wherever the road takes you.',
     description:
       'The Horizon is built with families in mind, offering the perfect mix of comfort, practicality, and adventure. With generous space for everyone, it features bunk beds for the kids, a cozy master bed, and a fully equipped kitchenette for easy mealtime prep — so every trip is one the whole family can enjoy.',
-    heroImage: '/images/models/horizon/hero.png',
+    heroImage: '/images/hero/hero-horizon.png',
     gallery: [
       '/images/models/horizon/hero.png',
       '/images/models/horizon/gallery-2.svg',
