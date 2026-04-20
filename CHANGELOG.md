@@ -38,3 +38,6 @@
 - On model pages the "Choose your…" layout picker now sits further below the hero so the section has more breathing room.
 - The small floor-plan drawings on the X-Master layout picker have been redrawn so the caravan silhouette, stone guard, windows, door and tandem wheels are all cleaner and easier to read.
 - The Custom Van Builds card in the range now shows a new hero image in keeping with the rest of the lineup.
+- The Contact page now alternates white, black, white, black down the page — the top section is on the soft off-white background, then the enquiry form stays dark, the FAQ sits on white, and the dark footer completes the rhythm.
+- The Build page now alternates white, black, white, black down the page — the top section and the "How we build" pillars are on the soft off-white background, with the eight build stages and the enquiry form sitting on black between them.
+- Brought the gold from the Sahara logo through the rest of the site as a quiet secondary touch — the small capital labels above each section heading now sit in logo-gold, and the "+" markers on the FAQ answers open in the same gold.

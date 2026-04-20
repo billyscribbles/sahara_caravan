@@ -25,6 +25,13 @@ export const theme = {
     'accent-glow': 'rgba(234, 228, 216, 0.18)',
     'accent-overlay': 'rgba(234, 228, 216, 0.08)',
 
+    // Secondary accent — logo gold (sampled from the flame + triangle in the SAHARA wordmark).
+    // Used sparingly as a brand touch: eyebrows, small indicators, decorative marks.
+    gold: '#BE9646',
+    'gold-light': '#D4B06A',
+    'gold-soft': 'rgba(190, 150, 70, 0.75)',
+    'gold-glow': 'rgba(190, 150, 70, 0.18)',
+
     // Structural — translucent
     border: 'rgba(242, 239, 233, 0.10)',
     'border-strong': 'rgba(242, 239, 233, 0.22)',

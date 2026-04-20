@@ -1,8 +1,16 @@
 .contact-page__hero {
+  --color-bg-card: #FFFFFF;
+  --color-bg-muted: #F0EDE5;
+  --color-text: var(--color-text-on-light);
+  --color-text-soft: var(--color-text-on-light-soft);
+  --color-muted: rgba(14, 14, 15, 0.50);
+  --color-border: var(--color-border-on-light);
+  --color-border-strong: rgba(14, 14, 15, 0.20);
+  --color-accent-glow: rgba(14, 14, 15, 0.08);
+
   padding: 160px 0 72px;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 0%, var(--color-accent-glow), transparent 70%),
-    var(--color-bg);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
   text-align: center;
 }
 
@@ -98,7 +106,7 @@
   transition: border-color var(--transition-base);
 }
 
-.faq-item[open] { border-color: var(--color-accent); }
+.faq-item[open] { border-color: var(--color-gold); }
 
 .faq-item__q {
   list-style: none;
@@ -122,7 +130,7 @@
   transform: translateY(-50%);
   font-size: 22px;
   font-weight: 400;
-  color: var(--color-accent);
+  color: var(--color-gold);
   line-height: 1;
   transition: transform var(--transition-base);
 }
@@ -131,7 +139,7 @@
   transform: translateY(-50%) rotate(45deg);
 }
 
-.faq-item__q:hover { color: var(--color-accent); }
+.faq-item__q:hover { color: var(--color-gold); }
 
 .faq-item__a {
   padding: 0 24px 22px;

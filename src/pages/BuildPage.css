@@ -1,8 +1,16 @@
 .build-page__hero {
+  --color-bg-card: #FFFFFF;
+  --color-bg-muted: #F0EDE5;
+  --color-text: var(--color-text-on-light);
+  --color-text-soft: var(--color-text-on-light-soft);
+  --color-muted: rgba(14, 14, 15, 0.50);
+  --color-border: var(--color-border-on-light);
+  --color-border-strong: rgba(14, 14, 15, 0.20);
+  --color-accent-glow: rgba(14, 14, 15, 0.08);
+
   padding: 160px 0 72px;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 0%, var(--color-accent-glow), transparent 70%),
-    var(--color-bg);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
   text-align: center;
 }
 
@@ -23,6 +31,42 @@
   color: var(--color-text-soft);
   max-width: 62ch;
   margin: 0 auto;
+}
+
+/* Flip the BuildPhilosophy section to white on /build only so the page
+ * alternates white → black → white → black down the page. Home and About
+ * keep the original dark BuildPhilosophy look. */
+.build-page .build.section--dark {
+  background: var(--color-bg-alt);
+  color: var(--color-text-on-light);
+}
+
+.build-page .build .section-eyebrow { color: var(--color-gold); }
+.build-page .build .section-label { color: var(--color-text-on-light); }
+.build-page .build .section-sub { color: var(--color-text-on-light-soft); }
+
+.build-page .build__grid {
+  border-color: var(--color-border-on-light);
+  background: rgba(14, 14, 15, 0.02);
+}
+
+.build-page .build__pillar {
+  background: #FFFFFF;
+  border-color: rgba(14, 14, 15, 0.06);
+}
+
+.build-page .build__pillar:hover {
+  background: rgba(14, 14, 15, 0.02);
+}
+
+.build-page .build__pillar-title { color: var(--color-text-on-light); }
+.build-page .build__pillar-body { color: var(--color-text-on-light-soft); }
+.build-page .build__pillar-num { color: rgba(14, 14, 15, 0.30); }
+
+.build-page .build__icon {
+  background: var(--color-dark);
+  color: var(--color-accent-light);
+  border-color: transparent;
 }
 
 @media (max-width: 900px) {
