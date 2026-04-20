@@ -29,3 +29,4 @@
 - Swapped the photo on the "Our Story" section (home page and About page) for a fresh shot of a Sahara Mirage in the bush, and removed the "30+ Years in the trade" badge from the corner of the image.
 - On the "Four vans. One standard of build." lineup, the Sahara X-Master now sits first (before the Mirage) — toilet, shower, laundry and kitchenette features on each card now show small gold icons alongside their names.
 - Updated the "Our Story" photo to a new side-on shot of a Sahara van parked in an open paddock.
+- The Mirage page now offers four layouts to choose from — the existing Cafe and Twin Recliners, plus a new compact Queen Bed layout and a Twin Single Bed layout, each with its own photos, floor plan and description.

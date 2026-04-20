@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- Schematic corner ticks -->
+  <g opacity="0.35" stroke-width="1.6">
+    <path d="M24 24 L40 24 M24 24 L24 40"/>
+    <path d="M456 24 L440 24 M456 24 L456 40"/>
+    <path d="M24 176 L40 176 M24 176 L24 160"/>
+    <path d="M456 176 L440 176 M456 176 L456 160"/>
+  </g>
+
+  <!-- Left single bed -->
+  <rect x="60" y="44" width="160" height="112" rx="10" stroke-width="2.8"/>
+  <!-- Pillow -->
+  <rect x="72" y="54" width="40" height="30" rx="5" stroke-width="2.4" opacity="0.7"/>
+  <!-- Mattress mid-stitch -->
+  <line x1="72" y1="102" x2="208" y2="102" opacity="0.35"/>
+
+  <!-- Right single bed (mirror) -->
+  <rect x="260" y="44" width="160" height="112" rx="10" stroke-width="2.8"/>
+  <rect x="368" y="54" width="40" height="30" rx="5" stroke-width="2.4" opacity="0.7"/>
+  <line x1="272" y1="102" x2="408" y2="102" opacity="0.35"/>
+
+  <!-- Central cabinet column between beds -->
+  <rect x="224" y="44" width="32" height="112" rx="3" stroke-width="2.6" opacity="0.7"/>
+  <line x1="224" y1="84" x2="256" y2="84" opacity="0.35"/>
+  <line x1="224" y1="116" x2="256" y2="116" opacity="0.35"/>
+
+  <!-- Overhead skylight -->
+  <rect x="208" y="22" width="64" height="14" rx="3" stroke-width="2.2" opacity="0.45"/>
+
+  <!-- Bedhead reading lights -->
+  <circle cx="84" cy="44" r="3" opacity="0.55"/>
+  <circle cx="396" cy="44" r="3" opacity="0.55"/>
+</svg>
