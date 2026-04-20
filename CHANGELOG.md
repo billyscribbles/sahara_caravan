@@ -25,3 +25,4 @@
 - Made the home hero a bit shorter, dropped the scroll-down arrow, and tucked the trust row ("30+ Years of Craftsmanship" etc.) neatly along the bottom of the image.
 - Added a soft dim behind the top menu (only over the hero) so the nav links stay readable against the bright sunset sky, without darkening the rest of the photo.
 - The home hero now resizes cleanly on phones and tablets — the full caravan stays visible and the headline, buttons and tagline line up neatly underneath.
+- Tightened the home hero on phones so the dark space below the trust row is gone — the section ends right below the buttons and badges.

@@ -204,7 +204,7 @@
    so the text stays overlaid on top of the photo, same as desktop. */
 @media (max-width: 600px) {
   .hero {
-    min-height: 88vh;
+    min-height: 0;
     padding: 104px 22px 32px;
   }
   .hero__image { object-position: center 50%; }
@@ -225,7 +225,7 @@
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 90vh;
+    min-height: 0;
     padding: 96px 20px 28px;
   }
   .hero__eyebrow { letter-spacing: 0.18em; }
