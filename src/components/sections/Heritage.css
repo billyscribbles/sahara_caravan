@@ -1,23 +1,26 @@
 .heritage {
   background: var(--color-bg);
+  padding: 88px 0;
 }
 
 .heritage__inner {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 80px;
-  align-items: center;
+  align-items: stretch;
 }
 
 .heritage__media {
   position: relative;
+  display: flex;
 }
 
 .heritage__image-wrap {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  width: 100%;
+  min-height: 100%;
   background: var(--color-bg-muted);
   box-shadow: var(--shadow-lg);
 }
@@ -26,7 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 22% center;
+  object-position: 22% 75%;
 }
 
 .heritage__body {
@@ -81,12 +84,19 @@
 }
 
 @media (max-width: 900px) {
+  .heritage {
+    padding: 64px 0;
+  }
   .heritage__inner {
     grid-template-columns: 1fr;
     gap: 56px;
   }
+  .heritage__media {
+    display: block;
+  }
   .heritage__image-wrap {
     aspect-ratio: 3 / 2;
+    min-height: 0;
     max-width: 540px;
   }
 }
