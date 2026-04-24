@@ -22,11 +22,11 @@
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 14px;
-  padding: 20px 20px 22px;
+  gap: 0;
+  padding: 0;
   text-align: left;
   background: var(--color-bg-card);
-  border: 1.5px solid var(--color-border-strong);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
   color: var(--color-text);
   cursor: pointer;
@@ -40,6 +40,7 @@
 .variant-switcher__option:hover {
   border-color: var(--color-border-strong);
   transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
 .variant-switcher__option:focus-visible {
@@ -48,21 +49,35 @@
 }
 
 .variant-switcher__option.is-active {
-  border-color: var(--color-accent);
-  background: linear-gradient(180deg, rgba(234, 228, 216, 0.06) 0%, var(--color-bg-card) 60%);
-  color: var(--color-text);
-  box-shadow: var(--shadow-accent);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 1px var(--color-gold), 0 14px 36px rgba(190, 150, 70, 0.18);
 }
 
 .variant-switcher__blueprint {
+  position: relative;
   display: block;
   width: 100%;
   aspect-ratio: 480 / 200;
-  padding: 6px 10px;
-  border-radius: var(--radius-md);
-  background: #0A0A0B;
-  color: #FFFFFF;
-  transition: color var(--transition-base), background var(--transition-base);
+  padding: 0;
+  border-radius: 0;
+  background: #1F2025;
+  border-bottom: 1px solid rgba(190, 150, 70, 0.22);
+  color: var(--color-accent);
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.variant-switcher__blueprint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 110%,
+    rgba(190, 150, 70, 0.10) 0%,
+    rgba(190, 150, 70, 0) 60%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
 }
 
 .variant-switcher__blueprint img {
@@ -72,67 +87,78 @@
   display: block;
 }
 
+.variant-switcher__option:hover .variant-switcher__blueprint::after,
+.variant-switcher__option.is-active .variant-switcher__blueprint::after {
+  opacity: 1;
+}
+
 .variant-switcher__option.is-active .variant-switcher__blueprint {
-  color: var(--color-accent);
-  background: rgba(234, 228, 216, 0.04);
+  border-bottom-color: var(--color-gold);
 }
 
 .variant-switcher__meta {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  padding: 20px 22px 22px;
 }
 
 .variant-switcher__badge {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-gold);
 }
 
 .variant-switcher__label {
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 600;
+  line-height: 1.15;
   letter-spacing: -0.015em;
   color: var(--color-text);
 }
 
 .variant-switcher__blurb {
   font-size: 13.5px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--color-text-soft);
+  margin-top: 2px;
 }
 
 .variant-switcher__indicator {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 20px;
-  height: 20px;
+  top: 14px;
+  right: 14px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 1.5px solid var(--color-border-strong);
-  background: transparent;
+  border: 1.5px solid rgba(242, 239, 233, 0.55);
+  background: rgba(8, 8, 10, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   transition: border-color var(--transition-base), background var(--transition-base),
     box-shadow var(--transition-base);
 }
 
 .variant-switcher__option.is-active .variant-switcher__indicator {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
-  box-shadow: 0 0 0 4px rgba(234, 228, 216, 0.18);
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  box-shadow: 0 0 0 4px rgba(190, 150, 70, 0.22);
 }
 
 @media (max-width: 1100px) {
   .variant-switcher__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .variant-switcher__option { min-height: 260px; padding: 22px; }
+  .variant-switcher__option { min-height: 260px; }
+  .variant-switcher__meta { padding: 22px 24px 24px; }
   .variant-switcher__label { font-size: 24px; }
   .variant-switcher__blurb { font-size: 14px; }
 }
 
 @media (max-width: 720px) {
   .variant-switcher__grid { grid-template-columns: 1fr; gap: 14px; }
-  .variant-switcher__option { min-height: 0; padding: 20px; }
+  .variant-switcher__option { min-height: 0; }
+  .variant-switcher__meta { padding: 18px 20px 20px; }
   .variant-switcher__label { font-size: 22px; }
 }

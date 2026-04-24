@@ -22,7 +22,7 @@ export const models = [
         shortLabel: 'Standard',
         badge: 'X-Master 196',
         blurb: 'Compact single-body off-road tourer — tandem axle, full ensuite, designed to go anywhere.',
-        blueprint: '/images/blueprints/x-master-standard.svg',
+        blueprint: '/images/blueprints/x-master-standard.webp',
         description:
           'The X-Master 196 Standard is the tight, trail-ready version of the range. A single-body off-road tourer on a tandem off-road chassis, with every serious go-anywhere feature you\'d expect — DO35-style hitch, stone-guard nose, checker-plate armor along the underbody, reinforced coil suspension and a full external electrical bay. Inside it\'s every bit as finished as the on-road vans: cafe dinette, 4-burner cooktop with oven, full rear ensuite with laundry, and a private queen bed at the back.',
         features: [
@@ -85,7 +85,7 @@ export const models = [
         shortLabel: 'Slide-Out',
         badge: 'X-Master 226',
         blurb: 'Extended 226 body with a side wall that extrudes at camp — markedly wider inside when the slide is deployed.',
-        blueprint: '/images/blueprints/x-master-slideout.svg',
+        blueprint: '/images/blueprints/x-master-slideout.webp',
         description:
           'The X-Master 226 Slide-Out is the room-to-breathe version of the same off-road tourer. A roadside wall section extrudes at camp to markedly widen the living area — a larger U-lounge with a slide-back table, more floor space for dressing, and the galley no longer sharing a walkway. The same off-road chassis, the same fit-out quality, the same electrical grunt — just a bigger footprint when you\'re settled in.',
         features: [

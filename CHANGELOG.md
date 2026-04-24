@@ -58,3 +58,4 @@
 - Reordered the home page so the caravan range appears straight after the headline, with the brand story, partners and dealer map further down.
 - The enquiry form now lives only on the home page and the contact page. Other pages show a short "Get in touch" button that links through to Contact.
 - Contact page: the four contact boxes (Call, Email, Workshop, Hours) are now bigger — laid out two-per-row with roomier padding and larger text, so the email address has space to sit on one line without spilling out.
+- Replaced the small caravan drawings on the X-Master layout picker with new illustrations — the Standard and Slide-Out cards now show fuller side-on artwork including the slide-out section on the 226.
