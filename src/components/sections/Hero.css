@@ -14,7 +14,10 @@
   inset: 0;
   z-index: -2;
   overflow: hidden;
-  background: var(--color-dark);
+  /* Warm sepia tone sampled from the sunset hero — stands in for the image
+     during the first paint so the fold doesn't flash pure black. */
+  background:
+    radial-gradient(ellipse 120% 90% at 70% 50%, #5a3a22 0%, #2a1a10 55%, #1a0e07 100%);
 }
 
 .hero__image {

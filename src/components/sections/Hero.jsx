@@ -14,7 +14,21 @@ export default function Hero() {
   return (
     <section className="hero" id="hero">
       <div className="hero__media">
-        <img src={hero.image} alt="" aria-hidden="true" className="hero__image" fetchpriority="high" />
+        <picture>
+          <source
+            type="image/webp"
+            srcSet="/images/hero/hero-mirage-outback-960.webp 960w, /images/hero/hero-mirage-outback.webp 1721w"
+            sizes="100vw"
+          />
+          <img
+            src={hero.image}
+            alt=""
+            aria-hidden="true"
+            className="hero__image"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div className="hero__gradient" />
         <div className="hero__vignette" />
       </div>
