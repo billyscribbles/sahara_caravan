@@ -9,6 +9,7 @@ export default function Lightbox({ images, startIndex = 0, open, onClose, alt = 
   const [index, setIndex] = useState(startIndex)
   const touchStartX = useRef(null)
   const touchDeltaX = useRef(0)
+  const stripRef = useRef(null)
 
   useEffect(() => {
     if (open) setIndex(startIndex)
@@ -44,6 +45,17 @@ export default function Lightbox({ images, startIndex = 0, open, onClose, alt = 
       img.src = n.src
     })
   }, [open, index, images, total])
+
+  // Keep active thumbnail visible in the strip
+  useEffect(() => {
+    if (!open) return
+    const strip = stripRef.current
+    if (!strip) return
+    const active = strip.querySelector('[data-active="true"]')
+    if (active && typeof active.scrollIntoView === 'function') {
+      active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+    }
+  }, [open, index])
 
   if (!open || total === 0) return null
 
@@ -126,6 +138,31 @@ export default function Lightbox({ images, startIndex = 0, open, onClose, alt = 
         >
           <ChevronRight size={28} strokeWidth={2} aria-hidden="true" />
         </button>
+      )}
+
+      {total > 1 && (
+        <div
+          className="lightbox__strip"
+          ref={stripRef}
+          role="tablist"
+          aria-label="All photos"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {images.map((item, i) => (
+            <button
+              key={item.src}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`Go to photo ${i + 1}`}
+              data-active={i === index ? 'true' : 'false'}
+              className={`lightbox__strip-thumb${i === index ? ' is-active' : ''}`}
+              onClick={() => setIndex(i)}
+            >
+              <img src={item.src} alt="" loading="lazy" decoding="async" draggable="false" />
+            </button>
+          ))}
+        </div>
       )}
     </div>,
     document.body

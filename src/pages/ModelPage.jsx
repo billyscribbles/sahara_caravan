@@ -10,10 +10,12 @@ import Lightbox from '../components/ui/Lightbox.jsx'
 import { models, getModelBySlug, getVariantByKey, normaliseGallery } from '../content/models.js'
 import './ModelPage.css'
 
+const GALLERY_PREVIEW_COUNT = 3
+
 function GalleryGroup({ heading, images, modelName, onOpen }) {
   if (!images || images.length === 0) return null
-  const cover = images[0]
-  const strip = images.slice(1)
+  const preview = images.slice(0, GALLERY_PREVIEW_COUNT)
+  const hasMore = images.length > GALLERY_PREVIEW_COUNT
   return (
     <div className="model-page__gallery-group">
       <RevealOnScroll>
@@ -24,47 +26,38 @@ function GalleryGroup({ heading, images, modelName, onOpen }) {
       </RevealOnScroll>
 
       <RevealOnScroll>
-        <button
-          type="button"
-          className="model-page__gallery-cover"
-          onClick={() => onOpen(0)}
-          aria-label={`Open ${heading.toLowerCase()} gallery`}
+        <div
+          className="model-page__gallery-grid"
+          role="list"
+          aria-label={`${heading} photos`}
         >
-          <img
-            src={cover.src}
-            alt={cover.caption || `${modelName} ${heading.toLowerCase()}`}
-            loading="lazy"
-            decoding="async"
-          />
-          <span className="model-page__gallery-cover-overlay">
-            <Expand size={16} strokeWidth={2.2} aria-hidden="true" />
-            <span>View gallery</span>
-          </span>
-        </button>
+          {preview.map((item, i) => (
+            <button
+              key={item.src}
+              type="button"
+              role="listitem"
+              className="model-page__gallery-thumb"
+              onClick={() => onOpen(i)}
+              aria-label={item.caption || `${modelName} ${heading.toLowerCase()} ${i + 1}`}
+            >
+              <img src={item.src} alt="" loading="lazy" decoding="async" />
+            </button>
+          ))}
+        </div>
       </RevealOnScroll>
 
-      {strip.length > 0 && (
-        <div
-          className="model-page__gallery-strip"
-          role="list"
-          aria-label={`More ${heading.toLowerCase()} photos`}
-        >
-          {strip.map((item, i) => {
-            const absoluteIndex = i + 1
-            return (
-              <button
-                key={item.src}
-                type="button"
-                role="listitem"
-                className="model-page__gallery-thumb"
-                onClick={() => onOpen(absoluteIndex)}
-                aria-label={item.caption || `${modelName} ${heading.toLowerCase()} ${absoluteIndex + 1}`}
-              >
-                <img src={item.src} alt="" loading="lazy" decoding="async" />
-              </button>
-            )
-          })}
-        </div>
+      {hasMore && (
+        <RevealOnScroll>
+          <button
+            type="button"
+            className="model-page__gallery-more"
+            onClick={() => onOpen(0)}
+            aria-label={`See all ${images.length} ${heading.toLowerCase()} photos`}
+          >
+            <Expand size={15} strokeWidth={2.2} aria-hidden="true" />
+            <span>See all {images.length} photos</span>
+          </button>
+        </RevealOnScroll>
       )}
     </div>
   )
@@ -209,18 +202,20 @@ export default function ModelPage() {
             <p className="section-sub">Tap any photo to open the full-screen viewer.</p>
           </RevealOnScroll>
 
-          <GalleryGroup
-            heading="Outside"
-            images={fields.gallery.exterior}
-            modelName={model.name}
-            onOpen={(i) => openLightbox(fields.gallery.exterior, i)}
-          />
-          <GalleryGroup
-            heading="Inside"
-            images={fields.gallery.interior}
-            modelName={model.name}
-            onOpen={(i) => openLightbox(fields.gallery.interior, i)}
-          />
+          <div className="model-page__gallery-groups">
+            <GalleryGroup
+              heading="Outside"
+              images={fields.gallery.exterior}
+              modelName={model.name}
+              onOpen={(i) => openLightbox(fields.gallery.exterior, i)}
+            />
+            <GalleryGroup
+              heading="Inside"
+              images={fields.gallery.interior}
+              modelName={model.name}
+              onOpen={(i) => openLightbox(fields.gallery.interior, i)}
+            />
+          </div>
         </div>
       </section>
 

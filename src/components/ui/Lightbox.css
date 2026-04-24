@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 72px 64px;
+  padding: 72px 64px 132px;
   background: rgba(8, 8, 10, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -37,7 +37,7 @@
 .lightbox__image {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 260px);
   object-fit: contain;
   border-radius: var(--radius-md);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
@@ -116,19 +116,77 @@
 .lightbox__nav--prev:hover { transform: translateY(-50%) translateX(-2px); }
 .lightbox__nav--next:hover { transform: translateY(-50%) translateX(2px); }
 
+.lightbox__strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 24px 16px;
+  display: flex;
+  justify-content: safe center;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(242, 239, 233, 0.25) transparent;
+  -webkit-overflow-scrolling: touch;
+  background: linear-gradient(to top, rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0));
+}
+
+.lightbox__strip::-webkit-scrollbar { height: 4px; }
+.lightbox__strip::-webkit-scrollbar-track { background: transparent; }
+.lightbox__strip::-webkit-scrollbar-thumb {
+  background: rgba(242, 239, 233, 0.22);
+  border-radius: 999px;
+}
+
+.lightbox__strip-thumb {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: rgba(242, 239, 233, 0.06);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0.55;
+  transition: opacity var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.lightbox__strip-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lightbox__strip-thumb:hover,
+.lightbox__strip-thumb:focus-visible { opacity: 0.9; }
+
+.lightbox__strip-thumb.is-active {
+  opacity: 1;
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
-  .lightbox { padding: 56px 16px; }
-  .lightbox__image { max-height: calc(100vh - 160px); }
+  .lightbox { padding: 56px 16px 108px; }
+  .lightbox__image { max-height: calc(100vh - 220px); }
   .lightbox__nav { width: 44px; height: 44px; }
   .lightbox__nav--prev { left: 8px; }
   .lightbox__nav--next { right: 8px; }
   .lightbox__counter { top: 16px; left: 16px; font-size: 11px; }
+  .lightbox__strip { padding: 10px 16px 12px; }
+  .lightbox__strip-thumb { width: 60px; height: 40px; }
 }
 
 @media (max-width: 480px) {
   .lightbox__nav { display: none; }
-  .lightbox { padding: 56px 12px 80px; }
+  .lightbox { padding: 56px 12px 96px; }
+  .lightbox__image { max-height: calc(100vh - 200px); }
   .lightbox__caption { font-size: 13px; }
+  .lightbox__strip-thumb { width: 52px; height: 36px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

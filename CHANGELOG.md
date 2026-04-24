@@ -61,3 +61,5 @@
 - Replaced the small caravan drawings on the X-Master layout picker with new illustrations — the Standard and Slide-Out cards now show fuller side-on artwork including the slide-out section on the 226.
 - Replaced the four small floor-plan drawings on the Mirage layout picker — Cafe Lounge, Twin Recliners, Queen Bed and Twin Singles each now show a clearer top-down sketch of the lounge or bedroom layout.
 - Each model page now shows one big "Outside" and one big "Inside" cover photo with a scrollable row of smaller photos underneath — tap any one and a full-screen viewer opens with left/right arrows, captions and swipe on phones.
+- The Outside and Inside photo collections now sit side by side on each model page, each showing three preview photos with a "See all photos" button that opens the full-screen viewer.
+- The full-screen photo viewer now shows a small strip of every photo along the bottom so visitors can see how many there are and jump straight to any one.
