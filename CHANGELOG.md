@@ -63,3 +63,4 @@
 - Each model page now shows one big "Outside" and one big "Inside" cover photo with a scrollable row of smaller photos underneath — tap any one and a full-screen viewer opens with left/right arrows, captions and swipe on phones.
 - The Outside and Inside photo collections now sit side by side on each model page, each showing three preview photos with a "See all photos" button that opens the full-screen viewer.
 - The full-screen photo viewer now shows a small strip of every photo along the bottom so visitors can see how many there are and jump straight to any one.
+- The top navigation bar now sits see-through over the home-page hero photo, and on every other page it's a clean solid black — so text stays crisp against page content.

@@ -36,8 +36,13 @@
   color: var(--color-accent-light);
 }
 
-.navbar--solid,
-.navbar--scrolled {
+.navbar--solid {
+  background: var(--color-bg);
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+}
+
+.navbar--overlay.navbar--scrolled {
   background: rgba(14, 14, 15, 0.85);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
