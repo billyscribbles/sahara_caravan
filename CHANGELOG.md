@@ -44,3 +44,4 @@
 - Added a small "Site by Onrai Studio" credit to the footer bar, with the studio name linking out to onraistudio.com.
 - Fixed the four contact cards at the top of the Contact page — the little phone, email, pin and clock icons now sit in a dark chip in the logo-gold so they read clearly against the off-white background, and the four cards are now a consistent equal-width rectangle regardless of how short or long the text inside is.
 - Tightened the "Thirty years. One mission." section — the photo now matches the height of the words next to it and shows less empty sky, and the whole section sits a little more compactly on the page.
+- The home page now opens with a new hero photo.
