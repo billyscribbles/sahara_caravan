@@ -1,13 +1,74 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check, Expand } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import SpecPill from '../components/ui/SpecPill.jsx'
 import ModelCard from '../components/ui/ModelCard.jsx'
 import VariantSwitcher from '../components/ui/VariantSwitcher.jsx'
+import Lightbox from '../components/ui/Lightbox.jsx'
 import { models, getModelBySlug, getVariantByKey, normaliseGallery } from '../content/models.js'
 import './ModelPage.css'
+
+function GalleryGroup({ heading, images, modelName, onOpen }) {
+  if (!images || images.length === 0) return null
+  const cover = images[0]
+  const strip = images.slice(1)
+  return (
+    <div className="model-page__gallery-group">
+      <RevealOnScroll>
+        <div className="model-page__gallery-group-head">
+          <h3 className="model-page__gallery-heading">{heading}</h3>
+          <span className="model-page__gallery-count">{images.length} photos</span>
+        </div>
+      </RevealOnScroll>
+
+      <RevealOnScroll>
+        <button
+          type="button"
+          className="model-page__gallery-cover"
+          onClick={() => onOpen(0)}
+          aria-label={`Open ${heading.toLowerCase()} gallery`}
+        >
+          <img
+            src={cover.src}
+            alt={cover.caption || `${modelName} ${heading.toLowerCase()}`}
+            loading="lazy"
+            decoding="async"
+          />
+          <span className="model-page__gallery-cover-overlay">
+            <Expand size={16} strokeWidth={2.2} aria-hidden="true" />
+            <span>View gallery</span>
+          </span>
+        </button>
+      </RevealOnScroll>
+
+      {strip.length > 0 && (
+        <div
+          className="model-page__gallery-strip"
+          role="list"
+          aria-label={`More ${heading.toLowerCase()} photos`}
+        >
+          {strip.map((item, i) => {
+            const absoluteIndex = i + 1
+            return (
+              <button
+                key={item.src}
+                type="button"
+                role="listitem"
+                className="model-page__gallery-thumb"
+                onClick={() => onOpen(absoluteIndex)}
+                aria-label={item.caption || `${modelName} ${heading.toLowerCase()} ${absoluteIndex + 1}`}
+              >
+                <img src={item.src} alt="" loading="lazy" decoding="async" />
+              </button>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
 
 const SPEC_ORDER = [
   ['sleeps', 'Sleeps'],
@@ -61,6 +122,10 @@ export default function ModelPage() {
   const [activeKey, setActiveKey] = useState(initialKey)
   const activeVariant = hasVariants ? getVariantByKey(model, activeKey) : null
   const fields = resolveFields(model, activeVariant)
+
+  const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 })
+  const openLightbox = (images, index) => setLightbox({ open: true, images, index })
+  const closeLightbox = () => setLightbox((s) => ({ ...s, open: false }))
 
   useEffect(() => {
     if (!hasVariants) return
@@ -141,55 +206,31 @@ export default function ModelPage() {
           <RevealOnScroll>
             <span className="section-eyebrow">Gallery</span>
             <h2 className="section-label">Have a closer look.</h2>
+            <p className="section-sub">Tap any photo to open the full-screen viewer.</p>
           </RevealOnScroll>
 
-          {fields.gallery.exterior?.length > 0 && (
-            <div className="model-page__gallery-group">
-              <RevealOnScroll>
-                <h3 className="model-page__gallery-heading">Outside</h3>
-              </RevealOnScroll>
-              <div className="model-page__gallery-grid">
-                {fields.gallery.exterior.map((item, i) => (
-                  <RevealOnScroll key={item.src} delay={i * 0.04}>
-                    <figure className="model-page__gallery-item">
-                      <img
-                        src={item.src}
-                        alt={item.caption || `${model.name} exterior ${i + 1}`}
-                        loading={i === 0 ? 'eager' : 'lazy'}
-                        decoding="async"
-                      />
-                      {item.caption && <figcaption>{item.caption}</figcaption>}
-                    </figure>
-                  </RevealOnScroll>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {fields.gallery.interior?.length > 0 && (
-            <div className="model-page__gallery-group">
-              <RevealOnScroll>
-                <h3 className="model-page__gallery-heading">Inside</h3>
-              </RevealOnScroll>
-              <div className="model-page__gallery-grid">
-                {fields.gallery.interior.map((item, i) => (
-                  <RevealOnScroll key={item.src} delay={i * 0.04}>
-                    <figure className="model-page__gallery-item">
-                      <img
-                        src={item.src}
-                        alt={item.caption || `${model.name} interior ${i + 1}`}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      {item.caption && <figcaption>{item.caption}</figcaption>}
-                    </figure>
-                  </RevealOnScroll>
-                ))}
-              </div>
-            </div>
-          )}
+          <GalleryGroup
+            heading="Outside"
+            images={fields.gallery.exterior}
+            modelName={model.name}
+            onOpen={(i) => openLightbox(fields.gallery.exterior, i)}
+          />
+          <GalleryGroup
+            heading="Inside"
+            images={fields.gallery.interior}
+            modelName={model.name}
+            onOpen={(i) => openLightbox(fields.gallery.interior, i)}
+          />
         </div>
       </section>
+
+      <Lightbox
+        open={lightbox.open}
+        images={lightbox.images}
+        startIndex={lightbox.index}
+        onClose={closeLightbox}
+        alt={`${model.name} gallery`}
+      />
 
       <section className="model-page__specs section">
         <div className="container">
