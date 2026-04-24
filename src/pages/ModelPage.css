@@ -234,19 +234,23 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--color-accent);
-  color: var(--color-dark);
+  background: var(--color-gold);
+  color: #fff;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.02em;
   padding: 16px 30px;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-accent);
-  transition: background var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 8px 24px rgba(190, 150, 70, 0.28);
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .model-page__cta-primary svg { transition: transform var(--transition-fast); }
-.model-page__cta-primary:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+.model-page__cta-primary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(190, 150, 70, 0.38);
+}
 .model-page__cta-primary:hover svg { transform: translateX(3px); }
 
 .model-page__cta-secondary {

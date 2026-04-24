@@ -52,3 +52,4 @@
 - Reshaped the two hero buttons ("Explore Our Range" and "Find a Dealer") to the same softly squared corners, so they sit together as a pair and match the look of the gold Enquire Now button.
 - Repositioned the hero copy (tagline, headline, paragraph and buttons) so it now sits in the middle-left of the photo, with the four trust points anchored neatly along the bottom — room between them instead of everything bunched together.
 - Added a gentle left-to-right darkening behind the hero text so the headline and paragraph stay clearly readable against bright parts of the sunset photo, without dimming the caravan on the right.
+- The main action buttons across the rest of the site — the "Enquire about this model" button on each caravan page, the "Send enquiry" button on the contact form, and the "Back home" button on the 404 page — now use the same warm Sahara gold as the Enquire Now button in the top bar, so the look is consistent everywhere.

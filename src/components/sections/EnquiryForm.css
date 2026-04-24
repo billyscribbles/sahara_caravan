@@ -79,14 +79,14 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--color-accent);
-  color: var(--color-dark);
+  background: var(--color-gold);
+  color: #fff;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.02em;
   padding: 15px 30px;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-accent);
+  box-shadow: 0 8px 24px rgba(190, 150, 70, 0.28);
   transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -94,9 +94,9 @@
 .enquiry__submit:hover:not(:disabled) svg { transform: translateX(3px); }
 
 .enquiry__submit:hover:not(:disabled) {
-  background: var(--color-accent-dark);
+  background: var(--color-gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(234, 228, 216, 0.12);
+  box-shadow: 0 14px 40px rgba(190, 150, 70, 0.38);
 }
 
 .enquiry__submit:disabled { opacity: 0.6; cursor: wait; transform: none; }

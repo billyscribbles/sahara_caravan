@@ -27,12 +27,12 @@
 .cta--primary {
   background: var(--color-gold);
   color: #fff;
-  box-shadow: 0 8px 24px rgba(190, 150, 70, 0.25);
+  box-shadow: 0 8px 24px rgba(190, 150, 70, 0.28);
 }
 .cta--primary:hover {
   background: var(--color-gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(190, 150, 70, 0.35);
+  box-shadow: 0 14px 40px rgba(190, 150, 70, 0.38);
 }
 
 .cta--secondary {

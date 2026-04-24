@@ -49,20 +49,21 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--color-accent);
-  color: var(--color-dark);
+  background: var(--color-gold);
+  color: #fff;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;
   padding: 14px 26px;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-accent);
-  transition: background var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 8px 24px rgba(190, 150, 70, 0.28);
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .notfound-page__primary:hover {
-  background: var(--color-accent-dark);
+  background: var(--color-gold-light);
   transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(190, 150, 70, 0.38);
 }
 
 .notfound-page__secondary {
