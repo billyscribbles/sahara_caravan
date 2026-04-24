@@ -163,7 +163,7 @@ export const models = [
         shortLabel: 'Cafe',
         badge: 'Mirage · Cafe Lounge',
         blurb: 'Fixed L-shaped cafe dinette with pedestal table — seats the whole family for meals and folds out for an extra bed.',
-        blueprint: '/images/blueprints/mirage-cafe.svg',
+        blueprint: '/images/blueprints/mirage-cafe.webp',
         description:
           'The Cafe-style Mirage keeps things classic. A fixed L-shaped dinette with a solid pedestal table gives you a proper spot for meals, laptops, card games and long cups of tea on a rainy afternoon. Gloss white upper cabinetry, stone-look benchtops and a hex-tile ensuite give the whole space a bright, premium feel — while the rear queen bedroom stays tucked away for an easy night.',
         features: [
@@ -223,7 +223,7 @@ export const models = [
         shortLabel: 'Recliners',
         badge: 'Mirage · Recliner Lounge',
         blurb: 'Two individual reclining chairs with a shared side table — the relaxed evenings-in layout for couples.',
-        blueprint: '/images/blueprints/mirage-recliners.svg',
+        blueprint: '/images/blueprints/mirage-recliners.webp',
         description:
           'The Recliner-layout Mirage swaps the fixed dinette for two individual reclining lounge chairs with a small shared side table. It\'s the evenings-in, movie-night layout — everyone gets their own seat, and there\'s nothing hard to knock a knee on. Everything else is the same Mirage you know: full galley, ensuite with laundry and a private rear queen bedroom.',
         features: [
@@ -265,7 +265,7 @@ export const models = [
         shortLabel: 'Queen Bed',
         badge: 'Mirage · Queen Bed',
         blurb: 'Compact Mirage 166 built around a rear queen bed — a simple padded bench lounge keeps the floor plan tidy for couples.',
-        blueprint: '/images/blueprints/mirage-queenbed.svg',
+        blueprint: '/images/blueprints/mirage-queenbed.webp',
         description:
           'The Queen Bed Mirage is the compact couples\' floor plan. A full-size rear queen bed sits under gloss white overhead cabinetry with a padded headboard and reading lights on either side, and a simple cushioned bench lounge keeps the living area uncluttered. The full galley, ensuite with separate shower and twin-gas-bottle off-road hitch all stay — just in a shorter, lighter body that\'s easier to tow and park.',
         features: [
@@ -317,7 +317,7 @@ export const models = [
         shortLabel: 'Single Beds',
         badge: 'Mirage · Twin Singles',
         blurb: 'Compact Mirage 166 with two rear single beds split by a central cabinet — flexible for families, friends or gear.',
-        blueprint: '/images/blueprints/mirage-singlebed.svg',
+        blueprint: '/images/blueprints/mirage-singlebed.webp',
         description:
           'The Single Bed Mirage swaps the queen for two independent single beds at the rear, split by a central cabinet column with overhead storage and an oversized skylight above. It\'s the flexible layout — two friends who want their own space, parents sharing with a teenager, or anyone who needs the extra stowage the central column provides. The rest of the build stays true to the Mirage: full galley, ensuite with separate shower and a cushioned lounge in the living area.',
         features: [
