@@ -14,11 +14,11 @@ export default function Home() {
     <main>
       <SEO path="/" />
       <Hero />
-      <Heritage />
-      <WhySahara />
       <RangeGrid />
+      <WhySahara />
       <BuildPhilosophy />
       <Testimonials />
+      <Heritage />
       <DealerTeaser />
       <BrandWheel />
       <EnquiryForm />

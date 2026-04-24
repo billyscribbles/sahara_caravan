@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
-import EnquiryForm from '../components/sections/EnquiryForm.jsx'
+import ContactCTA from '../components/sections/ContactCTA.jsx'
 import { dealers } from '../content/dealers.js'
 import { scrollToId } from '../lib/smoothScroll.js'
 import './DealersPage.css'
@@ -82,7 +82,7 @@ export default function DealersPage() {
         </div>
       </section>
 
-      <EnquiryForm
+      <ContactCTA
         eyebrow="Can't find your state?"
         heading="We'll put you in touch."
         sub="Drop us a line — we'll connect you with the nearest dealer or arrange a call directly with our team."

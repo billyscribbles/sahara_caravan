@@ -6,7 +6,6 @@ import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import SpecPill from '../components/ui/SpecPill.jsx'
 import ModelCard from '../components/ui/ModelCard.jsx'
 import VariantSwitcher from '../components/ui/VariantSwitcher.jsx'
-import EnquiryForm from '../components/sections/EnquiryForm.jsx'
 import { models, getModelBySlug, getVariantByKey, normaliseGallery } from '../content/models.js'
 import './ModelPage.css'
 
@@ -79,7 +78,6 @@ export default function ModelPage() {
   const related = models.filter((m) => m.slug !== model.slug)
   const variantLabel = activeVariant ? ` — ${activeVariant.label}` : ''
   const shortName = model.name.replace('Sahara ', '')
-  const enquiryModelName = activeVariant ? `${model.name} (${activeVariant.label})` : model.name
 
   return (
     <main className="model-page">
@@ -251,12 +249,6 @@ export default function ModelPage() {
         </div>
       </section>
 
-      <EnquiryForm
-        eyebrow={`Enquire about the ${shortName}${activeVariant ? ` ${activeVariant.label}` : ''}`}
-        heading="Start a conversation."
-        sub="Tell us a little about you and we'll be in touch within one business day."
-        defaultModel={enquiryModelName}
-      />
     </main>
   )
 }

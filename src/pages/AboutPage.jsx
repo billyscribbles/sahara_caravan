@@ -4,7 +4,7 @@ import Heritage from '../components/sections/Heritage.jsx'
 import WhySahara from '../components/sections/WhySahara.jsx'
 import BuildPhilosophy from '../components/sections/BuildPhilosophy.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
-import EnquiryForm from '../components/sections/EnquiryForm.jsx'
+import ContactCTA from '../components/sections/ContactCTA.jsx'
 import { site } from '../config/site.config.js'
 import './AboutPage.css'
 
@@ -31,10 +31,10 @@ export default function AboutPage() {
       <WhySahara />
       <BuildPhilosophy />
       <Testimonials />
-      <EnquiryForm
+      <ContactCTA
         eyebrow="Come visit"
         heading="Stop by the workshop."
-        sub="We love showing people through. Give us a call to arrange a time — or start a conversation below."
+        sub="We love showing people through. Give us a call to arrange a time — or send us a message."
       />
     </main>
   )

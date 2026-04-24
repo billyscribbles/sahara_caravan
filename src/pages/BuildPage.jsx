@@ -2,7 +2,7 @@ import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import BuildProcess from '../components/sections/BuildProcess.jsx'
 import BuildPhilosophy from '../components/sections/BuildPhilosophy.jsx'
-import EnquiryForm from '../components/sections/EnquiryForm.jsx'
+import ContactCTA from '../components/sections/ContactCTA.jsx'
 import './BuildPage.css'
 
 export default function BuildPage() {
@@ -29,7 +29,7 @@ export default function BuildPage() {
       <BuildProcess showHeader={false} />
       <BuildPhilosophy />
 
-      <EnquiryForm
+      <ContactCTA
         eyebrow="Ready to start?"
         heading="Spec your Sahara."
         sub="Tell us the trips you're planning and the features that matter. We'll come back with a layout, a timeline, and a price."
