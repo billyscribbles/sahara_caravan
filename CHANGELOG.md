@@ -45,3 +45,10 @@
 - Fixed the four contact cards at the top of the Contact page — the little phone, email, pin and clock icons now sit in a dark chip in the logo-gold so they read clearly against the off-white background, and the four cards are now a consistent equal-width rectangle regardless of how short or long the text inside is.
 - Tightened the "Thirty years. One mission." section — the photo now matches the height of the words next to it and shows less empty sky, and the whole section sits a little more compactly on the page.
 - The home page now opens with a new hero photo.
+- Reworked the home page opening so it now fills the whole screen when you land on the site, with the small tagline above the headline using a warm gold dot ("Australian-Made • Built to Explore") that echoes the gold in the Sahara logo.
+- Cleaned up the tagline above the headline — it's now plain small-caps text instead of sitting inside a rounded pill, matching the new look.
+- The four trust points at the bottom of the hero (30+ Years of Craftsmanship, Australian Made & Owned, Family-Owned Business, Built in Victoria) now each sit next to a small circular icon badge for a tidier, more premium feel.
+- Restyled the "Enquire Now" button in the top bar to use the warm Sahara gold with slightly rounded square corners, so it picks up the gold in the logo and feels less like a generic pill.
+- Reshaped the two hero buttons ("Explore Our Range" and "Find a Dealer") to the same softly squared corners, so they sit together as a pair and match the look of the gold Enquire Now button.
+- Repositioned the hero copy (tagline, headline, paragraph and buttons) so it now sits in the middle-left of the photo, with the four trust points anchored neatly along the bottom — room between them instead of everything bunched together.
+- Added a gentle left-to-right darkening behind the hero text so the headline and paragraph stay clearly readable against bright parts of the sunset photo, without dimming the caravan on the right.

@@ -145,21 +145,21 @@
 .navbar__phone:hover { color: var(--color-accent); }
 
 .navbar__cta {
-  background: var(--color-accent);
-  color: var(--color-dark);
+  background: var(--color-gold);
+  color: #fff;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.03em;
   padding: 11px 22px;
-  border-radius: var(--radius-full);
+  border-radius: 8px;
   transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: 0 4px 14px rgba(234, 228, 216, 0.10);
+  box-shadow: 0 4px 14px rgba(190, 150, 70, 0.25);
 }
 
 .navbar__cta:hover {
-  background: var(--color-accent-dark);
+  background: var(--color-gold-light);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(234, 228, 216, 0.14);
+  box-shadow: 0 6px 20px rgba(190, 150, 70, 0.32);
 }
 
 .navbar__hamburger {
@@ -227,14 +227,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-accent);
-  color: var(--color-dark);
+  background: var(--color-gold);
+  color: #fff;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.02em;
   padding: 16px 24px;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-accent);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(190, 150, 70, 0.25);
 }
 
 .navbar__mobile-phone {

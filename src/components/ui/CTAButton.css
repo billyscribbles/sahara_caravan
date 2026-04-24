@@ -25,14 +25,14 @@
 .cta--lg { font-size: 15px; padding: 16px 32px; }
 
 .cta--primary {
-  background: var(--color-accent);
-  color: var(--color-dark);
-  box-shadow: var(--shadow-accent);
+  background: var(--color-gold);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(190, 150, 70, 0.25);
 }
 .cta--primary:hover {
-  background: var(--color-accent-dark);
+  background: var(--color-gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(234, 228, 216, 0.10);
+  box-shadow: 0 14px 40px rgba(190, 150, 70, 0.35);
 }
 
 .cta--secondary {
