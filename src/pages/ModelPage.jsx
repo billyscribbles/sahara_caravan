@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom'
-import { ArrowRight, Check, Expand } from 'lucide-react'
+import { ArrowRight, Check, Expand, Plus } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import SpecPill from '../components/ui/SpecPill.jsx'
@@ -74,6 +74,54 @@ const SPEC_ORDER = [
   ['warranty', 'Warranty'],
 ]
 
+const FEATURE_CATEGORIES = {
+  build: {
+    label: 'Build & Off-Road',
+    test: /(chassis|suspension|hitch|drawbar|armou?r|che(ck|qu)er[- ]plate|honeycomb|axle|tyres?|rims?|coupling|stone[- ]guard|skirt|toolbox|do35|matte[- ]?black|graphics|leak[- ]tight|certified|terrain|hybrid frame|moulded roof|pvc[- ]ply|reinforced|sealed)/i,
+  },
+  kitchen: {
+    label: 'Kitchen',
+    test: /(galley|cooktop|oven|sink|fridge|microwave|bbq|kitchenette|benchtop|rangehood|carafan|cooking)/i,
+  },
+  bath: {
+    label: 'Bathroom',
+    test: /(ensuite|shower|toilet|vanity|washing[- ]machine|washer|laundry|basin|hex[- ]?(agon)?[- ]?tile|tapware|wet[- ]wall)/i,
+  },
+  power: {
+    label: 'Power & Climate',
+    test: /(solar|lithium|battery|batteries|inverter|charger|electrical|fuse|regulator|projecta|techworld|diesel heater|air[- ]?con|sirocco|ceiling fan|fresh[- ]?water|grey[- ]?water|water tank|powerpoint|gas[- ]bottle)/i,
+  },
+  living: {
+    label: 'Inside & Living',
+    test: /(dinette|lounge|recliner|bed(room|s|side)?|queen|single|headboard|wardrobe|robe|cushion|cafe|sofa|seating|sleep|sleeping|skylight|panoramic|window|tv\b|reading light|cabinetry)/i,
+  },
+}
+const FEATURE_MATCH_ORDER = ['build', 'kitchen', 'bath', 'power', 'living']
+const FEATURE_DISPLAY_ORDER = ['build', 'living', 'kitchen', 'bath', 'power']
+const FEATURE_TAB_THRESHOLD = 7
+
+function categoriseFeatures(features) {
+  const buckets = {}
+  const fallback = []
+  for (const f of features) {
+    let matchedId = null
+    for (const id of FEATURE_MATCH_ORDER) {
+      if (FEATURE_CATEGORIES[id].test.test(f)) { matchedId = id; break }
+    }
+    if (matchedId) {
+      if (!buckets[matchedId]) buckets[matchedId] = []
+      buckets[matchedId].push(f)
+    } else {
+      fallback.push(f)
+    }
+  }
+  const tabs = FEATURE_DISPLAY_ORDER
+    .filter((id) => buckets[id]?.length > 0)
+    .map((id) => ({ id, label: FEATURE_CATEGORIES[id].label, items: buckets[id] }))
+  if (fallback.length > 0) tabs.push({ id: 'more', label: 'More', items: fallback })
+  return tabs
+}
+
 function resolveFields(model, variant) {
   if (!variant) {
     return {
@@ -82,7 +130,9 @@ function resolveFields(model, variant) {
       features: model.features ?? [],
       specs: model.specs ?? {},
       gallery: normaliseGallery(model),
+      floorPlan: model.floorPlan ?? null,
       ctaLabel: model.ctaLabel,
+      inclusions: model.inclusions ?? null,
     }
   }
   return {
@@ -91,7 +141,9 @@ function resolveFields(model, variant) {
     features: variant.features ?? model.features ?? [],
     specs: variant.specs ?? model.specs ?? {},
     gallery: variant.gallery ?? normaliseGallery(model),
+    floorPlan: variant.floorPlan ?? model.floorPlan ?? null,
     ctaLabel: variant.ctaLabel ?? model.ctaLabel,
+    inclusions: variant.inclusions ?? model.inclusions ?? null,
   }
 }
 
@@ -116,6 +168,17 @@ export default function ModelPage() {
   const activeVariant = hasVariants ? getVariantByKey(model, activeKey) : null
   const fields = resolveFields(model, activeVariant)
 
+  const featureTabs = useMemo(() => categoriseFeatures(fields.features), [fields.features])
+  const useFeatureTabs = fields.features.length >= FEATURE_TAB_THRESHOLD && featureTabs.length > 1
+  const [activeFeatureTab, setActiveFeatureTab] = useState(featureTabs[0]?.id ?? null)
+  useEffect(() => {
+    if (!featureTabs.some((t) => t.id === activeFeatureTab)) {
+      setActiveFeatureTab(featureTabs[0]?.id ?? null)
+    }
+  }, [featureTabs, activeFeatureTab])
+  const activeBucket = featureTabs.find((t) => t.id === activeFeatureTab) ?? featureTabs[0]
+  const visibleFeatures = useFeatureTabs ? (activeBucket?.items ?? []) : fields.features
+
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 })
   const openLightbox = (images, index) => setLightbox({ open: true, images, index })
   const closeLightbox = () => setLightbox((s) => ({ ...s, open: false }))
@@ -136,6 +199,17 @@ export default function ModelPage() {
   const related = models.filter((m) => m.slug !== model.slug)
   const variantLabel = activeVariant ? ` — ${activeVariant.label}` : ''
   const shortName = model.name.replace('Sahara ', '')
+
+  // Alternating tone helper — first content section is light (white breather),
+  // then dark, then light, etc. Counter only ticks for sections that actually
+  // render, so the rhythm holds when optional sections (floor plan / inclusions)
+  // are absent.
+  let toneIdx = 0
+  const nextTone = () => {
+    const tone = toneIdx % 2 === 0 ? 'section--alt' : 'section--dark'
+    toneIdx++
+    return tone
+  }
 
   return (
     <main className="model-page">
@@ -172,21 +246,87 @@ export default function ModelPage() {
         </section>
       )}
 
-      <section className="model-page__intro section">
-        <div className="container model-page__intro-inner">
-          <RevealOnScroll className="model-page__intro-copy">
+      {fields.floorPlan && (
+        <section className={`model-page__floorplan section ${nextTone()}`}>
+          <div className="container">
+            <RevealOnScroll>
+              <h2 className="section-label">See the layout.</h2>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.1}>
+              <img
+                src={fields.floorPlan}
+                alt={`${model.name}${activeVariant ? ` ${activeVariant.label}` : ''} floor plan`}
+                className="model-page__floorplan-img"
+                loading="lazy"
+              />
+            </RevealOnScroll>
+          </div>
+        </section>
+      )}
+
+      <section className={`model-page__features-section section ${nextTone()}`}>
+        <div className="container">
+          <RevealOnScroll>
             <span className="section-eyebrow">
               About the {shortName}{activeVariant ? ` ${activeVariant.label}` : ''}
             </span>
+            <h2 className="section-label">
+              What's in the {shortName}{activeVariant ? ` ${activeVariant.label}` : ''}.
+            </h2>
             <p className="model-page__intro-body">{fields.description}</p>
+            {useFeatureTabs && (
+              <p className="section-sub">
+                Tap a category below to focus on the parts of the build that matter to you.
+              </p>
+            )}
           </RevealOnScroll>
-          <RevealOnScroll delay={0.15} className="model-page__features">
-            <div className="model-page__features-title">Features</div>
-            <ul className="model-page__features-list">
-              {fields.features.map((f) => (
-                <li key={f}>
-                  <Check size={16} strokeWidth={2.2} aria-hidden="true" />
-                  <span>{f}</span>
+
+          {useFeatureTabs && (
+            <RevealOnScroll delay={0.05}>
+              <div
+                className="model-page__feature-tabs"
+                role="tablist"
+                aria-label="Feature categories"
+              >
+                {featureTabs.map((tab) => {
+                  const isActive = tab.id === activeBucket?.id
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      role="tab"
+                      id={`feature-tab-${tab.id}`}
+                      aria-selected={isActive}
+                      aria-controls={`feature-panel-${tab.id}`}
+                      className={`model-page__feature-tab${isActive ? ' is-active' : ''}`}
+                      onClick={() => setActiveFeatureTab(tab.id)}
+                    >
+                      <span>{tab.label}</span>
+                      <span className="model-page__feature-tab-count">{tab.items.length}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </RevealOnScroll>
+          )}
+
+          <RevealOnScroll delay={0.1}>
+            <ul
+              className="model-page__feature-cards"
+              {...(useFeatureTabs && activeBucket
+                ? {
+                    id: `feature-panel-${activeBucket.id}`,
+                    role: 'tabpanel',
+                    'aria-labelledby': `feature-tab-${activeBucket.id}`,
+                  }
+                : {})}
+            >
+              {visibleFeatures.map((f) => (
+                <li key={f} className="model-page__feature-card">
+                  <span className="model-page__feature-card-icon">
+                    <Check size={18} strokeWidth={2.4} aria-hidden="true" />
+                  </span>
+                  <p className="model-page__feature-card-text">{f}</p>
                 </li>
               ))}
             </ul>
@@ -194,7 +334,7 @@ export default function ModelPage() {
         </div>
       </section>
 
-      <section className="model-page__gallery section section--alt">
+      <section className={`model-page__gallery section ${nextTone()}`}>
         <div className="container">
           <RevealOnScroll>
             <span className="section-eyebrow">Gallery</span>
@@ -227,7 +367,7 @@ export default function ModelPage() {
         alt={`${model.name} gallery`}
       />
 
-      <section className="model-page__specs section">
+      <section className={`model-page__specs section ${nextTone()}`}>
         <div className="container">
           <RevealOnScroll>
             <span className="section-eyebrow">Specifications</span>
@@ -248,6 +388,59 @@ export default function ModelPage() {
           </RevealOnScroll>
         </div>
       </section>
+
+      {fields.inclusions && (
+        <section className={`model-page__inclusions section ${nextTone()}`}>
+          <div className="container">
+            <RevealOnScroll>
+              <span className="section-eyebrow">Inclusions</span>
+              <h2 className="section-label">What's standard, what's an add-on.</h2>
+              <p className="section-sub">
+                {fields.inclusions.title} — every build comes with the standard list. The add-ons are optional extras you can spec onto your van. Final pricing is confirmed in writing on your quote.
+              </p>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.1}>
+              <div className="model-page__inclusions-grid">
+                {fields.inclusions.included?.length > 0 && (
+                  <div className="model-page__inclusions-card model-page__inclusions-card--standard">
+                    <div className="model-page__inclusions-head">
+                      <span className="model-page__inclusions-label">Standard</span>
+                      <span className="model-page__inclusions-count">{fields.inclusions.included.length} items</span>
+                    </div>
+                    <ul className="model-page__inclusions-list">
+                      {fields.inclusions.included.map((item) => (
+                        <li key={item}>
+                          <Check size={16} strokeWidth={2.4} aria-hidden="true" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {fields.inclusions.addOns?.length > 0 && (
+                  <div className="model-page__inclusions-card model-page__inclusions-card--addon">
+                    <div className="model-page__inclusions-head">
+                      <span className="model-page__inclusions-label">Optional add-ons</span>
+                      <span className="model-page__inclusions-count">{fields.inclusions.addOns.length} items</span>
+                    </div>
+                    <ul className="model-page__inclusions-list">
+                      {fields.inclusions.addOns.map((item) => (
+                        <li key={item}>
+                          <Plus size={16} strokeWidth={2.4} aria-hidden="true" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <p className="model-page__inclusions-note">
+                Pricing for add-ons varies by build configuration — contact us for a current quote.
+              </p>
+            </RevealOnScroll>
+          </div>
+        </section>
+      )}
 
       <section className="model-page__cta section section--dark">
         <div className="container model-page__cta-inner">
