@@ -7,6 +7,7 @@ import BuildPhilosophy from '../components/sections/BuildPhilosophy.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
 import DealerTeaser from '../components/sections/DealerTeaser.jsx'
 import BrandWheel from '../components/sections/BrandWheel.jsx'
+import SaharaWarranty from '../components/sections/SaharaWarranty.jsx'
 import EnquiryForm from '../components/sections/EnquiryForm.jsx'
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Heritage />
       <DealerTeaser />
       <BrandWheel />
+      <SaharaWarranty />
       <EnquiryForm />
     </main>
   )

@@ -64,3 +64,4 @@
 - The Outside and Inside photo collections now sit side by side on each model page, each showing three preview photos with a "See all photos" button that opens the full-screen viewer.
 - The full-screen photo viewer now shows a small strip of every photo along the bottom so visitors can see how many there are and jump straight to any one.
 - The top navigation bar now sits see-through over the home-page hero photo, and on every other page it's a clean solid black — so text stays crisp against page content.
+- Added a new "Built to last. Backed to prove it." section near the bottom of the home page — a short pitch about Sahara's quality and Australian build, finished with the structural warranty, general warranty and Australian-made badges.
