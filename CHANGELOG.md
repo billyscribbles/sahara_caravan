@@ -73,3 +73,4 @@
 - Moved the floor plan ahead of the About block on the X-Master Slide-Out page so the layout is the first white breather after the layout picker, with about and features sitting on dark just below. Tightened up contrast on the white sections too — the small "Features" caption, category tabs, checkmarks and add-on items now read cleanly in gold and dark instead of disappearing on white.
 - Folded the standalone "About" block into the Features section on every model page — the model description now sits just above the category buttons, so visitors read about the van and then jump straight into the feature list without an extra scroll.
 - The "See the layout." section is now pure white to match the floor-plan image's own white background — so the diagram blends seamlessly into the page instead of sitting on a slightly warmer cream.
+- The X-Master Standard model page now shows its full annotated floor plan, matching the Slide-Out.
