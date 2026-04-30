@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom'
 import { ArrowRight, Check, Expand, Plus } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
@@ -212,11 +212,26 @@ export default function ModelPage() {
   // has any entries, sizes not in it show the "coming soon" placeholder. An
   // empty floorPlansBySize means "default applies to every size".
   const [activeSize, setActiveSize] = useState(() => pickDefaultSize(fields))
+  const prevActiveKey = useRef(activeKey)
   useEffect(() => {
+    // If the current size isn't valid in the new variant, reset (e.g. Standard
+    // → Slide-Out where sizes drops to ['22-6']).
     if (fields.sizes && !fields.sizes.includes(activeSize)) {
       setActiveSize(pickDefaultSize(fields))
+      prevActiveKey.current = activeKey
+      return
     }
-  }, [fields.sizes, fields.floorPlansBySize, activeSize])
+    // On variant change only: if the kept size has no plan in the new variant
+    // but the variant does have plans elsewhere, jump to a size with a plan so
+    // the user always lands on a drawn layout instead of "coming soon".
+    if (prevActiveKey.current !== activeKey) {
+      prevActiveKey.current = activeKey
+      const map = fields.floorPlansBySize
+      if (map && Object.keys(map).length > 0 && !map[activeSize]) {
+        setActiveSize(pickDefaultSize(fields))
+      }
+    }
+  }, [activeKey, fields.sizes, fields.floorPlansBySize, activeSize])
   const hasSizeMap =
     fields.floorPlansBySize && Object.keys(fields.floorPlansBySize).length > 0
   const currentFloorPlan = activeSize && hasSizeMap

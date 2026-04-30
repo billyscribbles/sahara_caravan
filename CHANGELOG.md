@@ -87,3 +87,4 @@
 - Floor-plan sections now open on a size that actually has a layout drawn — so the X-Master page lands on 19'6 instead of an empty 16'6. When you do click a size that's still being drawn, the "coming soon" message now adds a note that floor plans only vary by size, plus a "See the 19'6 layout" link that jumps you back to the available drawing.
 - The Mirage Twin Recliners layout now anchors to its 20'6 floor plan; the 16'6 and 18'6 plans are pulled back so visitors land on the canonical drawing, with the other sizes showing "coming soon" plus a link back to 20'6.
 - Refreshed the X-Master Slide-Out floor plan with an updated drawing.
+- Switching between layouts on a model page now jumps to a size that actually has a floor plan, so flipping from X-Master Slide-Out (22'6) over to Standard lands on the 19'6 drawing instead of a "coming soon" message.
