@@ -93,3 +93,4 @@
 - Added short looping videos to the Build page so visitors can hover or tap a stage to see how it's done. The chassis stage has its first video; the other seven show a "Video coming soon" placeholder until their footage is ready.
 - The Horizon now offers four sizes — 19'6, 20'6, 21'6 and 22'6 — instead of the full six-size range, matching what's actually built.
 - Removed the three placeholder gallery drawings from the Horizon page so only the real hero photo remains until proper photos are ready.
+- Darkened the small feature icons (Toilet, Shower, Laundry, Kitchenette) and the round arrow on each range card so they read clearly instead of fading into the bone background.
