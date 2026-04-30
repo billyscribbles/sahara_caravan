@@ -194,15 +194,20 @@ export default function ModelPage() {
   const activeTechSpec = fields.technicalSpecs?.find((t) => t.id === activeTechSpecTab) ?? fields.technicalSpecs?.[0]
 
   // Size selector for the floor-plan section. Caravans come in six body
-  // lengths; the X-Master Slide-Out is single-size (22'6). When the active
-  // size has no per-size blueprint yet, fall back to the variant default.
+  // lengths; the X-Master Slide-Out is single-size (22'6). When floorPlansBySize
+  // has any entries, sizes not in it show the "coming soon" placeholder. An
+  // empty floorPlansBySize means "default applies to every size".
   const [activeSize, setActiveSize] = useState(fields.sizes?.[0] ?? null)
   useEffect(() => {
     if (fields.sizes && !fields.sizes.includes(activeSize)) {
       setActiveSize(fields.sizes[0] ?? null)
     }
   }, [fields.sizes, activeSize])
-  const currentFloorPlan = fields.floorPlansBySize?.[activeSize] ?? fields.floorPlan
+  const hasSizeMap =
+    fields.floorPlansBySize && Object.keys(fields.floorPlansBySize).length > 0
+  const currentFloorPlan = activeSize && hasSizeMap
+    ? fields.floorPlansBySize[activeSize] ?? null
+    : fields.floorPlan
 
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 })
   const openLightbox = (images, index) => setLightbox({ open: true, images, index })

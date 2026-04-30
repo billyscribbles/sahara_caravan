@@ -163,8 +163,7 @@ export const models = [
         floorPlan: '/images/blueprints/x-master-standard-floorplan.png',
         sizes: DEFAULT_SIZES,
         floorPlansBySize: {
-          // Per-size blueprints fill in here as they're supplied, e.g.
-          // '17-6': '/images/blueprints/x-master-standard-17-6.png',
+          '19-6': '/images/blueprints/x-master-standard-floorplan.png',
         },
         description:
           'The X-Master 196 Standard is the tight, trail-ready version of the range. A single-body off-road tourer on a tandem off-road chassis, with every serious go-anywhere feature you\'d expect — DO35-style hitch, stone-guard nose, checker-plate armor along the underbody, reinforced coil suspension and a full external electrical bay. Inside it\'s every bit as finished as the on-road vans: cafe dinette, 4-burner cooktop with oven, full rear ensuite with laundry, and a private queen bed at the back.',
