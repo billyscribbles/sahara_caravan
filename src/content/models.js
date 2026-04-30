@@ -518,8 +518,11 @@ export const models = [
         badge: 'Mirage · Recliner Lounge',
         blurb: 'Two individual reclining chairs with a shared side table — the relaxed evenings-in layout for couples.',
         blueprint: '/images/blueprints/mirage-recliners.webp',
+        floorPlan: '/images/blueprints/mirage-20-6.png',
         sizes: DEFAULT_SIZES,
-        floorPlansBySize: {},
+        floorPlansBySize: {
+          '20-6': '/images/blueprints/mirage-20-6.png',
+        },
         description:
           'The Recliner-layout Mirage swaps the fixed dinette for two individual reclining lounge chairs with a small shared side table. It\'s the evenings-in, movie-night layout — everyone gets their own seat, and there\'s nothing hard to knock a knee on. Everything else is the same Mirage you know: full galley, ensuite with laundry and a private rear queen bedroom.',
         features: [
@@ -562,8 +565,11 @@ export const models = [
         badge: 'Mirage · Queen Bed',
         blurb: 'Compact Mirage 166 built around a rear queen bed — a simple padded bench lounge keeps the floor plan tidy for couples.',
         blueprint: '/images/blueprints/mirage-queenbed.webp',
+        floorPlan: '/images/blueprints/mirage-20-6.png',
         sizes: DEFAULT_SIZES,
-        floorPlansBySize: {},
+        floorPlansBySize: {
+          '20-6': '/images/blueprints/mirage-20-6.png',
+        },
         description:
           'The Queen Bed Mirage is the compact couples\' floor plan. A full-size rear queen bed sits under gloss white overhead cabinetry with a padded headboard and reading lights on either side, and a simple cushioned bench lounge keeps the living area uncluttered. The full galley, ensuite with separate shower and twin-gas-bottle off-road hitch all stay — just in a shorter, lighter body that\'s easier to tow and park.',
         features: [
