@@ -153,6 +153,20 @@ function resolveFields(model, variant) {
   }
 }
 
+// Prefer a size that actually has a floor plan so first paint shows the layout
+// rather than a "coming soon" placeholder. Falls back to the first size when
+// no per-size plans are defined.
+function pickDefaultSize(fields) {
+  const sizes = fields.sizes ?? []
+  if (sizes.length === 0) return null
+  const map = fields.floorPlansBySize
+  if (map && Object.keys(map).length > 0) {
+    const withPlan = sizes.find((s) => map[s])
+    if (withPlan) return withPlan
+  }
+  return sizes[0]
+}
+
 export default function ModelPage() {
   const { slug } = useParams()
   const location = useLocation()
@@ -197,17 +211,20 @@ export default function ModelPage() {
   // lengths; the X-Master Slide-Out is single-size (22'6). When floorPlansBySize
   // has any entries, sizes not in it show the "coming soon" placeholder. An
   // empty floorPlansBySize means "default applies to every size".
-  const [activeSize, setActiveSize] = useState(fields.sizes?.[0] ?? null)
+  const [activeSize, setActiveSize] = useState(() => pickDefaultSize(fields))
   useEffect(() => {
     if (fields.sizes && !fields.sizes.includes(activeSize)) {
-      setActiveSize(fields.sizes[0] ?? null)
+      setActiveSize(pickDefaultSize(fields))
     }
-  }, [fields.sizes, activeSize])
+  }, [fields.sizes, fields.floorPlansBySize, activeSize])
   const hasSizeMap =
     fields.floorPlansBySize && Object.keys(fields.floorPlansBySize).length > 0
   const currentFloorPlan = activeSize && hasSizeMap
     ? fields.floorPlansBySize[activeSize] ?? null
     : fields.floorPlan
+  const firstSizeWithPlan = hasSizeMap
+    ? fields.sizes?.find((s) => fields.floorPlansBySize[s]) ?? null
+    : null
 
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 })
   const openLightbox = (images, index) => setLightbox({ open: true, images, index })
@@ -319,7 +336,23 @@ export default function ModelPage() {
                   role="tabpanel"
                   className="model-page__floorplan-placeholder"
                 >
-                  Floor plan coming soon.
+                  <span className="model-page__floorplan-placeholder-headline">
+                    Floor plan coming soon.
+                  </span>
+                  {firstSizeWithPlan && firstSizeWithPlan !== activeSize && (
+                    <>
+                      <p className="model-page__floorplan-placeholder-note">
+                        Floor plans are largely the same — variations are due to size only.
+                      </p>
+                      <button
+                        type="button"
+                        className="model-page__floorplan-placeholder-link"
+                        onClick={() => setActiveSize(firstSizeWithPlan)}
+                      >
+                        See the {SIZE_LABELS[firstSizeWithPlan] ?? firstSizeWithPlan} layout
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </RevealOnScroll>

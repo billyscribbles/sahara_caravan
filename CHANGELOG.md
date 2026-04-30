@@ -84,3 +84,5 @@
 - Sizes that don't have their own annotated floor plan yet now show a clear "Floor plan coming soon" message instead of a generic placeholder image — so what you see always matches the size you've picked. The X-Master Standard plan is now tied to 19'6, the Mirage Recliners and Queen Bed plans to 18'6 and 20'6.
 - The Mirage Twin Recliners and Queen Bed layouts now show an annotated floor plan when 16'6 is selected.
 - The Mirage Single Bed layout now shows an annotated floor plan when 16'6 is selected.
+- Floor-plan sections now open on a size that actually has a layout drawn — so the X-Master page lands on 19'6 instead of an empty 16'6. When you do click a size that's still being drawn, the "coming soon" message now adds a note that floor plans only vary by size, plus a "See the 19'6 layout" link that jumps you back to the available drawing.
+- The Mirage Twin Recliners layout now anchors to its 20'6 floor plan; the 16'6 and 18'6 plans are pulled back so visitors land on the canonical drawing, with the other sizes showing "coming soon" plus a link back to 20'6.
