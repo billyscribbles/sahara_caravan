@@ -74,3 +74,4 @@
 - Folded the standalone "About" block into the Features section on every model page — the model description now sits just above the category buttons, so visitors read about the van and then jump straight into the feature list without an extra scroll.
 - The "See the layout." section is now pure white to match the floor-plan image's own white background — so the diagram blends seamlessly into the page instead of sitting on a slightly warmer cream.
 - The X-Master Standard model page now shows its full annotated floor plan, matching the Slide-Out.
+- The X-Master page now has a full technical specification sheet — tap between Chassis, Solar & Power, Electrical, Plumbing, Appliances, External and Internal to see every fitted part on one screen.

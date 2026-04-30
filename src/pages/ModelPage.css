@@ -165,7 +165,8 @@
 }
 
 .model-page__feature-tab.is-active .model-page__feature-tab-count {
-  background: rgba(0, 0, 0, 0.18);
+  background: #FFFFFF;
+  color: #0E0E0F;
 }
 
 .model-page__feature-cards {
@@ -567,4 +568,65 @@
   .model-page__gallery-grid { grid-template-columns: repeat(3, 1fr); }
   .model-page__inclusions-card { padding: 20px; }
   .model-page__inclusions-list li { font-size: 14px; }
+}
+
+/* Technical Specification — two-column row table modelled on the manufacturer build sheet */
+.model-page__tech-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(20px, 3vw, 48px);
+  row-gap: 0;
+  margin: 28px 0 0;
+  padding: 0;
+}
+
+.model-page__tech-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--color-border);
+  min-width: 0;
+}
+
+.model-page__tech-row-label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  margin: 0;
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+.model-page__tech-row-value {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  text-align: right;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  min-width: 0;
+}
+
+/* Light-tone override for when this section lands on a `section--alt` slot */
+.section--alt .model-page__tech-row { border-bottom-color: var(--color-border-on-light); }
+.section--alt .model-page__tech-row-label { color: var(--color-text-on-light); }
+.section--alt .model-page__tech-row-value { color: var(--color-text-on-light-soft); }
+
+/* The note paragraph below the table reuses .model-page__specs-note, so spacing is consistent */
+.model-page__tech-specs .model-page__specs-note { margin-top: 24px; }
+
+/* Tablet — keep two columns, tighten spacing */
+@media (max-width: 960px) {
+  .model-page__tech-table { column-gap: 24px; }
+  .model-page__tech-row { padding: 12px 2px; }
+}
+
+/* Mobile — single column so labels and values aren't crushed */
+@media (max-width: 600px) {
+  .model-page__tech-table { grid-template-columns: 1fr; column-gap: 0; }
+  .model-page__tech-row { padding: 12px 0; }
+  .model-page__tech-row-label { font-size: 13px; }
+  .model-page__tech-row-value { font-size: 13px; }
 }

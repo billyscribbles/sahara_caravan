@@ -133,6 +133,7 @@ function resolveFields(model, variant) {
       floorPlan: model.floorPlan ?? null,
       ctaLabel: model.ctaLabel,
       inclusions: model.inclusions ?? null,
+      technicalSpecs: model.technicalSpecs ?? null,
     }
   }
   return {
@@ -144,6 +145,7 @@ function resolveFields(model, variant) {
     floorPlan: variant.floorPlan ?? model.floorPlan ?? null,
     ctaLabel: variant.ctaLabel ?? model.ctaLabel,
     inclusions: variant.inclusions ?? model.inclusions ?? null,
+    technicalSpecs: variant.technicalSpecs ?? model.technicalSpecs ?? null,
   }
 }
 
@@ -178,6 +180,14 @@ export default function ModelPage() {
   }, [featureTabs, activeFeatureTab])
   const activeBucket = featureTabs.find((t) => t.id === activeFeatureTab) ?? featureTabs[0]
   const visibleFeatures = useFeatureTabs ? (activeBucket?.items ?? []) : fields.features
+
+  const [activeTechSpecTab, setActiveTechSpecTab] = useState(fields.technicalSpecs?.[0]?.id ?? null)
+  useEffect(() => {
+    if (fields.technicalSpecs && !fields.technicalSpecs.some((t) => t.id === activeTechSpecTab)) {
+      setActiveTechSpecTab(fields.technicalSpecs[0]?.id ?? null)
+    }
+  }, [fields.technicalSpecs, activeTechSpecTab])
+  const activeTechSpec = fields.technicalSpecs?.find((t) => t.id === activeTechSpecTab) ?? fields.technicalSpecs?.[0]
 
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 })
   const openLightbox = (images, index) => setLightbox({ open: true, images, index })
@@ -388,6 +398,66 @@ export default function ModelPage() {
           </RevealOnScroll>
         </div>
       </section>
+
+      {fields.technicalSpecs && fields.technicalSpecs.length > 0 && activeTechSpec && (
+        <section className={`model-page__tech-specs section ${nextTone()}`}>
+          <div className="container">
+            <RevealOnScroll>
+              <span className="section-eyebrow">Technical Specification</span>
+              <h2 className="section-label">Every part, on the record.</h2>
+              <p className="section-sub">
+                The full build sheet — pick a category to see what's fitted as standard.
+              </p>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.05}>
+              <div
+                className="model-page__feature-tabs"
+                role="tablist"
+                aria-label="Technical specification categories"
+              >
+                {fields.technicalSpecs.map((tab) => {
+                  const isActive = tab.id === activeTechSpec.id
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      role="tab"
+                      id={`tech-tab-${tab.id}`}
+                      aria-selected={isActive}
+                      aria-controls={`tech-panel-${tab.id}`}
+                      className={`model-page__feature-tab${isActive ? ' is-active' : ''}`}
+                      onClick={() => setActiveTechSpecTab(tab.id)}
+                    >
+                      <span>{tab.label}</span>
+                      <span className="model-page__feature-tab-count">{tab.rows.length}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll delay={0.1}>
+              <dl
+                id={`tech-panel-${activeTechSpec.id}`}
+                role="tabpanel"
+                aria-labelledby={`tech-tab-${activeTechSpec.id}`}
+                className="model-page__tech-table"
+              >
+                {activeTechSpec.rows.map((row) => (
+                  <div key={row.label} className="model-page__tech-row">
+                    <dt className="model-page__tech-row-label">{row.label}</dt>
+                    <dd className="model-page__tech-row-value">{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="model-page__specs-note">
+                Specifications listed are guides — final build is confirmed in writing on your quote. Weights vary between builds; ATM, TARE and GTM figures are confirmed on the build plate.
+              </p>
+            </RevealOnScroll>
+          </div>
+        </section>
+      )}
 
       {fields.inclusions && (
         <section className={`model-page__inclusions section ${nextTone()}`}>
