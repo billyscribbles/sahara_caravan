@@ -721,12 +721,7 @@ export const models = [
     description:
       'The Horizon is built with families in mind, offering the perfect mix of comfort, practicality, and adventure. With generous space for everyone, it features bunk beds for the kids, a cozy master bed, and a fully equipped kitchenette for easy mealtime prep — so every trip is one the whole family can enjoy.',
     heroImage: '/images/hero/hero-horizon.png',
-    gallery: [
-      '/images/models/horizon/hero.png',
-      '/images/models/horizon/gallery-2.svg',
-      '/images/models/horizon/gallery-3.svg',
-      '/images/models/horizon/gallery-4.svg',
-    ],
+    gallery: ['/images/models/horizon/hero.png'],
     features: [
       'Dedicated bunk beds for the kids',
       'Cozy private master bed',
