@@ -259,6 +259,99 @@
   margin: 32px auto 0;
 }
 
+/* Size tabs sit above "See the layout." — pill buttons mirroring the
+ * feature-tab look but tuned for a centred row on a white surface. */
+.model-page__size-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 10px;
+  margin: 0 auto 28px;
+  max-width: 1100px;
+}
+
+.model-page__size-tabs-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(14, 14, 15, 0.55);
+  margin-right: 6px;
+}
+
+.model-page__size-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(14, 14, 15, 0.18);
+  background: transparent;
+  color: rgba(14, 14, 15, 0.68);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.model-page__size-tab:hover,
+.model-page__size-tab:focus-visible {
+  border-color: var(--color-gold);
+  color: #0E0E0F;
+  transform: translateY(-1px);
+}
+
+.model-page__size-tab.is-active {
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  color: #0E0E0F;
+  box-shadow: 0 10px 28px rgba(190, 150, 70, 0.30);
+}
+
+.model-page__floorplan-asterisk {
+  font-size: 0.55em;
+  color: var(--color-gold);
+  margin-left: 4px;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.model-page__floorplan-note {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(14, 14, 15, 0.55);
+  text-align: center;
+}
+
+.model-page__floorplan-placeholder {
+  max-width: 1100px;
+  margin: 32px auto 0;
+  padding: 64px 24px;
+  border: 1px dashed rgba(14, 14, 15, 0.20);
+  border-radius: var(--radius-md);
+  color: rgba(14, 14, 15, 0.55);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .model-page__size-tabs { gap: 6px 8px; }
+  .model-page__size-tabs-label { width: 100%; text-align: center; margin: 0 0 4px; }
+  .model-page__size-tab { padding: 8px 13px; font-size: 12.5px; }
+}
+
 .model-page__gallery-groups {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -77,3 +77,4 @@
 - The X-Master page now has a full technical specification sheet — tap between Chassis, Solar & Power, Electrical, Plumbing, Appliances, External and Internal to see every fitted part on one screen.
 - Tap any photo in the Custom Van Builds gallery to open it in a full-screen viewer with arrow keys and swipe to flip through.
 - The Mirage page now has its own technical specification sheet — flip between Chassis, Solar & Power, Electrical, Plumbing, Appliances, External and Internal.
+- Every caravan page now has a "Sizes" row above the floor plan with the six body lengths the caravan comes in (16'6, 17'6, 18'6, 19'6, 20'6, 22'6); the X-Master Slide-Out shows just 22'6 since that's the only length it's built in.

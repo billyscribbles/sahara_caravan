@@ -3,6 +3,20 @@
 // route change. Dune and Horizon stay single-variant; the ModelPage falls back
 // to the top-level fields when `variants` is absent.
 
+// Sahara bodies come in six lengths. Most variants are available in all six;
+// the X-Master Slide-Out is the exception (single 22'6 chassis). Per-size
+// blueprints are looked up via `floorPlansBySize`; missing sizes fall back to
+// the variant's default `floorPlan`.
+export const DEFAULT_SIZES = ['16-6', '17-6', '18-6', '19-6', '20-6', '22-6']
+export const SIZE_LABELS = {
+  '16-6': "16'6",
+  '17-6': "17'6",
+  '18-6': "18'6",
+  '19-6': "19'6",
+  '20-6': "20'6",
+  '22-6': "22'6",
+}
+
 export const models = [
   {
     slug: 'x-master',
@@ -147,6 +161,11 @@ export const models = [
         blurb: 'Compact single-body off-road tourer — tandem axle, full ensuite, designed to go anywhere.',
         blueprint: '/images/blueprints/x-master-standard.webp',
         floorPlan: '/images/blueprints/x-master-standard-floorplan.png',
+        sizes: DEFAULT_SIZES,
+        floorPlansBySize: {
+          // Per-size blueprints fill in here as they're supplied, e.g.
+          // '17-6': '/images/blueprints/x-master-standard-17-6.png',
+        },
         description:
           'The X-Master 196 Standard is the tight, trail-ready version of the range. A single-body off-road tourer on a tandem off-road chassis, with every serious go-anywhere feature you\'d expect — DO35-style hitch, stone-guard nose, checker-plate armor along the underbody, reinforced coil suspension and a full external electrical bay. Inside it\'s every bit as finished as the on-road vans: cafe dinette, 4-burner cooktop with oven, full rear ensuite with laundry, and a private queen bed at the back.',
         features: [
@@ -211,6 +230,10 @@ export const models = [
         blurb: 'Extended 226 body with a side wall that extrudes at camp — markedly wider inside when the slide is deployed.',
         blueprint: '/images/blueprints/x-master-slideout.webp',
         floorPlan: '/images/blueprints/x-master-slideout-floorplan.png',
+        sizes: ['22-6'],
+        floorPlansBySize: {
+          '22-6': '/images/blueprints/x-master-slideout-floorplan.png',
+        },
         description:
           'The X-Master 226 Slide-Out is the room-to-breathe version of the same off-road tourer. A roadside wall section extrudes at camp to markedly widen the living area, more floor space for dressing, and the galley no longer sharing a walkway. Built around a hybrid PVC-ply frame, composite honeycomb floor and one-piece moulded roof — the kind of construction that lets it carry 840W of solar, 400Ah of lithium and a full diesel-heating loop without weight penalty.',
         features: [
@@ -433,6 +456,8 @@ export const models = [
         badge: 'Mirage · Cafe Lounge',
         blurb: 'Fixed L-shaped cafe dinette with pedestal table — seats the whole family for meals and folds out for an extra bed.',
         blueprint: '/images/blueprints/mirage-cafe.webp',
+        sizes: DEFAULT_SIZES,
+        floorPlansBySize: {},
         description:
           'The Cafe-style Mirage keeps things classic. A fixed L-shaped dinette with a solid pedestal table gives you a proper spot for meals, laptops, card games and long cups of tea on a rainy afternoon. Gloss white upper cabinetry, stone-look benchtops and a hex-tile ensuite give the whole space a bright, premium feel — while the rear queen bedroom stays tucked away for an easy night.',
         features: [
@@ -493,6 +518,8 @@ export const models = [
         badge: 'Mirage · Recliner Lounge',
         blurb: 'Two individual reclining chairs with a shared side table — the relaxed evenings-in layout for couples.',
         blueprint: '/images/blueprints/mirage-recliners.webp',
+        sizes: DEFAULT_SIZES,
+        floorPlansBySize: {},
         description:
           'The Recliner-layout Mirage swaps the fixed dinette for two individual reclining lounge chairs with a small shared side table. It\'s the evenings-in, movie-night layout — everyone gets their own seat, and there\'s nothing hard to knock a knee on. Everything else is the same Mirage you know: full galley, ensuite with laundry and a private rear queen bedroom.',
         features: [
@@ -535,6 +562,8 @@ export const models = [
         badge: 'Mirage · Queen Bed',
         blurb: 'Compact Mirage 166 built around a rear queen bed — a simple padded bench lounge keeps the floor plan tidy for couples.',
         blueprint: '/images/blueprints/mirage-queenbed.webp',
+        sizes: DEFAULT_SIZES,
+        floorPlansBySize: {},
         description:
           'The Queen Bed Mirage is the compact couples\' floor plan. A full-size rear queen bed sits under gloss white overhead cabinetry with a padded headboard and reading lights on either side, and a simple cushioned bench lounge keeps the living area uncluttered. The full galley, ensuite with separate shower and twin-gas-bottle off-road hitch all stay — just in a shorter, lighter body that\'s easier to tow and park.',
         features: [
@@ -587,6 +616,8 @@ export const models = [
         badge: 'Mirage · Twin Singles',
         blurb: 'Compact Mirage 166 with two rear single beds split by a central cabinet — flexible for families, friends or gear.',
         blueprint: '/images/blueprints/mirage-singlebed.webp',
+        sizes: DEFAULT_SIZES,
+        floorPlansBySize: {},
         description:
           'The Single Bed Mirage swaps the queen for two independent single beds at the rear, split by a central cabinet column with overhead storage and an oversized skylight above. It\'s the flexible layout — two friends who want their own space, parents sharing with a teenager, or anyone who needs the extra stowage the central column provides. The rest of the build stays true to the Mirage: full galley, ensuite with separate shower and a cushioned lounge in the living area.',
         features: [
@@ -668,6 +699,8 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Dune',
+    sizes: DEFAULT_SIZES,
+    floorPlansBySize: {},
   },
   {
     slug: 'horizon',
@@ -702,6 +735,8 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Bunks'],
     ctaLabel: 'Enquire about the Horizon',
+    sizes: DEFAULT_SIZES,
+    floorPlansBySize: {},
   },
 ]
 

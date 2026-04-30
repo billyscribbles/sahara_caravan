@@ -7,7 +7,7 @@ import SpecPill from '../components/ui/SpecPill.jsx'
 import ModelCard from '../components/ui/ModelCard.jsx'
 import VariantSwitcher from '../components/ui/VariantSwitcher.jsx'
 import Lightbox from '../components/ui/Lightbox.jsx'
-import { models, getModelBySlug, getVariantByKey, normaliseGallery } from '../content/models.js'
+import { models, getModelBySlug, getVariantByKey, normaliseGallery, SIZE_LABELS } from '../content/models.js'
 import './ModelPage.css'
 
 const GALLERY_PREVIEW_COUNT = 3
@@ -131,6 +131,8 @@ function resolveFields(model, variant) {
       specs: model.specs ?? {},
       gallery: normaliseGallery(model),
       floorPlan: model.floorPlan ?? null,
+      sizes: model.sizes ?? null,
+      floorPlansBySize: model.floorPlansBySize ?? null,
       ctaLabel: model.ctaLabel,
       inclusions: model.inclusions ?? null,
       technicalSpecs: model.technicalSpecs ?? null,
@@ -143,6 +145,8 @@ function resolveFields(model, variant) {
     specs: variant.specs ?? model.specs ?? {},
     gallery: variant.gallery ?? normaliseGallery(model),
     floorPlan: variant.floorPlan ?? model.floorPlan ?? null,
+    sizes: variant.sizes ?? model.sizes ?? null,
+    floorPlansBySize: variant.floorPlansBySize ?? model.floorPlansBySize ?? null,
     ctaLabel: variant.ctaLabel ?? model.ctaLabel,
     inclusions: variant.inclusions ?? model.inclusions ?? null,
     technicalSpecs: variant.technicalSpecs ?? model.technicalSpecs ?? null,
@@ -188,6 +192,17 @@ export default function ModelPage() {
     }
   }, [fields.technicalSpecs, activeTechSpecTab])
   const activeTechSpec = fields.technicalSpecs?.find((t) => t.id === activeTechSpecTab) ?? fields.technicalSpecs?.[0]
+
+  // Size selector for the floor-plan section. Caravans come in six body
+  // lengths; the X-Master Slide-Out is single-size (22'6). When the active
+  // size has no per-size blueprint yet, fall back to the variant default.
+  const [activeSize, setActiveSize] = useState(fields.sizes?.[0] ?? null)
+  useEffect(() => {
+    if (fields.sizes && !fields.sizes.includes(activeSize)) {
+      setActiveSize(fields.sizes[0] ?? null)
+    }
+  }, [fields.sizes, activeSize])
+  const currentFloorPlan = fields.floorPlansBySize?.[activeSize] ?? fields.floorPlan
 
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 })
   const openLightbox = (images, index) => setLightbox({ open: true, images, index })
@@ -256,19 +271,57 @@ export default function ModelPage() {
         </section>
       )}
 
-      {fields.floorPlan && (
+      {(fields.floorPlan || (fields.sizes && fields.sizes.length > 0)) && (
         <section className={`model-page__floorplan section ${nextTone()}`}>
           <div className="container">
+            {fields.sizes && fields.sizes.length > 0 && (
+              <RevealOnScroll>
+                <div className="model-page__size-tabs" role="tablist" aria-label="Body length">
+                  <span className="model-page__size-tabs-label">Sizes</span>
+                  {fields.sizes.map((size) => (
+                    <button
+                      key={size}
+                      type="button"
+                      role="tab"
+                      aria-selected={size === activeSize}
+                      aria-controls="floorplan-image"
+                      className={`model-page__size-tab ${size === activeSize ? 'is-active' : ''}`}
+                      onClick={() => setActiveSize(size)}
+                    >
+                      {SIZE_LABELS[size] ?? size}
+                    </button>
+                  ))}
+                </div>
+              </RevealOnScroll>
+            )}
             <RevealOnScroll>
-              <h2 className="section-label">See the layout.</h2>
+              <h2 className="section-label">
+                See the layout.<sup className="model-page__floorplan-asterisk" aria-hidden="true">*</sup>
+              </h2>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
-              <img
-                src={fields.floorPlan}
-                alt={`${model.name}${activeVariant ? ` ${activeVariant.label}` : ''} floor plan`}
-                className="model-page__floorplan-img"
-                loading="lazy"
-              />
+              {currentFloorPlan ? (
+                <img
+                  id="floorplan-image"
+                  src={currentFloorPlan}
+                  alt={`${model.name}${activeVariant ? ` ${activeVariant.label}` : ''}${activeSize ? ` ${SIZE_LABELS[activeSize] ?? activeSize}` : ''} floor plan`}
+                  className="model-page__floorplan-img"
+                  loading="lazy"
+                />
+              ) : (
+                <div
+                  id="floorplan-image"
+                  role="tabpanel"
+                  className="model-page__floorplan-placeholder"
+                >
+                  Floor plan coming soon.
+                </div>
+              )}
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.15}>
+              <p className="model-page__floorplan-note">
+                <span aria-hidden="true">*</span> Sample layout — every Sahara is fully customisable to suit how you travel.
+              </p>
             </RevealOnScroll>
           </div>
         </section>
