@@ -79,3 +79,4 @@
 - The Mirage page now has its own technical specification sheet — flip between Chassis, Solar & Power, Electrical, Plumbing, Appliances, External and Internal.
 - Every caravan page now has a "Sizes" row above the floor plan with the six body lengths the caravan comes in (16'6, 17'6, 18'6, 19'6, 20'6, 22'6); the X-Master Slide-Out shows just 22'6 since that's the only length it's built in.
 - The Mirage Twin Recliners and Queen Bed layouts now show their real annotated floor plan when 20'6 is selected.
+- Updated the X-Master Standard floor plan with the latest annotated diagram.
