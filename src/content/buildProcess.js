@@ -7,11 +7,15 @@ export const buildProcess = {
       icon: 'Factory',
       title: 'Chassis & Running Gear',
       body: 'Hot-dip-galvanised steel frame cut, jigged and welded in house. Axles, suspension and couplings fitted to the spec of the model.',
+      video: '/videos/build/chassis.mp4',
+      poster: '/videos/build/chassis-poster.jpg',
     },
     {
       icon: 'Box',
       title: 'Body Shell',
       body: 'Composite-sandwich walls and one-piece roof bonded to the frame with marine adhesives. Windows, hatches and door cut-outs sealed tight.',
+      video: '/videos/build/body-shell.mp4',
+      poster: '/videos/build/body-shell-poster.jpg',
     },
     {
       icon: 'Layers',
