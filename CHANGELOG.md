@@ -95,3 +95,6 @@
 - Removed the three placeholder gallery drawings from the Horizon page so only the real hero photo remains until proper photos are ready.
 - Darkened the small feature icons (Toilet, Shower, Laundry, Kitchenette) and the round arrow on each range card so they read clearly instead of fading into the bone background.
 - The build-stages slider on the Build page now loops endlessly — pressing left on the first card spins back to the last, the arrows always advance, and the cards on the edges fade out softly instead of cutting off.
+- The Build page slider now opens with stage 1 on the left followed by 2 and 3, instead of starting half-way through with the last stage peeking in from the side.
+- Gave the Build page slider more room — the cards now stretch closer to the screen edges, and the soft fade only touches the half-cards peeking on the side, leaving the main three stages crisp and clear.
+- Pushed the slider's left and right arrow buttons all the way to the screen edges and made them a touch bigger, so they're easier to spot and tap.

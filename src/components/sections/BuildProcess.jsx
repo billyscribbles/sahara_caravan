@@ -38,7 +38,6 @@ export default function BuildProcess({ showHeader = true }) {
   const stepRef = useRef(0)
 
   const slideStep = slideWidth + gap
-  const slideHalf = slideWidth / 2
   const realIdx = ((vIdx - CLONE_BUFFER) % stageCount + stageCount) % stageCount
 
   const next = () => setVIdx((i) => i + 1)
@@ -122,7 +121,6 @@ export default function BuildProcess({ showHeader = true }) {
 
   const trackStyle = {
     '--slide-step': `${slideStep}px`,
-    '--slide-half': `${slideHalf}px`,
     '--v-idx': vIdx,
     visibility: slideStep > 0 ? 'visible' : 'hidden',
   }
