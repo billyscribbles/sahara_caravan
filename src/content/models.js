@@ -626,7 +626,9 @@ export const models = [
         blurb: 'Compact Mirage 166 with two rear single beds split by a central cabinet — flexible for families, friends or gear.',
         blueprint: '/images/blueprints/mirage-singlebed.webp',
         sizes: DEFAULT_SIZES,
-        floorPlansBySize: {},
+        floorPlansBySize: {
+          '16-6': '/images/blueprints/mirage-singlebed-16-6.png',
+        },
         description:
           'The Single Bed Mirage swaps the queen for two independent single beds at the rear, split by a central cabinet column with overhead storage and an oversized skylight above. It\'s the flexible layout — two friends who want their own space, parents sharing with a teenager, or anyone who needs the extra stowage the central column provides. The rest of the build stays true to the Mirage: full galley, ensuite with separate shower and a cushioned lounge in the living area.',
         features: [

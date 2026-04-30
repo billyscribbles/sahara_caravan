@@ -83,3 +83,4 @@
 - The Mirage Twin Recliners and Queen Bed layouts now show an annotated floor plan when 18'6 is selected.
 - Sizes that don't have their own annotated floor plan yet now show a clear "Floor plan coming soon" message instead of a generic placeholder image — so what you see always matches the size you've picked. The X-Master Standard plan is now tied to 19'6, the Mirage Recliners and Queen Bed plans to 18'6 and 20'6.
 - The Mirage Twin Recliners and Queen Bed layouts now show an annotated floor plan when 16'6 is selected.
+- The Mirage Single Bed layout now shows an annotated floor plan when 16'6 is selected.
