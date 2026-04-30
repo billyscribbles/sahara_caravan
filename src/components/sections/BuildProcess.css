@@ -46,25 +46,46 @@
   .build-process__edge--next { right: 4px; }
 }
 
+.build-process__viewport {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 40px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .build-process__track {
   display: flex;
   gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding: 4px 4px 12px;
-  margin: 0 -4px;
+  padding-top: 4px;
+  padding-bottom: 12px;
+  padding-left: calc(50% - var(--slide-half, 0px));
+  padding-right: calc(50% - var(--slide-half, 0px));
+  transform: translateX(calc(var(--v-idx, 0) * var(--slide-step, 0px) * -1));
+  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
-.build-process__track::-webkit-scrollbar {
-  display: none;
+.build-process__track.is-snapping {
+  transition: none;
 }
 
 .build-process__slide {
   flex: 0 0 auto;
-  scroll-snap-align: center;
   width: clamp(280px, 30vw, 380px);
 }
 
@@ -204,6 +225,22 @@
 }
 
 @media (max-width: 768px) {
+  .build-process__viewport {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent 100%
+    );
+            mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 20px,
+      #000 calc(100% - 20px),
+      transparent 100%
+    );
+  }
   .build-process__slide {
     width: clamp(260px, 70vw, 320px);
   }
