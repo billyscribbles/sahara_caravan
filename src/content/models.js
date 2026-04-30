@@ -14,6 +14,7 @@ export const SIZE_LABELS = {
   '18-6': "18'6",
   '19-6': "19'6",
   '20-6': "20'6",
+  '21-6': "21'6",
   '22-6': "22'6",
 }
 
@@ -744,7 +745,7 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Bunks'],
     ctaLabel: 'Enquire about the Horizon',
-    sizes: DEFAULT_SIZES,
+    sizes: ['19-6', '20-6', '21-6', '22-6'],
     floorPlansBySize: {},
   },
 ]

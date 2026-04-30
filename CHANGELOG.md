@@ -91,3 +91,4 @@
 - The "Find a Dealer" page and the home-page dealer section now show only the two real dealers — Victoria and Western Australia — instead of "coming soon" placeholders for every other state.
 - The Busselton Caravans listing now shows its own phone number (0437 791 141) and email (bussvans@yahoo.com) instead of the head-office phone, so WA visitors can contact the dealer directly.
 - Added short looping videos to the Build page so visitors can hover or tap a stage to see how it's done. The chassis stage has its first video; the other seven show a "Video coming soon" placeholder until their footage is ready.
+- The Horizon now offers four sizes — 19'6, 20'6, 21'6 and 22'6 — instead of the full six-size range, matching what's actually built.
