@@ -88,3 +88,4 @@
 - The Mirage Twin Recliners layout now anchors to its 20'6 floor plan; the 16'6 and 18'6 plans are pulled back so visitors land on the canonical drawing, with the other sizes showing "coming soon" plus a link back to 20'6.
 - Refreshed the X-Master Slide-Out floor plan with an updated drawing.
 - Switching between layouts on a model page now jumps to a size that actually has a floor plan, so flipping from X-Master Slide-Out (22'6) over to Standard lands on the 19'6 drawing instead of a "coming soon" message.
+- The "Find a Dealer" page and the home-page dealer section now show only the two real dealers — Victoria and Western Australia — instead of "coming soon" placeholders for every other state.

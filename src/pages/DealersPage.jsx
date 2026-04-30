@@ -7,6 +7,8 @@ import { scrollToId } from '../lib/smoothScroll.js'
 import './DealersPage.css'
 
 export default function DealersPage() {
+  const activeStates = dealers.states.filter((s) => s.dealers.length > 0)
+
   return (
     <main className="dealers-page">
       <SEO
@@ -25,7 +27,7 @@ export default function DealersPage() {
 
           <RevealOnScroll delay={0.1}>
             <nav className="dealers-page__tabs" aria-label="Jump to state">
-              {dealers.states.map((s) => (
+              {activeStates.map((s) => (
                 <button
                   key={s.code}
                   type="button"
@@ -42,7 +44,7 @@ export default function DealersPage() {
 
       <section className="dealers-page__body">
         <div className="container">
-          {dealers.states.map((state, stateIdx) => (
+          {activeStates.map((state, stateIdx) => (
             <RevealOnScroll key={state.code} delay={stateIdx * 0.04}>
               <div id={`state-${state.code}`} className="dealers-page__state">
                 <div className="dealers-page__state-head">

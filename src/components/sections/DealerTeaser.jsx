@@ -15,14 +15,16 @@ export default function DealerTeaser() {
             <span className="section-eyebrow">Dealer Network</span>
             <h2 className="section-label">Find your nearest dealer.</h2>
             <p className="dealer-teaser__body">
-              Our partner network carries the full range across every state. See a van up close, talk through options with someone who knows them inside out, or reach out and we'll connect you directly.
+              Our partner network carries the full range in Victoria and Western Australia. See a van up close, talk through options with someone who knows them inside out, or reach out and we'll connect you directly.
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <div className="dealer-teaser__states">
-              {dealers.states.map((s) => (
-                <span key={s.code} className="dealer-teaser__state">{s.code}</span>
-              ))}
+              {dealers.states
+                .filter((s) => s.dealers.length > 0)
+                .map((s) => (
+                  <span key={s.code} className="dealer-teaser__state">{s.code}</span>
+                ))}
             </div>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>

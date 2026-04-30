@@ -1,5 +1,6 @@
-// Placeholder dealer list — replace with the real directory before launch.
-// States are presented in the order below on /dealers.
+// Active dealers: VIC (Campbellfield head office) + WA (Busselton Caravans).
+// Other states are kept here so the enquiry-form state dropdown stays complete;
+// states with `dealers: []` are filtered out of the dealer-display surfaces.
 
 export const dealers = {
   intro: {
@@ -23,35 +24,17 @@ export const dealers = {
     {
       code: 'NSW',
       name: 'New South Wales',
-      dealers: [
-        {
-          name: 'Partner dealer — details coming soon',
-          address: 'Contact head office for your nearest NSW dealer',
-          phone: '0419 786 446',
-        },
-      ],
+      dealers: [],
     },
     {
       code: 'QLD',
       name: 'Queensland',
-      dealers: [
-        {
-          name: 'Partner dealer — details coming soon',
-          address: 'Contact head office for your nearest QLD dealer',
-          phone: '0419 786 446',
-        },
-      ],
+      dealers: [],
     },
     {
       code: 'SA',
       name: 'South Australia',
-      dealers: [
-        {
-          name: 'Partner dealer — details coming soon',
-          address: 'Contact head office for your nearest SA dealer',
-          phone: '0419 786 446',
-        },
-      ],
+      dealers: [],
     },
     {
       code: 'WA',
@@ -67,35 +50,17 @@ export const dealers = {
     {
       code: 'TAS',
       name: 'Tasmania',
-      dealers: [
-        {
-          name: 'Partner dealer — details coming soon',
-          address: 'Contact head office for your nearest TAS dealer',
-          phone: '0419 786 446',
-        },
-      ],
+      dealers: [],
     },
     {
       code: 'NT',
       name: 'Northern Territory',
-      dealers: [
-        {
-          name: 'Partner dealer — details coming soon',
-          address: 'Contact head office for your nearest NT dealer',
-          phone: '0419 786 446',
-        },
-      ],
+      dealers: [],
     },
     {
       code: 'ACT',
       name: 'Australian Capital Territory',
-      dealers: [
-        {
-          name: 'Partner dealer — details coming soon',
-          address: 'Contact head office for your nearest ACT dealer',
-          phone: '0419 786 446',
-        },
-      ],
+      dealers: [],
     },
   ],
 }
