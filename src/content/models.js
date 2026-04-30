@@ -521,6 +521,7 @@ export const models = [
         floorPlan: '/images/blueprints/mirage-20-6.png',
         sizes: DEFAULT_SIZES,
         floorPlansBySize: {
+          '18-6': '/images/blueprints/mirage-18-6.png',
           '20-6': '/images/blueprints/mirage-20-6.png',
         },
         description:
@@ -568,6 +569,7 @@ export const models = [
         floorPlan: '/images/blueprints/mirage-20-6.png',
         sizes: DEFAULT_SIZES,
         floorPlansBySize: {
+          '18-6': '/images/blueprints/mirage-18-6.png',
           '20-6': '/images/blueprints/mirage-20-6.png',
         },
         description:
