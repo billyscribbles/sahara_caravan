@@ -89,3 +89,4 @@
 - Refreshed the X-Master Slide-Out floor plan with an updated drawing.
 - Switching between layouts on a model page now jumps to a size that actually has a floor plan, so flipping from X-Master Slide-Out (22'6) over to Standard lands on the 19'6 drawing instead of a "coming soon" message.
 - The "Find a Dealer" page and the home-page dealer section now show only the two real dealers — Victoria and Western Australia — instead of "coming soon" placeholders for every other state.
+- The Busselton Caravans listing now shows its own phone number (0437 791 141) and email (bussvans@yahoo.com) instead of the head-office phone, so WA visitors can contact the dealer directly.

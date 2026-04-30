@@ -43,7 +43,8 @@ export const dealers = {
         {
           name: 'Busselton Caravans',
           address: '69 Cook Street Link, Busselton WA 6280',
-          phone: '0419 786 446',
+          phone: '0437 791 141',
+          email: 'bussvans@yahoo.com',
         },
       ],
     },
