@@ -76,3 +76,4 @@
 - The X-Master Standard model page now shows its full annotated floor plan, matching the Slide-Out.
 - The X-Master page now has a full technical specification sheet — tap between Chassis, Solar & Power, Electrical, Plumbing, Appliances, External and Internal to see every fitted part on one screen.
 - Tap any photo in the Custom Van Builds gallery to open it in a full-screen viewer with arrow keys and swipe to flip through.
+- The Mirage page now has its own technical specification sheet — flip between Chassis, Solar & Power, Electrical, Plumbing, Appliances, External and Internal.
