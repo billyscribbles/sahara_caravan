@@ -112,3 +112,4 @@
 - Every size tab on the Dune and Horizon pages now opens a real top-down floor plan (16'6" through 22'6" on the Dune; 19'6" through 22'6" on the Horizon) instead of the "coming soon" placeholder.
 - Refreshed the 16'6" floor plan used on the Dune and Horizon pages.
 - Refreshed the 18'6" floor plan used on the Dune and Horizon pages.
+- Every size tab on the X-Master Standard 196 page now opens a real top-down floor plan instead of a blank — the same 16'6" through 22'6" set used on the Dune and Horizon.
