@@ -131,6 +131,7 @@ function resolveFields(model, variant) {
       specs: model.specs ?? {},
       gallery: normaliseGallery(model),
       floorPlan: model.floorPlan ?? null,
+      floorPlanNote: model.floorPlanNote ?? null,
       sizes: model.sizes ?? null,
       floorPlansBySize: model.floorPlansBySize ?? null,
       ctaLabel: model.ctaLabel,
@@ -145,6 +146,7 @@ function resolveFields(model, variant) {
     specs: variant.specs ?? model.specs ?? {},
     gallery: variant.gallery ?? normaliseGallery(model),
     floorPlan: variant.floorPlan ?? model.floorPlan ?? null,
+    floorPlanNote: variant.floorPlanNote ?? model.floorPlanNote ?? null,
     sizes: variant.sizes ?? model.sizes ?? null,
     floorPlansBySize: variant.floorPlansBySize ?? model.floorPlansBySize ?? null,
     ctaLabel: variant.ctaLabel ?? model.ctaLabel,
@@ -390,7 +392,8 @@ export default function ModelPage() {
             </RevealOnScroll>
             <RevealOnScroll delay={0.15}>
               <p className="model-page__floorplan-note">
-                <span aria-hidden="true">*</span> Sample layout — every Sahara is fully customisable to suit how you travel.
+                <span aria-hidden="true">*</span>{' '}
+                {fields.floorPlanNote ?? 'Sample layout — every Sahara is fully customisable to suit how you travel.'}
               </p>
             </RevealOnScroll>
           </div>
