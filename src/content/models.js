@@ -686,11 +686,27 @@ export const models = [
     description:
       'The Dune is a free-camping tourer built for the long way around. An Australian-made 3.2mm super-gal chassis sits over 3.3-tonne independent coil-spring trailing-arm suspension, 235/75R15 off-road rims and 10" electric brakes. 420W of solar feeds 270Ah of lithium, so you can stay out for weeks — and inside, a queen bed, café dinette and full ensuite with one-piece shower, toilet and gas/electric hot water keep things comfortable wherever you stop.',
     heroImage: '/images/hero/hero-dune.png',
-    gallery: [
-      '/images/models/dune/gallery-2.png',
-      '/images/models/dune/gallery-3.png',
-      '/images/models/dune/gallery-4.png',
-    ],
+    gallery: {
+      exterior: [
+        { src: '/images/models/dune/exterior-01.jpg', caption: 'Awning-side front-quarter — full-width "Sahara Caravans" wordmark across the nose-cone, "DUNE 1810" badge, awning rail and tandem off-road wheels.' },
+        { src: '/images/models/dune/exterior-02.jpg', caption: 'Awning-side front-quarter, alternate angle — entry door with pull-out step, awning rail along the top edge and the large nose-cone wordmark.' },
+        { src: '/images/models/dune/exterior-03.jpg', caption: 'Roadside profile — full panoramic living-area window, "DUNE 1810" badge on the checker-plate skirt and "SAHARA" wordmark below.' },
+        { src: '/images/models/dune/exterior-04.jpg', caption: 'Off-side front-quarter — stone-guard-on-frame deployed at the front, twin gas bottles behind the mesh, tandem off-road wheels and full checker-plate skirt.' },
+        { src: '/images/models/dune/exterior-05.jpg', caption: 'Front-on with the mesh stone-guard-on-frame fully deployed — twin 9 kg gas bottles, DO35-style coupling and galvanised drawbar visible through the mesh.' },
+        { src: '/images/models/dune/exterior-06.jpg', caption: 'Rear view — Sahara crest, "DUNE 1810" badge on the black checker-plate panel, spare wheel mount with jerry-can holder and full-width galvanised bumper.' },
+      ],
+      interior: [
+        { src: '/images/models/dune/interior-01.jpg', caption: 'Looking through the van from the entry — dinette on the left, galley on the right, ensuite mid-ship and the rear queen bed under twin 12V fans in the distance.' },
+        { src: '/images/models/dune/interior-02.jpg', caption: 'Same view a step further in — gloss white uppers, dark gloss lowers, full-height splashback over the cooktop and the queen bed framed at the rear.' },
+        { src: '/images/models/dune/interior-03.jpg', caption: 'Café dinette — cream leather-look L-lounge with a fixed timber-look table on a black post, large awning window and gloss white overhead cabinetry.' },
+        { src: '/images/models/dune/interior-04.jpg', caption: 'Galley wide — gloss white uppers with built-in microwave, timber-look benchtop, big black single-bowl sink with black mixer tap and full-height splashback over the cooktop and oven.' },
+        { src: '/images/models/dune/interior-05.jpg', caption: 'From the rear bed looking forward — galley on the left, dinette on the right, ensuite door mid-ship, with the battery monitor and stereo head unit set into the entry wall.' },
+        { src: '/images/models/dune/interior-06.jpg', caption: 'Rear queen bedroom — quilted inner-spring mattress with pillow top, padded headboard, twin adjustable 12V fans, bedside cabinets with timber tops and an oversized roof skylight overhead.' },
+        { src: '/images/models/dune/interior-07.jpg', caption: 'Ensuite — china-bowl toilet, gloss white overhead cabinetry, large wall mirror over the vanity and a black vessel sink on a timber-look benchtop.' },
+        { src: '/images/models/dune/interior-08.jpg', caption: 'Ensuite alt angle — small awning window for ventilation, mirror-fronted cabinet, full-height grey storage column and toilet alongside the vanity.' },
+        { src: '/images/models/dune/interior-09.jpg', caption: 'Separate one-piece shower stall — matte-black slide rail with hand-held, black mixer tap, white wet-wall panels and a low-step shower tray.' },
+      ],
+    },
     features: [
       '3.3-tonne independent coil-spring trailing-arm suspension',
       'DO35 off-road coupling with 6" A-frame and 4" raiser',
