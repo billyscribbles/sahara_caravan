@@ -111,3 +111,4 @@
 - The Dune photo gallery is now split into "Outside" and "Inside" groups like the other models — six new exterior shots of the Dune 1810 (front-quarter, roadside profile, mesh stone-guard deployed and rear view) and nine new interior shots (full van walkthrough, café dinette, galley, rear queen bedroom, ensuite and separate shower) — every photo has a short plain-English caption.
 - Every size tab on the Dune and Horizon pages now opens a real top-down floor plan (16'6" through 22'6" on the Dune; 19'6" through 22'6" on the Horizon) instead of the "coming soon" placeholder.
 - Refreshed the 16'6" floor plan used on the Dune and Horizon pages.
+- Refreshed the 18'6" floor plan used on the Dune and Horizon pages.
