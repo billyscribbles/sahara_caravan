@@ -39,6 +39,7 @@ export const site = {
           { label: 'About', to: '/about' },
           { label: 'The Build', to: '/build' },
           { label: 'Find a Dealer', to: '/dealers' },
+          { label: 'Become a Dealer', to: '/become-a-dealer' },
           { label: 'Contact', to: '/contact' },
         ],
       },

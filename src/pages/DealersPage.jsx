@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Phone, Mail, MapPin, Handshake, ArrowRight } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import ContactCTA from '../components/sections/ContactCTA.jsx'
@@ -81,6 +82,29 @@ export default function DealersPage() {
               </div>
             </RevealOnScroll>
           ))}
+        </div>
+      </section>
+
+      <section className="dealers-page__partner section--alt">
+        <div className="container">
+          <RevealOnScroll>
+            <div className="partner-banner">
+              <div className="partner-banner__icon" aria-hidden="true">
+                <Handshake size={22} strokeWidth={1.75} />
+              </div>
+              <div className="partner-banner__text">
+                <span className="section-eyebrow">For Dealers</span>
+                <h2 className="partner-banner__title">Run a caravan business?</h2>
+                <p className="partner-banner__sub">
+                  We're always open to talking with dealers who want to add the Sahara range to their yard. Apply below and we'll be in touch within 2–3 business days.
+                </p>
+              </div>
+              <Link to="/become-a-dealer" className="partner-banner__cta">
+                <span>Become a Sahara dealer</span>
+                <ArrowRight size={17} strokeWidth={2.2} aria-hidden="true" />
+              </Link>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 

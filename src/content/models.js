@@ -686,7 +686,6 @@ export const models = [
       'The Dune is a free-camping tourer built for the long way around. An Australian-made 3.2mm super-gal chassis sits over 3.3-tonne independent coil-spring trailing-arm suspension, 235/75R15 off-road rims and 10" electric brakes. 420W of solar feeds 270Ah of lithium, so you can stay out for weeks — and inside, a queen bed, café dinette and full ensuite with one-piece shower, toilet and gas/electric hot water keep things comfortable wherever you stop.',
     heroImage: '/images/hero/hero-dune.png',
     gallery: [
-      '/images/models/dune/gallery-1.png',
       '/images/models/dune/gallery-2.png',
       '/images/models/dune/gallery-3.png',
       '/images/models/dune/gallery-4.png',

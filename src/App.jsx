@@ -30,6 +30,7 @@ const RangePage = lazyWithRetry(() => import('./pages/RangePage.jsx'))
 const ModelPage = lazyWithRetry(() => import('./pages/ModelPage.jsx'))
 const CustomBuildsPage = lazyWithRetry(() => import('./pages/CustomBuildsPage.jsx'))
 const DealersPage = lazyWithRetry(() => import('./pages/DealersPage.jsx'))
+const BecomeDealerPage = lazyWithRetry(() => import('./pages/BecomeDealerPage.jsx'))
 const AboutPage = lazyWithRetry(() => import('./pages/AboutPage.jsx'))
 const BuildPage = lazyWithRetry(() => import('./pages/BuildPage.jsx'))
 const ContactPage = lazyWithRetry(() => import('./pages/ContactPage.jsx'))
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="/models/:slug" element={<ModelPage />} />
           <Route path="/build" element={<BuildPage />} />
           <Route path="/dealers" element={<DealersPage />} />
+          <Route path="/become-a-dealer" element={<BecomeDealerPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy" element={<LegalPage type="privacy" />} />
