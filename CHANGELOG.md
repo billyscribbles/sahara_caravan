@@ -98,3 +98,4 @@
 - The Build page slider now opens with stage 1 on the left followed by 2 and 3, instead of starting half-way through with the last stage peeking in from the side.
 - Gave the Build page slider more room — the cards now stretch closer to the screen edges, and the soft fade only touches the half-cards peeking on the side, leaving the main three stages crisp and clear.
 - Pushed the slider's left and right arrow buttons all the way to the screen edges and made them a touch bigger, so they're easier to spot and tap.
+- Filled in the Sahara Dune page with the full feature list and build sheet — chassis and suspension, solar and lithium setup, kitchen and bathroom fit-out, and a quick-glance specs panel — so the page reads like a real model brochure instead of placeholder copy.
