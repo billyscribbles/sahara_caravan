@@ -99,3 +99,4 @@
 - Gave the Build page slider more room — the cards now stretch closer to the screen edges, and the soft fade only touches the half-cards peeking on the side, leaving the main three stages crisp and clear.
 - Pushed the slider's left and right arrow buttons all the way to the screen edges and made them a touch bigger, so they're easier to spot and tap.
 - Filled in the Sahara Dune page with the full feature list and build sheet — chassis and suspension, solar and lithium setup, kitchen and bathroom fit-out, and a quick-glance specs panel — so the page reads like a real model brochure instead of placeholder copy.
+- Filled in the Sahara Horizon page the same way — family layout details (rear queen, four bunks, L-lounge, top-load washing machine), reverse-cycle air-con, 420W solar with a 300Ah lithium battery, and the full kitchen, bathroom and chassis spec breakdown.
