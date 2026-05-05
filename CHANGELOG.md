@@ -113,3 +113,4 @@
 - Refreshed the 16'6" floor plan used on the Dune and Horizon pages.
 - Refreshed the 18'6" floor plan used on the Dune and Horizon pages.
 - Every size tab on the X-Master Standard 196 page now opens a real top-down floor plan instead of a blank — the same 16'6" through 22'6" set used on the Dune and Horizon.
+- The size you pick on a caravan page is now remembered in the page address — so if you copy the link and send it to someone, they open straight to the same size and floor plan you were looking at.

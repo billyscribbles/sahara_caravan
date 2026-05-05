@@ -211,7 +211,11 @@ export default function ModelPage() {
   // lengths; the X-Master Slide-Out is single-size (22'6). When floorPlansBySize
   // has any entries, sizes not in it show the "coming soon" placeholder. An
   // empty floorPlansBySize means "default applies to every size".
-  const [activeSize, setActiveSize] = useState(() => pickDefaultSize(fields))
+  const [activeSize, setActiveSize] = useState(() => {
+    const fromUrl = new URLSearchParams(location.search).get('size')
+    if (fromUrl && fields.sizes?.includes(fromUrl)) return fromUrl
+    return pickDefaultSize(fields)
+  })
   const prevActiveKey = useRef(activeKey)
   useEffect(() => {
     // If the current size isn't valid in the new variant, reset (e.g. Standard
@@ -257,6 +261,19 @@ export default function ModelPage() {
     const next = `${window.location.pathname}${search ? `?${search}` : ''}${window.location.hash}`
     window.history.replaceState(window.history.state, '', next)
   }, [activeKey, hasVariants, model.variants])
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const defaultSize = pickDefaultSize(fields)
+    if (activeSize && activeSize !== defaultSize) {
+      params.set('size', activeSize)
+    } else {
+      params.delete('size')
+    }
+    const search = params.toString()
+    const next = `${window.location.pathname}${search ? `?${search}` : ''}${window.location.hash}`
+    window.history.replaceState(window.history.state, '', next)
+  }, [activeSize, fields])
 
   const related = models.filter((m) => m.slug !== model.slug)
   const variantLabel = activeVariant ? ` — ${activeVariant.label}` : ''
