@@ -70,7 +70,8 @@ export const site = {
   },
 
   integrations: {
-    formspreeId: import.meta.env.VITE_FORMSPREE_ID || 'xeengkde',
+    // Strip optional Formspree URL prefix so the env var can hold either the slug or the full URL.
+    formspreeId: (import.meta.env.VITE_FORMSPREE_ID || 'xeengkde').replace(/^https?:\/\/formspree\.io\/f\//, ''),
     gaId: import.meta.env.VITE_GA_ID || '',
   },
 }

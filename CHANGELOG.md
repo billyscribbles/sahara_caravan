@@ -107,3 +107,4 @@
 - Added Capral Aluminium, Razor RV, NewLine Upholstery and SJ RV to the rotating partner-brands strip on the home page.
 - Fixed the "Not Secure" warning some visitors were seeing in Chrome. The site now runs on a proper production web server with stronger security settings, so the padlock shows correctly on every page.
 - The contact email shown across the site (header, footer, contact page, privacy policy and head-office dealer card) is now support@saharacaravans.com.au.
+- Fixed the contact and dealer enquiry forms — they had stopped delivering on the live site, and now send through to the Sahara inbox again.
