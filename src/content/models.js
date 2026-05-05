@@ -18,6 +18,608 @@ export const SIZE_LABELS = {
   '22-6': "22'6",
 }
 
+// Per-size build sheets. Chassis, suspension, brakes, battery and solar
+// genuinely change between sizes, so the model page looks these up by
+// `activeSize` and falls back to the model-level `technicalSpecs` / `specs`
+// for sizes that aren't covered (e.g. 16'6, and the X-Master Slide-Out's
+// chassis package which sits outside the standard size grid).
+
+// X-Master (off-road) — per-size specs.
+const X_MASTER_SPECS_BY_SIZE = {
+  '17-6': { length: "17'6", suspension: '3T independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '18-6': { length: "18'6", suspension: '3T independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '19-6': { length: "19'6", suspension: 'TITAN X 3.5T twin-shocker coil-spring trailing arm', water: '285L (3 x 95L)', warranty: '5 yr structural' },
+  '20-6': { length: "20'6", suspension: 'TITAN X 3.5T twin-shocker coil-spring trailing arm', water: '285L (3 x 95L)', warranty: '5 yr structural' },
+  '22-6': { length: "22'6", suspension: '3.5T twin-shocker independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+}
+
+const xMasterTech = ({ chassis, solarPower, electrical, plumbing, appliances, external, internal }) => [
+  { id: 'chassis', label: 'Chassis', rows: chassis },
+  { id: 'solar-power', label: 'Solar & Power', rows: solarPower },
+  { id: 'electrical', label: 'Electrical', rows: electrical },
+  { id: 'plumbing', label: 'Plumbing', rows: plumbing },
+  { id: 'appliances', label: 'Appliances', rows: appliances },
+  { id: 'external', label: 'External', rows: external },
+  { id: 'internal', label: 'Internal', rows: internal },
+]
+
+const X_MASTER_INTERNAL_BASE = [
+  { label: 'Bed', value: "Queen 6'5\" x 5' inner spring with pillow top" },
+  { label: 'Bed Base', value: 'Posture slat with gas-strut assisted lift' },
+  { label: 'Bedside Outlets', value: '12V USB and USB-C in robe nooks plus 240V points' },
+  { label: 'Bedroom Fans', value: '2 x 12V' },
+  { label: 'TV', value: '24" LCD/DVD' },
+  { label: 'Sound System', value: 'Media / Radio player' },
+  { label: 'Heater', value: 'Diesel' },
+  { label: 'Cupboard Hinges', value: 'Piano hinges throughout' },
+  { label: 'Overhead Cupboards', value: 'Gas struts' },
+  { label: 'Splashbacks', value: 'Full height' },
+  { label: 'Window Blinds', value: 'Block-out internal' },
+]
+
+const X_MASTER_PLUMBING_BASE = [
+  { label: 'Trailer Coupling', value: 'DO35 3.5T off-road coupling' },
+  { label: 'Hot Water Service', value: 'Swift gas/electric — Australian-made stainless steel' },
+  { label: 'Filtered Drinking Water Tap', value: 'Included' },
+  { label: 'Cassette Toilet', value: 'China bowl' },
+  { label: 'Shower', value: 'One piece' },
+  { label: 'External Shower', value: 'Hot and cold' },
+  { label: 'External Gas Bayonet', value: 'Included' },
+]
+
+const X_MASTER_EXTERNAL_BASE = [
+  { label: 'Body Cladding', value: 'Pro-Bond aluminium composite' },
+  { label: 'Roof', value: 'One-piece aluminium' },
+  { label: 'Floor', value: 'One-piece honeycomb composite' },
+  { label: 'Checker Plate', value: 'Front, rear and sides' },
+  { label: 'Tunnel Boot', value: 'Included' },
+  { label: 'Awning', value: 'Roll-out with centre support' },
+  { label: 'Awning Lights', value: 'Twin' },
+  { label: 'Work Lights', value: 'Front and rear' },
+  { label: 'Reverse Camera', value: 'Included' },
+  { label: 'Double-Glazed Windows', value: 'Allytech dark' },
+  { label: 'Entrance Step', value: 'Pull-out alloy' },
+]
+
+const X_MASTER_TECH_SPECS_BY_SIZE = {
+  '17-6': xMasterTech({
+    chassis: [
+      { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
+      { label: 'Suspension', value: '3T independent coil-spring' },
+      { label: 'A-Frame', value: '6"' },
+      { label: 'Raiser', value: '2"' },
+      { label: 'Rims & Tyres', value: '16"' },
+      { label: 'Brakes', value: '12" electric' },
+      { label: 'Gas Bottles', value: '2 x 9kg' },
+      { label: 'Fresh Water Tanks', value: '2 x 95L' },
+      { label: 'Grey Water Tank', value: '1' },
+      { label: 'Jerry Can Holders', value: '1' },
+      { label: 'Tank Protection', value: 'Aluminium checker plate' },
+      { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+      { label: 'Stone Guard', value: 'On A-frame' },
+      { label: 'Rear Bumper', value: '3-bar galvanised' },
+      { label: 'Toolbox', value: 'On A-frame with 1 slide-out' },
+      { label: 'Quick Drop Stands', value: 'Included' },
+      { label: 'Tap on A-Frame', value: 'Included' },
+    ],
+    solarPower: [
+      { label: 'Solar Panels', value: '4 x 210W (840W total)' },
+      { label: 'Lithium Battery', value: '400Ah on chassis' },
+      { label: 'Inverter', value: '3000W — to all 240V points including air-conditioner' },
+      { label: 'Battery Management', value: 'Projecta with colour touchscreen' },
+    ],
+    electrical: [
+      { label: 'LED Lighting Throughout', value: 'Included' },
+      { label: 'OHC LED Strip Lighting', value: 'Kitchen and seating' },
+      { label: 'TV', value: '24" LCD/DVD' },
+      { label: 'Sound System', value: 'Media / Radio' },
+      { label: 'Bedroom Fans', value: '2 x 12V' },
+    ],
+    plumbing: X_MASTER_PLUMBING_BASE,
+    appliances: [
+      { label: 'Fridge', value: 'Dometic 200L 12V/240V compressor' },
+      { label: 'Cooktop', value: 'Swift recessed with grill — 3 gas burners + 1 electric' },
+      { label: 'Microwave', value: 'Included' },
+      { label: 'Washing Machine', value: 'Top load' },
+      { label: 'Air Conditioner', value: 'Reverse cycle' },
+    ],
+    external: X_MASTER_EXTERNAL_BASE,
+    internal: X_MASTER_INTERNAL_BASE,
+  }),
+  '18-6': xMasterTech({
+    chassis: [
+      { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
+      { label: 'Suspension', value: '3T independent coil-spring' },
+      { label: 'A-Frame', value: '6"' },
+      { label: 'Raiser', value: '2"' },
+      { label: 'Rims & Tyres', value: '16"' },
+      { label: 'Brakes', value: '12" electric' },
+      { label: 'Gas Bottles', value: '2 x 9kg on slide' },
+      { label: 'Fresh Water Tanks', value: '2 x 95L' },
+      { label: 'Grey Water Tank', value: '1' },
+      { label: 'Jerry Can Holders', value: '1' },
+      { label: 'Tank Protection', value: 'Checker plate sheet' },
+      { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+      { label: 'Stone Guard', value: 'On A-frame' },
+      { label: 'Rear Bumper', value: '3-bar' },
+      { label: 'Toolbox', value: 'On A-frame' },
+    ],
+    solarPower: [
+      { label: 'Solar Panels', value: '4 panels (630W total)' },
+      { label: 'Lithium Batteries', value: '2 x 200Ah (400Ah total)' },
+      { label: 'Inverter', value: '3000W — to all 240V points including A/C' },
+      { label: 'Dust Reduction', value: 'Milenco with omni-directional TV antenna' },
+    ],
+    electrical: [
+      { label: 'LED Lighting Throughout', value: 'Included' },
+      { label: 'TV', value: '24" LCD/DVD' },
+      { label: 'Sound System', value: 'CD/Radio' },
+      { label: 'TV Antenna', value: '1' },
+      { label: 'Bedroom Fans', value: '2 x 12V' },
+      { label: 'Bedside Power', value: '12V points at all bed sides' },
+      { label: 'External Speakers', value: '2' },
+      { label: 'External TV Hatch', value: 'Included' },
+      { label: 'Reverse Camera', value: 'Included' },
+    ],
+    plumbing: X_MASTER_PLUMBING_BASE,
+    appliances: [
+      { label: 'Fridge', value: 'Dometic 200L 2-way 12V/240V' },
+      { label: 'Cooktop', value: 'Recessed with grill — 3 gas burners + 1 electric' },
+      { label: 'Microwave', value: 'Included' },
+      { label: 'Washing Machine', value: 'Front load' },
+      { label: 'Air Conditioner', value: 'Reverse cycle' },
+      { label: 'Diesel Heater', value: 'Included' },
+    ],
+    external: X_MASTER_EXTERNAL_BASE,
+    internal: [
+      ...X_MASTER_INTERNAL_BASE,
+      { label: 'Seating', value: 'Club lounge with adjustable table leg' },
+      { label: 'Concertina Door', value: 'Included' },
+    ],
+  }),
+  '19-6': xMasterTech({
+    chassis: [
+      { label: 'Trailer Coupling', value: 'DO35 off-road coupling' },
+      { label: 'Suspension', value: 'TITAN X 3.5T twin-shocker independent coil-spring trailing arm' },
+      { label: 'A-Frame', value: '6" extended' },
+      { label: 'Raiser', value: '2"' },
+      { label: 'Rims & Tyres', value: '16" off-road' },
+      { label: 'Brakes', value: '12" electric' },
+      { label: 'Gas Bottles', value: '2 x 9kg' },
+      { label: 'Fresh Water Tanks', value: '3 x 95L' },
+      { label: 'Grey Water Tank', value: '1' },
+      { label: 'Jerry Can Holders', value: '2 on A-frame' },
+      { label: 'Tank Protection', value: 'Checker sheet' },
+      { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+      { label: 'Stone Guard', value: 'On A-frame' },
+      { label: 'Rear Bumper', value: '3-bar' },
+      { label: 'Toolbox', value: 'Large alloy with 3 slides' },
+    ],
+    solarPower: [
+      { label: 'Solar Panels', value: '960W roof mounted' },
+      { label: 'Lithium Batteries', value: '2 x 300Ah on chassis (600Ah total)' },
+      { label: 'Inverter', value: 'Voltech 3000W — to all points including A/C' },
+      { label: 'Battery Management', value: 'Projecta' },
+      { label: 'Solar Regulator', value: 'Projecta 40A MPPT' },
+      { label: 'DC Charger', value: 'Projecta 60A DC-DC' },
+    ],
+    electrical: [
+      { label: 'LED Strip Lighting Throughout', value: 'Included' },
+      { label: 'TV', value: '12V 24" on wall bracket' },
+      { label: 'Bedroom Fans', value: '2 x 12V' },
+      { label: 'Bedside Power', value: 'USB / USB-C in nooks' },
+      { label: 'Awning Bug Lights', value: '2' },
+      { label: 'Front & Rear Work Lights', value: 'Included' },
+      { label: 'Off-side Light Over External Shower', value: 'Included' },
+    ],
+    plumbing: X_MASTER_PLUMBING_BASE,
+    appliances: [
+      { label: 'Fridge', value: 'Dometic 200L 12V compressor' },
+      { label: 'Cooktop', value: 'Swift recessed with griller — 1 electric + 3 gas burners' },
+      { label: 'Microwave', value: 'In overhead' },
+      { label: 'Washing Machine', value: 'Top load' },
+      { label: 'BBQ', value: 'On The Go RV BBQ Combo' },
+      { label: 'Air Conditioner', value: 'Reverse cycle' },
+    ],
+    external: [
+      ...X_MASTER_EXTERNAL_BASE.filter((r) => r.label !== 'Checker Plate'),
+      { label: 'Checker Plate Sides', value: '1m high' },
+      { label: 'Round Top Entry Door', value: 'Included' },
+    ],
+    internal: [
+      ...X_MASTER_INTERNAL_BASE,
+      { label: 'Furniture', value: 'CNC' },
+      { label: 'Drawers', value: 'Soft close' },
+      { label: 'Seating', value: 'Café with folding table — 12V points' },
+      { label: 'Pantry', value: 'Large with slide-out drawers' },
+      { label: 'Tapware', value: 'Black flick mixer with built-in water filter' },
+      { label: 'Mirror', value: 'Bevelled edge with LED back lighting' },
+      { label: 'Shower Screen', value: 'Black' },
+    ],
+  }),
+  '20-6': xMasterTech({
+    chassis: [
+      { label: 'Trailer Coupling', value: 'DO35 off-road coupling' },
+      { label: 'Suspension', value: 'TITAN X 3.5T twin-shocker independent coil-spring trailing arm' },
+      { label: 'A-Frame', value: '6" extended' },
+      { label: 'Raiser', value: '2"' },
+      { label: 'Rims & Tyres', value: '16" off-road' },
+      { label: 'Brakes', value: '12" electric' },
+      { label: 'Gas Bottles', value: '2 x 9kg' },
+      { label: 'Fresh Water Tanks', value: '3 x 95L' },
+      { label: 'Grey Water Tank', value: '1' },
+      { label: 'Jerry Can Holders', value: '2' },
+      { label: 'Tank Protection', value: 'Checker sheet' },
+      { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+      { label: 'Stone Guard', value: 'On A-frame' },
+      { label: 'Rear Bumper', value: '3-bar' },
+      { label: 'Toolbox', value: 'Large alloy with 3 slides' },
+    ],
+    solarPower: [
+      { label: 'Solar Panels', value: '960W roof mounted' },
+      { label: 'Lithium Batteries', value: '2 x 300Ah on chassis (600Ah total)' },
+      { label: 'Inverter', value: 'Voltech 3000W — to all points including A/C' },
+      { label: 'Battery Management', value: 'Projecta' },
+      { label: 'Solar Regulator', value: 'Projecta 40A MPPT' },
+      { label: 'DC Charger', value: 'Projecta 60A DC-DC' },
+    ],
+    electrical: [
+      { label: 'LED Strip Lighting Throughout', value: 'Included' },
+      { label: 'TV', value: '12V 24" on wall bracket' },
+      { label: 'Bedroom Fans', value: '2 x 12V' },
+      { label: 'Bedside Power', value: 'USB / USB-C in nooks' },
+      { label: 'Awning Bug Lights', value: '2' },
+      { label: 'Front & Rear Work Lights', value: 'Included' },
+      { label: 'Off-side Light Over External Shower', value: 'Included' },
+    ],
+    plumbing: X_MASTER_PLUMBING_BASE,
+    appliances: [
+      { label: 'Fridge', value: 'Dometic 200L 12V compressor' },
+      { label: 'Cooktop', value: 'Swift recessed with griller — 1 electric + 3 gas burners' },
+      { label: 'Microwave', value: 'In overhead' },
+      { label: 'Washing Machine', value: 'Top load' },
+      { label: 'BBQ', value: 'On The Go RV BBQ Combo' },
+      { label: 'Air Conditioner', value: 'Reverse cycle' },
+    ],
+    external: [
+      ...X_MASTER_EXTERNAL_BASE.filter((r) => r.label !== 'Checker Plate'),
+      { label: 'Checker Plate Sides', value: '1m high' },
+      { label: 'Round Top Entry Door', value: 'Included' },
+    ],
+    internal: [
+      ...X_MASTER_INTERNAL_BASE,
+      { label: 'Furniture', value: 'CNC' },
+      { label: 'Drawers', value: 'Soft close' },
+      { label: 'Seating', value: 'Café with folding table — 12V points' },
+      { label: 'Pantry', value: 'Large with slide-out drawers + small pull-out' },
+      { label: 'Tapware', value: 'Black flick mixer with built-in water filter' },
+    ],
+  }),
+  '22-6': xMasterTech({
+    chassis: [
+      { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
+      { label: 'Suspension', value: '3.5T twin-shocker independent coil-spring' },
+      { label: 'A-Frame', value: '6"' },
+      { label: 'Raiser', value: '2"' },
+      { label: 'Rims & Tyres', value: '16"' },
+      { label: 'Brakes', value: '12" electric' },
+      { label: 'Gas Bottles', value: '2 x 9kg' },
+      { label: 'Fresh Water Tanks', value: '2 x 95L' },
+      { label: 'Grey Water Tank', value: '1' },
+      { label: 'Jerry Can Holders', value: '2' },
+      { label: 'Tank Protection', value: 'Aluminium checker plate' },
+      { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+      { label: 'Stone Guard', value: 'On A-frame' },
+      { label: 'Rear Bumper', value: '3-bar galvanised' },
+      { label: 'Toolbox', value: 'On A-frame with 1 slide-out' },
+      { label: 'Quick Drop Stands', value: 'Included' },
+      { label: 'Tap on A-Frame', value: 'Included' },
+    ],
+    solarPower: [
+      { label: 'Solar Panels', value: '4 x 210W' },
+      { label: 'Lithium Battery', value: '400Ah on chassis' },
+      { label: 'Inverter', value: 'Voltech 3000W' },
+      { label: 'Battery Management', value: 'Projecta with colour touchscreen' },
+      { label: 'Solar Regulator', value: 'Projecta 40A MPPT' },
+    ],
+    electrical: [
+      { label: 'LED Lighting Throughout', value: 'Included' },
+      { label: 'OHC LED Strip Lighting', value: 'Kitchen and seating' },
+      { label: 'TV', value: '24" LCD/DVD' },
+      { label: 'Sound System', value: 'Media / Radio' },
+      { label: 'Bedroom Fans', value: '2 x 12V' },
+      { label: 'Bunk Fans', value: '2 x 12V' },
+      { label: 'Bunk Power', value: 'USB / USB-C 12V points' },
+    ],
+    plumbing: X_MASTER_PLUMBING_BASE,
+    appliances: [
+      { label: 'Fridge', value: 'Dometic 220L 3-way' },
+      { label: 'Cooktop', value: 'Hawk recessed with grill — 3 gas burners + 1 electric' },
+      { label: 'Microwave', value: 'Hawk flat-bed' },
+      { label: 'Washing Machine', value: 'Front load' },
+      { label: 'Hot Water Service', value: 'Hawk gas/electric' },
+      { label: 'Air Conditioner', value: 'Reverse cycle' },
+      { label: 'Diesel Heater', value: 'Included' },
+    ],
+    external: X_MASTER_EXTERNAL_BASE,
+    internal: [
+      ...X_MASTER_INTERNAL_BASE,
+      { label: 'Seating', value: 'Straight lounge with adjustable table leg' },
+      { label: 'Pantry', value: 'Large two-door' },
+      { label: 'Tapware', value: 'Black flick mixer with water filter — black pack throughout' },
+    ],
+  }),
+}
+
+// Mirage (on-road tourer) — per-size specs.
+const MIRAGE_SPECS_BY_SIZE = {
+  '18-6': { length: "18'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '19-6': { length: "19'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '20-6': { length: "20'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '22-6': { length: "22'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+}
+
+const mirageTech = ({ raiser, fridge, washer, extraInternal = [], extraElectrical = [] }) => [
+  {
+    id: 'chassis',
+    label: 'Chassis',
+    rows: [
+      { label: 'Trailer Coupling', value: '3.5T ball coupling' },
+      { label: 'Suspension', value: 'Load-sharing independent' },
+      { label: 'A-Frame', value: '6"' },
+      { label: 'Raiser', value: raiser },
+      { label: 'Rims & Tyres', value: '15" — 235/75R15' },
+      { label: 'Brakes', value: '10" electric' },
+      { label: 'Gas Bottles', value: '2 x 9kg in aluminium toolbox on slide-out' },
+      { label: 'Fresh Water Tanks', value: '2 x 95L' },
+      { label: 'Grey Water Tank', value: '1' },
+      { label: 'Tank Protection', value: 'Galvanised sheet' },
+      { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+      { label: 'Rear Bumper', value: '3-bar galvanised' },
+      { label: 'Quick Drop Corner Stands', value: 'Included' },
+      { label: 'Tap on Drawbar', value: 'Included' },
+    ],
+  },
+  {
+    id: 'solar-power',
+    label: 'Solar & Power',
+    rows: [
+      { label: 'Solar Panels', value: '2 x 210W (420W total)' },
+      { label: 'Lithium Battery', value: '300Ah' },
+      { label: 'Battery Management', value: 'Projecta' },
+    ],
+  },
+  {
+    id: 'electrical',
+    label: 'Electrical',
+    rows: [
+      { label: 'LED Lighting Throughout', value: 'Included' },
+      { label: 'OHC LED Strip Lighting', value: 'Kitchen and seating' },
+      { label: 'TV', value: '24" LCD' },
+      { label: 'Sound System', value: 'Bluetooth / Radio / Audio' },
+      { label: 'TV Antenna', value: 'Wineguard with Sensar FreeVision' },
+      { label: 'Bedroom Fans', value: '2 x 12V' },
+      { label: 'Bedside Power', value: '12V USB / USB-C in robe nooks plus 240V points' },
+      ...extraElectrical,
+    ],
+  },
+  {
+    id: 'plumbing',
+    label: 'Plumbing',
+    rows: [
+      { label: 'Hot Water Service', value: 'Swift gas/electric — Australian-made stainless steel' },
+      { label: 'Filtered Drinking Water Tap', value: 'Included' },
+      { label: 'Toilet', value: 'China bowl' },
+      { label: 'Shower', value: 'One piece' },
+      { label: 'External Gas Bayonet', value: 'Included' },
+    ],
+  },
+  {
+    id: 'appliances',
+    label: 'Appliances',
+    rows: [
+      { label: 'Fridge', value: fridge },
+      { label: 'Cooktop', value: 'Swift recessed with grill — 3 gas burners + 1 electric' },
+      { label: 'Microwave', value: 'Included' },
+      { label: 'Washing Machine', value: washer },
+      { label: 'Air Conditioner', value: 'Dometic Fresh Jet Pro reverse cycle' },
+    ],
+  },
+  {
+    id: 'external',
+    label: 'External',
+    rows: [
+      { label: 'Body Cladding', value: 'Pro-Bond aluminium composite' },
+      { label: 'Checker Plate', value: 'Front, rear and sides' },
+      { label: 'Tunnel Boot', value: 'With internal lighting' },
+      { label: 'Awning', value: 'Roll-out with centre support' },
+      { label: 'Light Over Tunnel Boot', value: 'Included' },
+      { label: 'External TV Point', value: 'With 12V power' },
+      { label: 'External Speakers', value: '2' },
+      { label: 'Entrance Step', value: 'Alloy' },
+    ],
+  },
+  {
+    id: 'internal',
+    label: 'Internal',
+    rows: [
+      { label: 'Bed', value: "Queen 6'5\" x 5' inner spring with pillow top" },
+      { label: 'Bed Base', value: 'Posture slat with gas-strut assisted lift' },
+      { label: 'Cooktop Splashbacks', value: 'Full height' },
+      { label: 'Cupboard Hinges', value: 'Piano hinges' },
+      { label: 'Overhead Cupboards', value: 'Gas struts' },
+      { label: 'Pantry', value: 'Two-door' },
+      { label: 'Foot Rests / Seat', value: 'Rated' },
+      { label: 'Sink', value: 'Stainless steel' },
+      ...extraInternal,
+    ],
+  },
+]
+
+const MIRAGE_TECH_SPECS_BY_SIZE = {
+  '18-6': mirageTech({
+    raiser: '2"',
+    fridge: 'Dometic 173L 3-way fridge / freezer',
+    washer: 'Top load',
+    extraInternal: [{ label: 'Seating', value: 'Café with folding table — 240V and 12V points' }],
+  }),
+  '19-6': mirageTech({
+    raiser: '2"',
+    fridge: 'Dometic 173L 3-way fridge / freezer',
+    washer: 'Wall mount',
+    extraInternal: [{ label: 'Seating', value: 'Café with folding table — 240V and 12V points' }],
+  }),
+  '20-6': mirageTech({
+    raiser: '4"',
+    fridge: 'Dometic 180L 3-way fridge / freezer',
+    washer: 'Top load',
+    extraInternal: [
+      { label: 'Seating', value: 'Café with folding table — 240V and 12V points' },
+      { label: 'Concertina Door', value: 'Included' },
+    ],
+    extraElectrical: [{ label: 'Second TV', value: '32" LCD' }],
+  }),
+  '22-6': mirageTech({
+    raiser: '2"',
+    fridge: 'Dometic 185L 3-way fridge / freezer',
+    washer: 'Top load',
+    extraInternal: [
+      { label: 'Seating', value: 'Leather club lounge with adjustable table' },
+      { label: 'Slide-Out', value: 'Electric — queen bedroom' },
+      { label: 'Oven', value: 'Included' },
+      { label: 'Tapware', value: 'Black pack — sink, vanity, shower rose' },
+    ],
+    extraElectrical: [{ label: 'Second TV', value: '30" LCD' }],
+  }),
+}
+
+// Dune (semi-off-road) — per-size specs.
+const DUNE_SPECS_BY_SIZE = {
+  '18-6': { length: "18'6", suspension: '3.3T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '19-6': { length: "19'6", suspension: '3.3T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '20-6': { length: "20'6", suspension: '3.3T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '22-6': { length: "22'6", suspension: '3.5T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+}
+
+const duneTech = ({ suspension, brakes, batteryAh }) => [
+  {
+    id: 'chassis',
+    label: 'Chassis',
+    rows: [
+      { label: 'Trailer Coupling', value: 'DO35 off-road coupling' },
+      { label: 'Suspension', value: suspension },
+      { label: 'A-Frame', value: '6"' },
+      { label: 'Raiser', value: '4"' },
+      { label: 'Rims & Tyres', value: '235/75R15 off-road' },
+      { label: 'Brakes', value: brakes },
+      { label: 'Gas Bottles', value: '2 x 9kg in toolbox slide-out' },
+      { label: 'Fresh Water Tanks', value: '2 x 95L' },
+      { label: 'Grey Water Tank', value: '1' },
+      { label: 'Jerry Can Holders', value: '1' },
+      { label: 'Tank Protection', value: 'Galvanised sheet' },
+      { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+      { label: 'Rear Bumper', value: '3-bar' },
+      { label: 'Toolbox', value: 'On A-frame' },
+    ],
+  },
+  {
+    id: 'solar-power',
+    label: 'Solar & Power',
+    rows: [
+      { label: 'Solar Panels', value: '2 x 210W (420W total)' },
+      { label: 'Lithium Battery', value: batteryAh },
+      { label: 'Battery Management', value: 'Projecta with LCD display' },
+      { label: 'Solar Regulator', value: 'MPPT' },
+    ],
+  },
+  {
+    id: 'electrical',
+    label: 'Electrical',
+    rows: [
+      { label: 'LED Lighting Throughout', value: 'Included' },
+      { label: 'OHC LED Strip Lighting', value: 'Kitchen and seating' },
+      { label: 'TV', value: '24" LCD' },
+      { label: 'Sound System', value: 'Media Player / Radio' },
+      { label: 'Dust Reduction System', value: 'Milenco 12V with omni-directional 12V boosted TV antenna' },
+      { label: 'Bedroom Fans', value: '2 x 12V' },
+      { label: 'Bedside Power', value: '12V USB / USB-C in robes and table' },
+    ],
+  },
+  {
+    id: 'plumbing',
+    label: 'Plumbing',
+    rows: [
+      { label: 'Hot Water Service', value: 'Swift gas/electric — Australian-made stainless steel' },
+      { label: 'Filtered Drinking Water Tap', value: 'Included' },
+      { label: 'Toilet', value: 'Included' },
+      { label: 'Shower', value: 'One piece' },
+      { label: 'External Gas Bayonet', value: 'Included' },
+    ],
+  },
+  {
+    id: 'appliances',
+    label: 'Appliances',
+    rows: [
+      { label: 'Fridge', value: 'Dometic 190L 3-way' },
+      { label: 'Cooktop', value: 'Recessed with grill — 3 gas burners + 1 electric' },
+      { label: 'Microwave', value: 'Included' },
+      { label: 'Washing Machine', value: 'Top load' },
+    ],
+  },
+  {
+    id: 'external',
+    label: 'External',
+    rows: [
+      { label: 'Body Cladding', value: 'Pro-Bond aluminium composite' },
+      { label: 'Checker Plate', value: 'Front, rear and sides' },
+      { label: 'Tunnel Boot', value: 'Included' },
+      { label: 'Awning', value: 'Roll-out with centre support' },
+      { label: 'Picnic Table', value: 'With 240V point' },
+      { label: 'Awning Lights', value: 'Twin' },
+      { label: 'Work Lights', value: 'Front and rear' },
+      { label: 'External Speakers', value: '2' },
+      { label: 'Light Over Tunnel Boot', value: 'Awning side' },
+      { label: 'Entrance Step', value: 'Pull-out alloy' },
+    ],
+  },
+  {
+    id: 'internal',
+    label: 'Internal',
+    rows: [
+      { label: 'Bed', value: "Queen 6'5\" x 5'2\" inner spring with pillow top" },
+      { label: 'Bed Lift', value: 'Gas strut' },
+      { label: 'Seating', value: 'Café with folding table' },
+      { label: 'Foot Rests', value: 'Included' },
+      { label: 'Splashbacks', value: 'Full height' },
+      { label: 'Cupboard Hinges', value: 'Piano hinges throughout' },
+      { label: 'Overhead Cupboards', value: 'Gas struts' },
+    ],
+  },
+]
+
+const DUNE_TECH_SPECS_BY_SIZE = {
+  '18-6': duneTech({
+    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
+    brakes: '10" electric',
+    batteryAh: '300Ah on chassis',
+  }),
+  '19-6': duneTech({
+    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
+    brakes: '10" electric',
+    batteryAh: '300Ah on chassis',
+  }),
+  '20-6': duneTech({
+    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
+    brakes: '10" electric',
+    batteryAh: '2 x 135Ah lithium (270Ah total)',
+  }),
+  '22-6': duneTech({
+    suspension: '3.5T twin-shocker independent coil-spring trailing arm',
+    brakes: '12" electric',
+    batteryAh: '300Ah on chassis',
+  }),
+}
+
 export const models = [
   {
     slug: 'x-master',
@@ -30,6 +632,11 @@ export const models = [
     heroImage: '/images/hero/hero-xmaster.png',
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the X-Master',
+    // Per-size pill values + full build sheets. Sizes that don't appear here
+    // (16'6, plus the X-Master Slide-Out's chassis package) fall back to the
+    // shared `technicalSpecs` and the variant `specs` further down.
+    specsBySize: X_MASTER_SPECS_BY_SIZE,
+    technicalSpecsBySize: X_MASTER_TECH_SPECS_BY_SIZE,
     // Full manufacturer build sheet — shared across both X-Master variants.
     technicalSpecs: [
       {
@@ -339,6 +946,11 @@ export const models = [
     heroImage: '/images/hero/hero-mirage-outback.png',
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Mirage',
+    // Per-size pill values + full build sheets. The four Mirage variants are
+    // *layout* variants (Cafe / Recliners / Queen / Single) on the same body,
+    // so all four share these per-size chassis and power specs.
+    specsBySize: MIRAGE_SPECS_BY_SIZE,
+    technicalSpecsBySize: MIRAGE_TECH_SPECS_BY_SIZE,
     // Full manufacturer build sheet — shared across all Mirage variants.
     technicalSpecs: [
       {
@@ -770,6 +1382,11 @@ export const models = [
       '20-6': '/images/blueprints/generic-20-6.png',
       '22-6': '/images/blueprints/generic-22-6.png',
     },
+    // Per-size pill values + full build sheets. Sizes that don't appear here
+    // (16'6, 17'6) fall back to the model-level `specs` and `technicalSpecs`
+    // below.
+    specsBySize: DUNE_SPECS_BY_SIZE,
+    technicalSpecsBySize: DUNE_TECH_SPECS_BY_SIZE,
     technicalSpecs: [
       {
         id: 'chassis',

@@ -129,6 +129,7 @@ function resolveFields(model, variant) {
       description: model.description,
       features: model.features ?? [],
       specs: model.specs ?? {},
+      specsBySize: model.specsBySize ?? null,
       gallery: normaliseGallery(model),
       floorPlan: model.floorPlan ?? null,
       floorPlanNote: model.floorPlanNote ?? null,
@@ -137,6 +138,7 @@ function resolveFields(model, variant) {
       ctaLabel: model.ctaLabel,
       inclusions: model.inclusions ?? null,
       technicalSpecs: model.technicalSpecs ?? null,
+      technicalSpecsBySize: model.technicalSpecsBySize ?? null,
     }
   }
   return {
@@ -144,6 +146,7 @@ function resolveFields(model, variant) {
     description: variant.description ?? model.description,
     features: variant.features ?? model.features ?? [],
     specs: variant.specs ?? model.specs ?? {},
+    specsBySize: variant.specsBySize ?? model.specsBySize ?? null,
     gallery: variant.gallery ?? normaliseGallery(model),
     floorPlan: variant.floorPlan ?? model.floorPlan ?? null,
     floorPlanNote: variant.floorPlanNote ?? model.floorPlanNote ?? null,
@@ -152,6 +155,7 @@ function resolveFields(model, variant) {
     ctaLabel: variant.ctaLabel ?? model.ctaLabel,
     inclusions: variant.inclusions ?? model.inclusions ?? null,
     technicalSpecs: variant.technicalSpecs ?? model.technicalSpecs ?? null,
+    technicalSpecsBySize: variant.technicalSpecsBySize ?? model.technicalSpecsBySize ?? null,
   }
 }
 
@@ -201,14 +205,6 @@ export default function ModelPage() {
   const activeBucket = featureTabs.find((t) => t.id === activeFeatureTab) ?? featureTabs[0]
   const visibleFeatures = useFeatureTabs ? (activeBucket?.items ?? []) : fields.features
 
-  const [activeTechSpecTab, setActiveTechSpecTab] = useState(fields.technicalSpecs?.[0]?.id ?? null)
-  useEffect(() => {
-    if (fields.technicalSpecs && !fields.technicalSpecs.some((t) => t.id === activeTechSpecTab)) {
-      setActiveTechSpecTab(fields.technicalSpecs[0]?.id ?? null)
-    }
-  }, [fields.technicalSpecs, activeTechSpecTab])
-  const activeTechSpec = fields.technicalSpecs?.find((t) => t.id === activeTechSpecTab) ?? fields.technicalSpecs?.[0]
-
   // Size selector for the floor-plan section. Caravans come in six body
   // lengths; the X-Master Slide-Out is single-size (22'6). When floorPlansBySize
   // has any entries, sizes not in it show the "coming soon" placeholder. An
@@ -218,6 +214,23 @@ export default function ModelPage() {
     if (fromUrl && fields.sizes?.includes(fromUrl)) return fromUrl
     return pickDefaultSize(fields)
   })
+
+  // Resolve specs and the technical-spec build sheet from the per-size maps
+  // (sourced from the equivalent old-site listings) and fall back to the
+  // variant-/model-level defaults for sizes the old site doesn't cover (16'6
+  // and the X-Master Slide-Out's chassis package).
+  const sizeSpecs = activeSize ? fields.specsBySize?.[activeSize] : null
+  const currentSpecs = sizeSpecs ? { ...fields.specs, ...sizeSpecs } : fields.specs
+  const sizeTechSpecs = activeSize ? fields.technicalSpecsBySize?.[activeSize] : null
+  const currentTechnicalSpecs = sizeTechSpecs ?? fields.technicalSpecs
+
+  const [activeTechSpecTab, setActiveTechSpecTab] = useState(currentTechnicalSpecs?.[0]?.id ?? null)
+  useEffect(() => {
+    if (currentTechnicalSpecs && !currentTechnicalSpecs.some((t) => t.id === activeTechSpecTab)) {
+      setActiveTechSpecTab(currentTechnicalSpecs[0]?.id ?? null)
+    }
+  }, [currentTechnicalSpecs, activeTechSpecTab])
+  const activeTechSpec = currentTechnicalSpecs?.find((t) => t.id === activeTechSpecTab) ?? currentTechnicalSpecs?.[0]
   const prevActiveKey = useRef(activeKey)
   useEffect(() => {
     // If the current size isn't valid in the new variant, reset (e.g. Standard
@@ -518,7 +531,7 @@ export default function ModelPage() {
           <RevealOnScroll delay={0.1}>
             <div className="model-page__specs-grid">
               {SPEC_ORDER.map(([key, label]) => (
-                <SpecPill key={key} label={label} value={fields.specs[key] || 'TBC'} tone="accent" />
+                <SpecPill key={key} label={label} value={currentSpecs[key] || 'TBC'} tone="accent" />
               ))}
             </div>
             <p className="model-page__specs-note">
@@ -528,7 +541,7 @@ export default function ModelPage() {
         </div>
       </section>
 
-      {fields.technicalSpecs && fields.technicalSpecs.length > 0 && activeTechSpec && (
+      {currentTechnicalSpecs && currentTechnicalSpecs.length > 0 && activeTechSpec && (
         <section className={`model-page__tech-specs section ${nextTone()}`}>
           <div className="container">
             <RevealOnScroll>
@@ -545,7 +558,7 @@ export default function ModelPage() {
                 role="tablist"
                 aria-label="Technical specification categories"
               >
-                {fields.technicalSpecs.map((tab) => {
+                {currentTechnicalSpecs.map((tab) => {
                   const isActive = tab.id === activeTechSpec.id
                   return (
                     <button
