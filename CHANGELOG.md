@@ -118,3 +118,4 @@
 - Every size tab on the Mirage Queen Bed page (16'6" through 22'6") now opens the same generic Sahara floor plan used on the Dune and Horizon pages, instead of "coming soon" or older Mirage-specific drawings.
 - Every van page now mentions that builds are available in either an aluminium frame or a hybrid pvc/meranti frame, so buyers can see the choice up front.
 - The Mirage Twin Recliner gallery now has eight extra photos — a sunset side profile, the front queen bedroom from a couple of angles, a wider kitchen shot, the marble-look ensuite, the shower stall, and a clearer look at the twin recliner chairs and shared side-table.
+- Removed three older interior photos from the Mirage Twin Recliner gallery that turned out to be of a different layout, so every inside photo now actually shows the recliner build.
