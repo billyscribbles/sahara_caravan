@@ -466,6 +466,9 @@ export default function ModelPage() {
                 </li>
               ))}
             </ul>
+            <p className="model-page__specs-note">
+              All of our vans can be built in aluminium frame or hybrid pvc/meranti.
+            </p>
           </RevealOnScroll>
         </div>
       </section>

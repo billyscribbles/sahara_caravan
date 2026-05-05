@@ -116,3 +116,4 @@
 - The size you pick on a caravan page is now remembered in the page address — so if you copy the link and send it to someone, they open straight to the same size and floor plan you were looking at.
 - The Mirage Twin Recliner page now shows a single sample floor plan across every size, with a note that the Twin Recliner setup can be added to any Mirage size or layout as a custom build.
 - Every size tab on the Mirage Queen Bed page (16'6" through 22'6") now opens the same generic Sahara floor plan used on the Dune and Horizon pages, instead of "coming soon" or older Mirage-specific drawings.
+- Every van page now mentions that builds are available in either an aluminium frame or a hybrid pvc/meranti frame, so buyers can see the choice up front.
