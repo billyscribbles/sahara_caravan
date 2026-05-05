@@ -750,7 +750,14 @@ export const models = [
     ctaLabel: 'Enquire about the Dune',
     sizes: DEFAULT_SIZES,
     floorPlan: '/images/blueprints/generic.png',
-    floorPlansBySize: {},
+    floorPlansBySize: {
+      '16-6': '/images/blueprints/generic-16-6.png',
+      '17-6': '/images/blueprints/generic-17-6.png',
+      '18-6': '/images/blueprints/generic-18-6.png',
+      '19-6': '/images/blueprints/generic-19-6.png',
+      '20-6': '/images/blueprints/generic-20-6.png',
+      '22-6': '/images/blueprints/generic-22-6.png',
+    },
     technicalSpecs: [
       {
         id: 'chassis',
@@ -904,7 +911,12 @@ export const models = [
     ctaLabel: 'Enquire about the Horizon',
     sizes: ['19-6', '20-6', '21-6', '22-6'],
     floorPlan: '/images/blueprints/generic.png',
-    floorPlansBySize: {},
+    floorPlansBySize: {
+      '19-6': '/images/blueprints/generic-19-6.png',
+      '20-6': '/images/blueprints/generic-20-6.png',
+      '21-6': '/images/blueprints/generic-21-6.png',
+      '22-6': '/images/blueprints/generic-22-6.png',
+    },
     technicalSpecs: [
       {
         id: 'chassis',
