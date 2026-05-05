@@ -53,7 +53,7 @@ export const site = {
   },
 
   contact: {
-    email: 'saharacaravans@hotmail.com',
+    email: 'support@saharacaravans.com.au',
     phone: '0419 786 446',
     location: 'Campbellfield, Victoria, Australia',
     hours: 'Mon–Fri 9:00am – 5:00pm (AEST)',

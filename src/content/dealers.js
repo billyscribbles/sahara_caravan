@@ -17,7 +17,7 @@ export const dealers = {
           name: 'Sahara Caravans — Head Office',
           address: 'Campbellfield, Victoria',
           phone: '0419 786 446',
-          email: 'saharacaravans@hotmail.com',
+          email: 'support@saharacaravans.com.au',
         },
       ],
     },

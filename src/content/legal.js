@@ -23,7 +23,7 @@ export const legal = {
       },
       {
         heading: 'Contact',
-        body: 'Questions about this policy? Email us at saharacaravans@hotmail.com or call 0419 786 446.',
+        body: 'Questions about this policy? Email us at support@saharacaravans.com.au or call 0419 786 446.',
       },
     ],
   },
