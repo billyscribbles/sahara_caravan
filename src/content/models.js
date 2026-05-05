@@ -28,7 +28,7 @@ export const SIZE_LABELS = {
 const X_MASTER_SPECS_BY_SIZE = {
   '17-6': { length: "17'6", suspension: '3T independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
   '18-6': { length: "18'6", suspension: '3T independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
-  '19-6': { length: "19'6", suspension: 'TITAN X 3.5T twin-shocker coil-spring trailing arm', water: '285L (3 x 95L)', warranty: '5 yr structural' },
+  '19-6': { length: "19'6", tare: '2720 kg', gtm: '3329 kg', atm: '3500 kg', suspension: 'TITAN X 3.5T twin-shocker coil-spring trailing arm', water: '285L (3 x 95L)', warranty: '5 yr structural' },
   '20-6': { length: "20'6", suspension: 'TITAN X 3.5T twin-shocker coil-spring trailing arm', water: '285L (3 x 95L)', warranty: '5 yr structural' },
   '22-6': { length: "22'6", suspension: '3.5T twin-shocker independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
 }
