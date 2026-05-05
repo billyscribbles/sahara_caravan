@@ -103,3 +103,4 @@
 - Removed the awkward rear-view photo from the top of the Dune gallery so it now opens on a cleaner shot.
 - Added a "Become a Dealer" page where caravan businesses can apply to join the Sahara network — a short form covers their business name, contact, state, years in the industry, existing showroom and current brands, with a clear three-step path from application to factory visit. The page is linked from a banner on the Find a Dealer page and from the footer.
 - The Dune, Horizon and Mirage Cafe pages now show a generic Sahara floor plan instead of a "coming soon" placeholder — same general layout most Sahara caravans share, with key features and a small legend underneath.
+- Enquiries from both the Contact form and the Become a Dealer form now go to the updated Sahara inbox.

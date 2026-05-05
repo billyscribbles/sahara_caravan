@@ -70,7 +70,7 @@ export const site = {
   },
 
   integrations: {
-    formspreeId: import.meta.env.VITE_FORMSPREE_ID || '',
+    formspreeId: import.meta.env.VITE_FORMSPREE_ID || 'xeengkde',
     gaId: import.meta.env.VITE_GA_ID || '',
   },
 }
