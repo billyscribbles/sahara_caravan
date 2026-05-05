@@ -456,6 +456,7 @@ export const models = [
         badge: 'Mirage · Cafe Lounge',
         blurb: 'Fixed L-shaped cafe dinette with pedestal table — seats the whole family for meals and folds out for an extra bed.',
         blueprint: '/images/blueprints/mirage-cafe.webp',
+        floorPlan: '/images/blueprints/generic.png',
         sizes: DEFAULT_SIZES,
         floorPlansBySize: {},
         description:
@@ -732,6 +733,7 @@ export const models = [
     highlights: ['Toilet', 'Shower', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the Dune',
     sizes: DEFAULT_SIZES,
+    floorPlan: '/images/blueprints/generic.png',
     floorPlansBySize: {},
     technicalSpecs: [
       {
@@ -885,6 +887,7 @@ export const models = [
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Bunks'],
     ctaLabel: 'Enquire about the Horizon',
     sizes: ['19-6', '20-6', '21-6', '22-6'],
+    floorPlan: '/images/blueprints/generic.png',
     floorPlansBySize: {},
     technicalSpecs: [
       {

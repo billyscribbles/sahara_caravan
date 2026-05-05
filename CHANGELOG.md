@@ -102,3 +102,4 @@
 - Filled in the Sahara Horizon page the same way — family layout details (rear queen, four bunks, L-lounge, top-load washing machine), reverse-cycle air-con, 420W solar with a 300Ah lithium battery, and the full kitchen, bathroom and chassis spec breakdown.
 - Removed the awkward rear-view photo from the top of the Dune gallery so it now opens on a cleaner shot.
 - Added a "Become a Dealer" page where caravan businesses can apply to join the Sahara network — a short form covers their business name, contact, state, years in the industry, existing showroom and current brands, with a clear three-step path from application to factory visit. The page is linked from a banner on the Find a Dealer page and from the footer.
+- The Dune, Horizon and Mirage Cafe pages now show a generic Sahara floor plan instead of a "coming soon" placeholder — same general layout most Sahara caravans share, with key features and a small legend underneath.
