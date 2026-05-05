@@ -3,11 +3,15 @@ import './BrandWheel.css'
 
 const partners = [
   { name: 'ARV', src: '/images/partners/arv.png' },
+  { name: 'Capral Aluminium', src: '/images/partners/capral.png' },
   { name: 'Coast', src: '/images/partners/coast.png' },
   { name: 'Dometic', src: '/images/partners/dometic.png' },
   { name: 'Leaktight', src: '/images/partners/leaktight.png' },
   { name: 'NCE', src: '/images/partners/nce.png' },
+  { name: 'NewLine Upholstery', src: '/images/partners/newline.png' },
   { name: 'Probond', src: '/images/partners/probond.png' },
+  { name: 'Razor RV', src: '/images/partners/razor-rv.png' },
+  { name: 'SJ RV', src: '/images/partners/sj-rv.png' },
   { name: 'Thetford', src: '/images/partners/thetford.png' },
 ]
 
