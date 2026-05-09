@@ -8,6 +8,8 @@ import {
   Hammer,
   Utensils,
   BadgeCheck,
+  Frame,
+  Construction,
   Sparkles,
   ChevronLeft,
   ChevronRight,
@@ -18,7 +20,7 @@ import BuildStageVideo from '../ui/BuildStageVideo.jsx'
 import { buildProcess } from '../../content/buildProcess.js'
 import './BuildProcess.css'
 
-const ICONS = { Factory, Box, Layers, Droplets, Zap, Hammer, Utensils, BadgeCheck }
+const ICONS = { Factory, Box, Layers, Droplets, Zap, Hammer, Utensils, BadgeCheck, Frame, Construction }
 const CLONE_BUFFER = 2
 const SWIPE_THRESHOLD = 40
 const DRAG_THRESHOLD = 6

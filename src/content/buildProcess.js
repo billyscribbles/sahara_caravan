@@ -18,6 +18,13 @@ export const buildProcess = {
       poster: '/videos/build/body-shell-poster.jpg',
     },
     {
+      icon: 'Frame',
+      title: 'Composite Wall Build-Up',
+      body: 'Aluminium uprights and roof rails infilled with closed-cell composite panels — one wall build-up that handles structure, insulation and the inside surface in a single skin, with hatch and window openings cut to spec.',
+      video: '/videos/build/composite-walls.mp4',
+      poster: '/videos/build/composite-walls-poster.jpg',
+    },
+    {
       icon: 'Layers',
       title: 'Insulation & Subfloor',
       body: 'Closed-cell foam insulation and timber/composite subfloor wrapped with an underbelly that keeps dust, water and road grit out.',
@@ -31,6 +38,13 @@ export const buildProcess = {
       icon: 'Zap',
       title: 'Electrical & Solar',
       body: '12V DC and 240V AC looms, lithium batteries, solar regulator, inverter and switch panel — each circuit labelled, fused and tested end-to-end.',
+    },
+    {
+      icon: 'Construction',
+      title: 'Internal Framing & Joinery',
+      body: 'Pine framing fixed back to the walls, then bunks, overhead lockers, benches and storage cubbies rough-fitted in place — the cabinetry takes shape before linings, doors and finishes go on.',
+      video: '/videos/build/internal-framing.mp4',
+      poster: '/videos/build/internal-framing-poster.jpg',
     },
     {
       icon: 'Hammer',
