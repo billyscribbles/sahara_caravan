@@ -127,9 +127,8 @@ export default function BuildProcess({ showHeader = true }) {
     visibility: slideStep > 0 ? 'visible' : 'hidden',
   }
 
-  const renderStage = (stage, displayNum) => {
+  const renderStage = (stage) => {
     const Icon = ICONS[stage.icon] || Sparkles
-    const step = String(displayNum).padStart(2, '0')
     return (
       <article className="build-process__stage">
         <BuildStageVideo
@@ -141,7 +140,6 @@ export default function BuildProcess({ showHeader = true }) {
           <div className="build-process__icon" aria-hidden="true">
             <Icon size={22} strokeWidth={1.6} />
           </div>
-          <div className="build-process__num">{step}</div>
         </div>
         <h3 className="build-process__title">{stage.title}</h3>
         <p className="build-process__body">{stage.body}</p>
@@ -198,18 +196,15 @@ export default function BuildProcess({ showHeader = true }) {
               style={trackStyle}
               onTransitionEnd={handleTransitionEnd}
             >
-              {preClones.map((stage, i) => {
-                const displayNum = stageCount - CLONE_BUFFER + i + 1
-                return (
-                  <div
-                    key={`clone-pre-${i}`}
-                    className="build-process__slide"
-                    aria-hidden="true"
-                  >
-                    {renderStage(stage, displayNum)}
-                  </div>
-                )
-              })}
+              {preClones.map((stage, i) => (
+                <div
+                  key={`clone-pre-${i}`}
+                  className="build-process__slide"
+                  aria-hidden="true"
+                >
+                  {renderStage(stage)}
+                </div>
+              ))}
 
               {stages.map((stage, i) => (
                 <RevealOnScroll
@@ -217,7 +212,7 @@ export default function BuildProcess({ showHeader = true }) {
                   delay={i * 0.04}
                   className="build-process__slide"
                 >
-                  {renderStage(stage, i + 1)}
+                  {renderStage(stage)}
                 </RevealOnScroll>
               ))}
 
@@ -227,7 +222,7 @@ export default function BuildProcess({ showHeader = true }) {
                   className="build-process__slide"
                   aria-hidden="true"
                 >
-                  {renderStage(stage, i + 1)}
+                  {renderStage(stage)}
                 </div>
               ))}
             </div>

@@ -125,3 +125,4 @@
 - Added two new stages to "The Build" page with workshop video — a "Composite Wall Build-Up" stage showing the aluminium-frame walls with foam-panel infill, and an "Internal Framing & Joinery" stage showing the timber framing and bunks, lockers and cabinetry being rough-fitted before linings.
 - Updated the first two stages on "The Build" page so the title, description and video on screen actually match what's in the clip — the Chassis & Running Gear video now properly shows the welded chassis with the A-frame and jockey wheel, and the second stage is now "Composite Floor Panels" showing the floor being bonded together before the walls go on.
 - "The Build" page now only shows the stages we have workshop video for — the other stages are tucked away until their clips are ready.
+- Removed the small step number (01, 02, …) from each stage on "The Build" page, since with some stages hidden the numbering wasn't lining up with the real build order.
