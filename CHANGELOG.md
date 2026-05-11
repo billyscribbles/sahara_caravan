@@ -126,3 +126,4 @@
 - Updated the first two stages on "The Build" page so the title, description and video on screen actually match what's in the clip — the Chassis & Running Gear video now properly shows the welded chassis with the A-frame and jockey wheel, and the second stage is now "Composite Floor Panels" showing the floor being bonded together before the walls go on.
 - "The Build" page now only shows the stages we have workshop video for — the other stages are tucked away until their clips are ready.
 - Removed the small step number (01, 02, …) from each stage on "The Build" page, since with some stages hidden the numbering wasn't lining up with the real build order.
+- Swapped the hero photo at the top of the Horizon page for a new shot.
