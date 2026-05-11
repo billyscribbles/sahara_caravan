@@ -26,7 +26,7 @@ const SWIPE_THRESHOLD = 40
 const DRAG_THRESHOLD = 6
 
 export default function BuildProcess({ showHeader = true }) {
-  const stages = buildProcess.stages
+  const stages = buildProcess.stages.filter((s) => s.video)
   const stageCount = stages.length
 
   const [vIdx, setVIdx] = useState(CLONE_BUFFER)
