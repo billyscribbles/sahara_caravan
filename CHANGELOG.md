@@ -127,3 +127,4 @@
 - "The Build" page now only shows the stages we have workshop video for — the other stages are tucked away until their clips are ready.
 - Removed the small step number (01, 02, …) from each stage on "The Build" page, since with some stages hidden the numbering wasn't lining up with the real build order.
 - Swapped the hero photo at the top of the Horizon page for a new shot.
+- Added an RV Map badge to the footer so visitors can see Sahara is listed in the national RV directory.

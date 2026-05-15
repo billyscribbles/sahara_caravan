@@ -26,6 +26,12 @@ export default function Footer() {
               </a>
             )}
           </div>
+          <img
+            src="/brand/rvmap-logo.svg"
+            alt="RV Map"
+            className="footer__rvmap-img"
+            loading="lazy"
+          />
         </div>
 
         {footer.columns.map((col) => (
