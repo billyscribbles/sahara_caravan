@@ -605,10 +605,10 @@ export default function ModelPage() {
         <section className={`model-page__inclusions section ${nextTone()}`}>
           <div className="container">
             <RevealOnScroll>
-              <span className="section-eyebrow">Inclusions</span>
-              <h2 className="section-label">What's standard, what's an add-on.</h2>
+              <span className="section-eyebrow">Upgrades</span>
+              <h2 className="section-label">Make it yours.</h2>
               <p className="section-sub">
-                {fields.inclusions.title} — every build comes with the standard list. The add-ons are optional extras you can spec onto your van. Final pricing is confirmed in writing on your quote.
+                Build it the way you travel. The upgrades below are the ones we're asked about most — more power and solar for longer off-grid stretches, climate gear for harder country, kitchen and laundry add-ons, and touring extras that speed up camp setup. Pick what matters and we'll work it into your quote.
               </p>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
@@ -632,7 +632,7 @@ export default function ModelPage() {
                 {fields.inclusions.addOns?.length > 0 && (
                   <div className="model-page__inclusions-card model-page__inclusions-card--addon">
                     <div className="model-page__inclusions-head">
-                      <span className="model-page__inclusions-label">Optional add-ons</span>
+                      <span className="model-page__inclusions-label">Available upgrades</span>
                       <span className="model-page__inclusions-count">{fields.inclusions.addOns.length} items</span>
                     </div>
                     <ul className="model-page__inclusions-list">
@@ -647,7 +647,7 @@ export default function ModelPage() {
                 )}
               </div>
               <p className="model-page__inclusions-note">
-                Pricing for add-ons varies by build configuration — contact us for a current quote.
+                Pricing varies by build configuration — contact us for a current quote.
               </p>
             </RevealOnScroll>
           </div>

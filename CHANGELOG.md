@@ -131,3 +131,4 @@
 - When you click a gallery photo to open it, it now fills almost the whole screen — the photo thumbnails moved to a vertical strip on the right and the caption sits quietly in the bottom corner, so the photo itself gets the room.
 - Added a short Custom Van Builds teaser to the home page — a hero shot, three interior thumbnails and a "See custom builds" button leading to the full page — plus a "Custom Van Builds" link under the Range column of the footer.
 - Removed the off-road hitch close-up from the X-Master Standard photo gallery.
+- Every van page now has a "Make it yours" section listing the upgrades you can add to your build — extra solar, battery upgrade, diesel heater, oven, washing machine, annexe, bike rack and more — with a short note that pricing is confirmed on your quote.

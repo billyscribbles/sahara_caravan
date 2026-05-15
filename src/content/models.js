@@ -435,6 +435,25 @@ const DUNE_TECH_SPECS_BY_SIZE = {
   }),
 }
 
+// Shared "available upgrades" list shown on every production model page
+// (X-Master, Mirage, Dune, Horizon). Custom builds page does not share this
+// component and is intentionally excluded.
+const AVAILABLE_UPGRADES = [
+  'Additional solar panels',
+  'Solar blanket connection',
+  'Battery upgrade',
+  'Compressor fridge with DC-DC charger',
+  'Diesel heater',
+  'Fridge upgrade to 220L',
+  'Oven',
+  'Front-loading washing machine',
+  'Black Pack — black sinks, taps, shower',
+  'Electronic sway control',
+  'Annexe',
+  'Anti-flap annexe bars',
+  'Bike rack',
+]
+
 export const models = [
   {
     slug: 'x-master',
@@ -447,6 +466,7 @@ export const models = [
     heroImage: '/images/hero/hero-xmaster.png',
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the X-Master',
+    inclusions: { addOns: AVAILABLE_UPGRADES },
     // Per-size pill values + full build sheets. Sizes that don't appear here
     // (16'6, plus the X-Master Slide-Out's chassis package) fall back to the
     // shared `technicalSpecs` and the variant `specs` further down.
@@ -560,35 +580,6 @@ export const models = [
           'Black reading lights, white overhead strip lighting, orange bug lights and 12V fans in the bed area',
           'External slide-out BBQ, fold-out picnic table and exterior TV box for camp setup',
         ],
-        inclusions: {
-          title: '22\'6" Off-Road X-Master Slide-Out',
-          included: [
-            'Rolled benchtop',
-            'Electrical certificate',
-            'WA off-road pack',
-            'Black pack upgrade (sinks + fittings)',
-            'Big pantry — slide-out interior',
-            '2nd TV — 32"',
-          ],
-          addOns: [
-            '2 x 12V fans',
-            'Woodbox',
-            'TV box',
-            'Xplate 900mm high',
-            '2 x 200Ah lithium battery',
-            '3000W iTech inverter',
-            '2x additional solar + regulator',
-            'Carafan',
-            'AU Focus diesel heater',
-            'Stone guard',
-            '2m drawbar extension + toolbox 2 slider',
-            'DO35 coupling',
-            '3-in-1 microwave airfryer',
-            'Swift slide-out BBQ',
-            'Off-road suspension',
-            'Mesh on a frame',
-          ],
-        },
         specs: {
           sleeps: 'Up to 6',
           length: 'TBC',
@@ -643,6 +634,7 @@ export const models = [
     heroImage: '/images/hero/hero-mirage-outback.png',
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Mirage',
+    inclusions: { addOns: AVAILABLE_UPGRADES },
     // Per-size pill values + full build sheets. The four Mirage variants are
     // *layout* variants (Cafe / Recliners / Queen / Single) on the same body,
     // so all four share these per-size chassis and power specs.
@@ -959,6 +951,7 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the Dune',
+    inclusions: { addOns: AVAILABLE_UPGRADES },
     sizes: DEFAULT_SIZES,
     floorPlan: '/images/blueprints/generic.png',
     floorPlansBySize: {
@@ -1063,6 +1056,7 @@ export const models = [
     },
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Bunks'],
     ctaLabel: 'Enquire about the Horizon',
+    inclusions: { addOns: AVAILABLE_UPGRADES },
     sizes: ['19-6', '20-6', '21-6', '22-6'],
     floorPlan: '/images/blueprints/generic.png',
     floorPlansBySize: {
