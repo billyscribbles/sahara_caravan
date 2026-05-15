@@ -31,6 +31,7 @@ export const site = {
           { label: 'Sahara X-Master', to: '/models/x-master' },
           { label: 'Sahara Dune', to: '/models/dune' },
           { label: 'Sahara Horizon', to: '/models/horizon' },
+          { label: 'Custom Van Builds', to: '/custom-builds' },
         ],
       },
       {

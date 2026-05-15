@@ -3,6 +3,7 @@ import Hero from '../components/sections/Hero.jsx'
 import Heritage from '../components/sections/Heritage.jsx'
 import WhySahara from '../components/sections/WhySahara.jsx'
 import RangeGrid from '../components/sections/RangeGrid.jsx'
+import CustomBuildsTeaser from '../components/sections/CustomBuildsTeaser.jsx'
 import BuildPhilosophy from '../components/sections/BuildPhilosophy.jsx'
 import Testimonials from '../components/sections/Testimonials.jsx'
 import DealerTeaser from '../components/sections/DealerTeaser.jsx'
@@ -16,6 +17,7 @@ export default function Home() {
       <SEO path="/" />
       <Hero />
       <RangeGrid />
+      <CustomBuildsTeaser />
       <WhySahara />
       <BuildPhilosophy />
       <Testimonials />
