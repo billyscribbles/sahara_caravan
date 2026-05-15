@@ -130,3 +130,4 @@
 - Added an RV Map badge to the footer so visitors can see Sahara is listed in the national RV directory.
 - When you click a gallery photo to open it, it now fills almost the whole screen — the photo thumbnails moved to a vertical strip on the right and the caption sits quietly in the bottom corner, so the photo itself gets the room.
 - Added a short Custom Van Builds teaser to the home page — a hero shot, three interior thumbnails and a "See custom builds" button leading to the full page — plus a "Custom Van Builds" link under the Range column of the footer.
+- Removed the off-road hitch close-up from the X-Master Standard photo gallery.

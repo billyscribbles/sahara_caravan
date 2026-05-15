@@ -508,7 +508,6 @@ export const models = [
             { src: '/images/models/x-master-standard/exterior-05.jpg', caption: 'Awning-side view — entry door, external speakers and reverse-camera housing.' },
             { src: '/images/models/x-master-standard/exterior-06.jpg', caption: 'Front-quarter — stone-guard nose, jerry-can mounts and external BBQ shelf.' },
             { src: '/images/models/x-master-standard/exterior-07.jpg', caption: 'Kitchen-shelf wide view — slide-out galley fully extended with the BBQ cover in place.' },
-            { src: '/images/models/x-master-standard/exterior-08.jpg', caption: 'Off-road hitch and drawbar — DO35-style coupling with dropped spare-wheel mount.' },
             { src: '/images/models/x-master-standard/exterior-09.jpg', caption: 'Electrical bay — Projecta PM335C DC-DC charger, TechWorld fuse board, hot-water and gas switches.' },
           ],
           interior: [
