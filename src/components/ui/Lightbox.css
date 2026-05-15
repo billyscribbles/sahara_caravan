@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 72px 64px 132px;
+  padding: 8px 108px 8px 8px;
   background: rgba(8, 8, 10, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -19,12 +19,13 @@
 
 .lightbox__stage {
   position: relative;
-  max-width: min(1200px, 100%);
+  width: 100%;
+  max-width: 100%;
   max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
   margin: 0;
   animation: lightbox-stage 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
@@ -37,7 +38,7 @@
 .lightbox__image {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 260px);
+  max-height: calc(100vh - 56px);
   object-fit: contain;
   border-radius: var(--radius-md);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
@@ -46,9 +47,9 @@
 }
 
 .lightbox__caption {
-  max-width: 72ch;
-  font-size: 14px;
-  line-height: 1.5;
+  max-width: min(72ch, 100%);
+  font-size: 13px;
+  line-height: 1.4;
   color: rgba(242, 239, 233, 0.72);
   text-align: center;
   padding: 0 12px;
@@ -111,29 +112,32 @@
   border-color: rgba(242, 239, 233, 0.4);
 }
 
-.lightbox__nav--prev { left: 20px; }
-.lightbox__nav--next { right: 20px; }
+.lightbox__nav--prev { left: 12px; }
+.lightbox__nav--next { right: 120px; }
 .lightbox__nav--prev:hover { transform: translateY(-50%) translateX(-2px); }
 .lightbox__nav--next:hover { transform: translateY(-50%) translateX(2px); }
 
 .lightbox__strip {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 12px 24px 16px;
+  right: 8px;
+  top: 56px;
+  bottom: 8px;
+  width: 92px;
+  padding: 6px 6px;
   display: flex;
-  justify-content: safe center;
+  flex-direction: column;
+  align-items: center;
   gap: 6px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: rgba(242, 239, 233, 0.25) transparent;
   -webkit-overflow-scrolling: touch;
-  background: linear-gradient(to top, rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0));
+  background: linear-gradient(to left, rgba(8, 8, 10, 0.55), rgba(8, 8, 10, 0));
+  border-radius: 8px;
 }
 
-.lightbox__strip::-webkit-scrollbar { height: 4px; }
+.lightbox__strip::-webkit-scrollbar { width: 4px; }
 .lightbox__strip::-webkit-scrollbar-track { background: transparent; }
 .lightbox__strip::-webkit-scrollbar-thumb {
   background: rgba(242, 239, 233, 0.22);
@@ -142,8 +146,8 @@
 
 .lightbox__strip-thumb {
   flex: 0 0 auto;
-  width: 72px;
-  height: 48px;
+  width: 78px;
+  height: 52px;
   padding: 0;
   border: 2px solid transparent;
   border-radius: 6px;
@@ -167,25 +171,40 @@
 .lightbox__strip-thumb.is-active {
   opacity: 1;
   border-color: var(--color-gold);
-  transform: translateY(-2px);
+  transform: translateX(-2px);
 }
 
 @media (max-width: 768px) {
-  .lightbox { padding: 56px 16px 108px; }
-  .lightbox__image { max-height: calc(100vh - 220px); }
+  .lightbox { padding: 8px 8px 76px; }
+  .lightbox__image { max-height: calc(100vh - 130px); }
   .lightbox__nav { width: 44px; height: 44px; }
   .lightbox__nav--prev { left: 8px; }
   .lightbox__nav--next { right: 8px; }
   .lightbox__counter { top: 16px; left: 16px; font-size: 11px; }
-  .lightbox__strip { padding: 10px 16px 12px; }
+  .lightbox__caption { font-size: 12px; padding: 0 8px; }
+  .lightbox__strip {
+    right: 0;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    width: auto;
+    flex-direction: row;
+    justify-content: safe center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 16px 12px;
+    background: linear-gradient(to top, rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0));
+    border-radius: 0;
+  }
+  .lightbox__strip::-webkit-scrollbar { height: 4px; width: auto; }
   .lightbox__strip-thumb { width: 60px; height: 40px; }
+  .lightbox__strip-thumb.is-active { transform: translateY(-2px); }
 }
 
 @media (max-width: 480px) {
   .lightbox__nav { display: none; }
-  .lightbox { padding: 56px 12px 96px; }
-  .lightbox__image { max-height: calc(100vh - 200px); }
-  .lightbox__caption { font-size: 13px; }
+  .lightbox { padding: 8px 6px 70px; }
+  .lightbox__image { max-height: calc(100vh - 120px); }
   .lightbox__strip-thumb { width: 52px; height: 36px; }
 }
 
