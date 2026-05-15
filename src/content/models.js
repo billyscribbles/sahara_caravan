@@ -165,11 +165,11 @@ const xMasterCommonBaseline = ({ washer = 'Top loader 3.2kg' } = {}) => {
 
 // X-Master (off-road) — per-size specs.
 const X_MASTER_SPECS_BY_SIZE = {
-  '17-6': { length: "17'6", suspension: '3T independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
-  '18-6': { length: "18'6", suspension: '3T independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
-  '19-6': { length: "19'6", tare: '2720 kg', gtm: '3329 kg', atm: '3500 kg', suspension: 'TITAN X 3.5T twin-shocker coil-spring trailing arm', water: '285L (3 x 95L)', warranty: '5 yr structural' },
-  '20-6': { length: "20'6", suspension: 'TITAN X 3.5T twin-shocker coil-spring trailing arm', water: '285L (3 x 95L)', warranty: '5 yr structural' },
-  '22-6': { length: "22'6", suspension: '3.5T twin-shocker independent coil-spring', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '17-6': { length: "17'6", suspension: '3.0T independent coil-spring, single axle', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '18-6': { length: "18'6", suspension: '3.0T independent coil-spring, single axle', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '19-6': { length: "19'6", tare: '2720 kg', gtm: '3329 kg', atm: '3500 kg', suspension: '3.5T independent coil-spring, dual axle', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '20-6': { length: "20'6", suspension: '3.5T independent coil-spring, dual axle', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '22-6': { length: "22'6", suspension: '3.5T independent coil-spring, dual axle', water: '190L (2 x 95L)', warranty: '5 yr structural' },
 }
 
 // X-Master per-size build sheet. Chassis varies size-to-size (real
@@ -190,108 +190,47 @@ const xMasterTech = ({ chassis, washer = 'Top loader 3.2kg' }) => {
   ]
 }
 
+// X-Master chassis rows. Suspension and jerry can count step up at 19'6
+// ("196") and above per the manufacturer spec sheet — smaller sizes are
+// 3.0T single-axle with one jerry can; 19'6 and up are 3.5T dual-axle with
+// two. Everything else is uniform across sizes.
+const xMasterChassis = ({ suspension, jerryCanHolders }) => [
+  { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
+  { label: 'A-Frame', value: '6" with stone guard' },
+  { label: 'Raiser', value: '2"' },
+  { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+  { label: 'Suspension', value: suspension },
+  { label: 'Brakes', value: '12" electric' },
+  { label: 'Rims & Tyres', value: '15" — LT265/75R15' },
+  { label: 'Wheel Arches', value: 'Galvanised' },
+  { label: 'Water Tanks', value: '2 x 95L freshwater' },
+  { label: 'Grey Water Tank', value: 'Included' },
+  { label: 'Tank Protection', value: 'Galvanised sheet' },
+  { label: 'Toolbox', value: 'On A-frame — with gas bottle storage' },
+  { label: 'Gas Bottles', value: '2 x 9kg' },
+  { label: 'Jerry Can Holders', value: jerryCanHolders },
+  { label: 'Rear Bumper', value: '3-bar galvanised' },
+  { label: 'Entry Step', value: 'Single alloy' },
+  { label: 'Quick Drop Corner Stands', value: 'Included' },
+]
+
+const X_MASTER_CHASSIS_SINGLE_AXLE = xMasterChassis({
+  suspension: '3.0T independent coil-spring, single axle',
+  jerryCanHolders: '1',
+})
+
+const X_MASTER_CHASSIS_DUAL_AXLE = xMasterChassis({
+  suspension: '3.5T independent coil-spring, dual axle',
+  jerryCanHolders: '2',
+})
+
 const X_MASTER_CHASSIS_BY_SIZE = {
-  '16-6': [
-    { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
-    { label: 'Suspension', value: '3T independent coil-spring' },
-    { label: 'A-Frame', value: '6"' },
-    { label: 'Raiser', value: '2"' },
-    { label: 'Rims & Tyres', value: '16"' },
-    { label: 'Brakes', value: '12" electric' },
-    { label: 'Gas Bottles', value: '2 x 9kg' },
-    { label: 'Fresh Water Tanks', value: '2 x 95L' },
-    { label: 'Grey Water Tank', value: '1' },
-    { label: 'Tank Protection', value: 'Aluminium checker plate' },
-    { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
-    { label: 'Rear Bumper', value: '3-bar galvanised' },
-    { label: 'Toolbox', value: 'On A-frame with 1 slide-out' },
-    { label: 'Quick Drop Stands', value: 'Included' },
-    { label: 'Tap on A-Frame', value: 'Included' },
-  ],
-  '17-6': [
-    { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
-    { label: 'Suspension', value: '3T independent coil-spring' },
-    { label: 'A-Frame', value: '6"' },
-    { label: 'Raiser', value: '2"' },
-    { label: 'Rims & Tyres', value: '16"' },
-    { label: 'Brakes', value: '12" electric' },
-    { label: 'Gas Bottles', value: '2 x 9kg' },
-    { label: 'Fresh Water Tanks', value: '2 x 95L' },
-    { label: 'Grey Water Tank', value: '1' },
-    { label: 'Jerry Can Holders', value: '1' },
-    { label: 'Tank Protection', value: 'Aluminium checker plate' },
-    { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
-    { label: 'Rear Bumper', value: '3-bar galvanised' },
-    { label: 'Toolbox', value: 'On A-frame with 1 slide-out' },
-    { label: 'Quick Drop Stands', value: 'Included' },
-    { label: 'Tap on A-Frame', value: 'Included' },
-  ],
-  '18-6': [
-    { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
-    { label: 'Suspension', value: '3T independent coil-spring' },
-    { label: 'A-Frame', value: '6"' },
-    { label: 'Raiser', value: '2"' },
-    { label: 'Rims & Tyres', value: '16"' },
-    { label: 'Brakes', value: '12" electric' },
-    { label: 'Gas Bottles', value: '2 x 9kg on slide' },
-    { label: 'Fresh Water Tanks', value: '2 x 95L' },
-    { label: 'Grey Water Tank', value: '1' },
-    { label: 'Jerry Can Holders', value: '1' },
-    { label: 'Tank Protection', value: 'Checker plate sheet' },
-    { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
-    { label: 'Rear Bumper', value: '3-bar' },
-    { label: 'Toolbox', value: 'On A-frame' },
-  ],
-  '19-6': [
-    { label: 'Trailer Coupling', value: 'DO35 off-road coupling' },
-    { label: 'Suspension', value: 'TITAN X 3.5T twin-shocker independent coil-spring trailing arm' },
-    { label: 'A-Frame', value: '6" extended' },
-    { label: 'Raiser', value: '2"' },
-    { label: 'Rims & Tyres', value: '16" off-road' },
-    { label: 'Brakes', value: '12" electric' },
-    { label: 'Gas Bottles', value: '2 x 9kg' },
-    { label: 'Fresh Water Tanks', value: '3 x 95L' },
-    { label: 'Grey Water Tank', value: '1' },
-    { label: 'Jerry Can Holders', value: '2 on A-frame' },
-    { label: 'Tank Protection', value: 'Checker sheet' },
-    { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
-    { label: 'Rear Bumper', value: '3-bar' },
-    { label: 'Toolbox', value: 'Large alloy with 3 slides' },
-  ],
-  '20-6': [
-    { label: 'Trailer Coupling', value: 'DO35 off-road coupling' },
-    { label: 'Suspension', value: 'TITAN X 3.5T twin-shocker independent coil-spring trailing arm' },
-    { label: 'A-Frame', value: '6" extended' },
-    { label: 'Raiser', value: '2"' },
-    { label: 'Rims & Tyres', value: '16" off-road' },
-    { label: 'Brakes', value: '12" electric' },
-    { label: 'Gas Bottles', value: '2 x 9kg' },
-    { label: 'Fresh Water Tanks', value: '3 x 95L' },
-    { label: 'Grey Water Tank', value: '1' },
-    { label: 'Jerry Can Holders', value: '2' },
-    { label: 'Tank Protection', value: 'Checker sheet' },
-    { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
-    { label: 'Rear Bumper', value: '3-bar' },
-    { label: 'Toolbox', value: 'Large alloy with 3 slides' },
-  ],
-  '22-6': [
-    { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
-    { label: 'Suspension', value: '3.5T twin-shocker independent coil-spring' },
-    { label: 'A-Frame', value: '6"' },
-    { label: 'Raiser', value: '2"' },
-    { label: 'Rims & Tyres', value: '16"' },
-    { label: 'Brakes', value: '12" electric' },
-    { label: 'Gas Bottles', value: '2 x 9kg' },
-    { label: 'Fresh Water Tanks', value: '2 x 95L' },
-    { label: 'Grey Water Tank', value: '1' },
-    { label: 'Jerry Can Holders', value: '2' },
-    { label: 'Tank Protection', value: 'Aluminium checker plate' },
-    { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
-    { label: 'Rear Bumper', value: '3-bar galvanised' },
-    { label: 'Toolbox', value: 'On A-frame with 1 slide-out' },
-    { label: 'Quick Drop Stands', value: 'Included' },
-    { label: 'Tap on A-Frame', value: 'Included' },
-  ],
+  '16-6': X_MASTER_CHASSIS_SINGLE_AXLE,
+  '17-6': X_MASTER_CHASSIS_SINGLE_AXLE,
+  '18-6': X_MASTER_CHASSIS_SINGLE_AXLE,
+  '19-6': X_MASTER_CHASSIS_DUAL_AXLE,
+  '20-6': X_MASTER_CHASSIS_DUAL_AXLE,
+  '22-6': X_MASTER_CHASSIS_DUAL_AXLE,
 }
 
 const X_MASTER_TECH_SPECS_BY_SIZE = {
@@ -305,10 +244,10 @@ const X_MASTER_TECH_SPECS_BY_SIZE = {
 
 // Mirage (on-road tourer) — per-size specs.
 const MIRAGE_SPECS_BY_SIZE = {
-  '18-6': { length: "18'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '5 yr structural' },
-  '19-6': { length: "19'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '5 yr structural' },
-  '20-6': { length: "20'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '5 yr structural' },
-  '22-6': { length: "22'6", suspension: 'Load-sharing independent', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '18-6': { length: "18'6", suspension: 'Roller rocker', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '19-6': { length: "19'6", suspension: 'Roller rocker', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '20-6': { length: "20'6", suspension: 'Roller rocker', water: '190L (2 x 95L)', warranty: '5 yr structural' },
+  '22-6': { length: "22'6", suspension: 'Roller rocker', water: '190L (2 x 95L)', warranty: '3 yr structural' },
 }
 
 // Mirage per-size build sheet. Chassis (with size-specific raiser) is kept
@@ -323,15 +262,20 @@ const mirageTech = ({ raiser, washer = 'Top loader 3.2kg', extraInternal = [], e
       label: 'Chassis',
       rows: [
         { label: 'Trailer Coupling', value: '3.5T ball coupling' },
-        { label: 'Suspension', value: 'Load-sharing independent' },
         { label: 'A-Frame', value: '6"' },
         { label: 'Raiser', value: raiser },
-        { label: 'Rims & Tyres', value: '15" — 235/75R15' },
-        { label: 'Brakes', value: '10" electric' },
-        { label: 'Gas Bottles', value: '2 x 9kg in aluminium toolbox on slide-out' },
-        { label: 'Tank Protection', value: 'Galvanised sheet' },
         { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+        { label: 'Cross Members', value: 'Box tube' },
+        { label: 'Suspension', value: 'Roller rocker' },
+        { label: 'Axles', value: 'Tandem' },
+        { label: 'Brakes', value: '10" electric' },
+        { label: 'Rims & Tyres', value: '15" — 235/75R15' },
+        { label: 'Wheel Arches', value: 'Galvanised' },
+        { label: 'Water Tanks', value: '2 x 95L freshwater' },
+        { label: 'Tank Protection', value: 'Galvanised sheet' },
+        { label: 'Gas Bottles', value: '2 x 9kg' },
         { label: 'Rear Bumper', value: '3-bar galvanised' },
+        { label: 'Entry Step', value: 'Single alloy' },
         { label: 'Quick Drop Corner Stands', value: 'Included' },
         { label: 'Tap on Drawbar', value: 'Included' },
       ],
@@ -367,35 +311,39 @@ const MIRAGE_TECH_SPECS_BY_SIZE = {
 
 // Dune (semi-off-road) — per-size specs.
 const DUNE_SPECS_BY_SIZE = {
-  '18-6': { length: "18'6", suspension: '3.3T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
-  '19-6': { length: "19'6", suspension: '3.3T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
-  '20-6': { length: "20'6", suspension: '3.3T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
-  '22-6': { length: "22'6", suspension: '3.5T twin-shocker independent coil-spring trailing arm', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '18-6': { length: "18'6", suspension: '3.3T independent coil-spring, dual axle', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '19-6': { length: "19'6", suspension: '3.3T independent coil-spring, dual axle', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '20-6': { length: "20'6", suspension: '3.3T independent coil-spring, dual axle', water: '190L (2 x 95L)', warranty: '3 yr structural' },
+  '22-6': { length: "22'6", suspension: '3.3T independent coil-spring, dual axle', water: '190L (2 x 95L)', warranty: '3 yr structural' },
 }
 
 // Dune per-size build sheet. Chassis stays Dune-specific (DO35 coupling,
-// twin-shocker suspension, jerry can holder); the six non-chassis sections
-// come from `commonBaseline` so the Excel inclusions list shows on every
-// size. Washer flips wall-mount on 16'6 and top-loader from 17'6 up.
-const duneTech = ({ suspension, brakes, washer = 'Top loader 3.2kg' }) => {
+// independent coil-spring suspension, jerry can holder); the six non-chassis
+// sections come from `commonBaseline` so the Excel inclusions list shows on
+// every size. Washer flips wall-mount on 16'6 and top-loader from 17'6 up.
+const duneTech = ({ washer = 'Top loader 3.2kg' } = {}) => {
   const base = commonBaseline({ washer })
   return [
     {
       id: 'chassis',
       label: 'Chassis',
       rows: [
-        { label: 'Trailer Coupling', value: 'DO35 off-road coupling' },
-        { label: 'Suspension', value: suspension },
+        { label: 'Trailer Coupling', value: 'DO35 3.5T coupling' },
         { label: 'A-Frame', value: '6"' },
         { label: 'Raiser', value: '4"' },
-        { label: 'Rims & Tyres', value: '235/75R15 off-road' },
-        { label: 'Brakes', value: brakes },
-        { label: 'Gas Bottles', value: '2 x 9kg in toolbox slide-out' },
-        { label: 'Jerry Can Holders', value: '1' },
-        { label: 'Tank Protection', value: 'Galvanised sheet' },
         { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
-        { label: 'Rear Bumper', value: '3-bar' },
-        { label: 'Toolbox', value: 'On A-frame' },
+        { label: 'Suspension', value: '3.3T independent coil-spring, dual axle' },
+        { label: 'Brakes', value: '10" electric' },
+        { label: 'Rims & Tyres', value: '15" — 235/75R15' },
+        { label: 'Wheel Arches', value: 'Galvanised' },
+        { label: 'Water Tanks', value: '2 x 95L freshwater' },
+        { label: 'Grey Water Tank', value: 'Included' },
+        { label: 'Tank Protection', value: 'Galvanised sheet' },
+        { label: 'Toolbox', value: 'Alloy, on A-frame — with gas bottle storage' },
+        { label: 'Gas Bottles', value: '2 x 9kg' },
+        { label: 'Jerry Can Holder', value: 'Included' },
+        { label: 'Rear Bumper', value: '3-bar galvanised' },
+        { label: 'Entry Step', value: 'Single alloy' },
       ],
     },
     { id: 'solar-power', label: 'Solar & Power', rows: base.solarPower },
@@ -408,31 +356,12 @@ const duneTech = ({ suspension, brakes, washer = 'Top loader 3.2kg' }) => {
 }
 
 const DUNE_TECH_SPECS_BY_SIZE = {
-  '16-6': duneTech({
-    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
-    brakes: '10" electric',
-    washer: 'Wall mount',
-  }),
-  '17-6': duneTech({
-    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
-    brakes: '10" electric',
-  }),
-  '18-6': duneTech({
-    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
-    brakes: '10" electric',
-  }),
-  '19-6': duneTech({
-    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
-    brakes: '10" electric',
-  }),
-  '20-6': duneTech({
-    suspension: '3.3T twin-shocker independent coil-spring trailing arm',
-    brakes: '10" electric',
-  }),
-  '22-6': duneTech({
-    suspension: '3.5T twin-shocker independent coil-spring trailing arm',
-    brakes: '12" electric',
-  }),
+  '16-6': duneTech({ washer: 'Wall mount' }),
+  '17-6': duneTech(),
+  '18-6': duneTech(),
+  '19-6': duneTech(),
+  '20-6': duneTech(),
+  '22-6': duneTech(),
 }
 
 // Shared "available upgrades" list shown on every production model page
@@ -515,7 +444,7 @@ export const models = [
           length: 'TBC',
           tare: 'TBC',
           atm: 'TBC',
-          suspension: 'Heavy-duty independent coil',
+          suspension: '3.0T independent coil-spring, single axle',
           water: 'TBC',
           warranty: 'TBC',
         },
@@ -585,7 +514,7 @@ export const models = [
           length: 'TBC',
           tare: 'TBC',
           atm: 'TBC',
-          suspension: 'Heavy-duty independent coil',
+          suspension: '3.5T independent coil-spring, dual axle',
           water: 'TBC',
           warranty: 'TBC',
         },
@@ -673,7 +602,7 @@ export const models = [
           length: 'TBC',
           tare: 'TBC',
           atm: 'TBC',
-          suspension: 'Standard independent',
+          suspension: 'Roller rocker',
           water: 'TBC',
           warranty: 'TBC',
         },
@@ -737,7 +666,7 @@ export const models = [
           length: 'TBC',
           tare: 'TBC',
           atm: 'TBC',
-          suspension: 'Standard independent',
+          suspension: 'Roller rocker',
           water: 'TBC',
           warranty: 'TBC',
         },
@@ -795,7 +724,7 @@ export const models = [
           tare: '2180 kg',
           gtm: '2626 kg',
           atm: '2800 kg',
-          suspension: 'Standard independent',
+          suspension: 'Roller rocker',
           water: 'TBC',
           warranty: 'TBC',
         },
@@ -851,7 +780,7 @@ export const models = [
           tare: '2021 kg',
           gtm: '2600 kg',
           atm: '2750 kg',
-          suspension: 'Standard independent',
+          suspension: 'Roller rocker',
           water: 'TBC',
           warranty: 'TBC',
         },
@@ -945,7 +874,7 @@ export const models = [
       length: '20\'6"',
       tare: 'TBC',
       atm: 'TBC',
-      suspension: '3.3T independent coil-spring trailing arm',
+      suspension: '3.3T independent coil-spring, dual axle',
       water: '190L (2 x 95L)',
       warranty: '3 years structural',
     },
@@ -968,10 +897,7 @@ export const models = [
     specsBySize: DUNE_SPECS_BY_SIZE,
     technicalSpecsBySize: DUNE_TECH_SPECS_BY_SIZE,
     // Fallback build sheet — mirrors the 18'6 build with the Excel baseline.
-    technicalSpecs: duneTech({
-      suspension: '3.3T twin-shocker independent coil-spring trailing arm',
-      brakes: '10" electric',
-    }),
+    technicalSpecs: duneTech(),
   },
   {
     slug: 'horizon',
@@ -980,7 +906,7 @@ export const models = [
     order: 4,
     tagline: 'Making memories — wherever the road takes you.',
     description:
-      'The Horizon is the family van — a 22\'8" body laid out to sleep six, with a private rear queen, four full-length bunks behind a concertina door and an L-lounge in the middle. Built on a hybrid frame (Celuka front sheeting, Meranti elsewhere, honeycomb floor and a one-piece aluminium roof), it pairs a 200L Dometic 2-way fridge/freezer, top-load washing machine and reverse-cycle air-con with 420W of solar feeding 300Ah of lithium — set up for proper free camps without leaving any of the family comforts behind.',
+      'The Horizon is the family van — laid out to sleep six, with a private rear queen, four full-length bunks behind a concertina door and an L-lounge in the middle. The bunk bedroom comes standard on every Horizon size — 19\'6, 20\'6, 21\'6 and 22\'6 — so the kids\' room is part of the build no matter which length you pick. Built on a hybrid frame (Celuka front sheeting, Meranti elsewhere, honeycomb floor and a one-piece aluminium roof), it pairs a 200L Dometic 2-way fridge/freezer, top-load washing machine and reverse-cycle air-con with 420W of solar feeding 300Ah of lithium — set up for proper free camps without leaving any of the family comforts behind.',
     heroImage: '/images/hero/hero-horizon.png',
     gallery: {
       exterior: [
@@ -1050,11 +976,11 @@ export const models = [
       length: '22\'8"',
       tare: 'TBC',
       atm: 'TBC',
-      suspension: 'Load-sharing',
+      suspension: 'Roller rocker',
       water: '190L (2 x 95L)',
       warranty: 'TBC',
     },
-    highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Bunks'],
+    highlights: ['Bunks', 'Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Horizon',
     inclusions: { addOns: AVAILABLE_UPGRADES },
     sizes: ['19-6', '20-6', '21-6', '22-6'],
@@ -1076,18 +1002,24 @@ export const models = [
           id: 'chassis',
           label: 'Chassis',
           rows: [
-            { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+            { label: 'Trailer Coupling', value: '3.5T ball coupling' },
             { label: 'A-Frame', value: '6"' },
             { label: 'Raiser', value: '2"' },
-            { label: 'Suspension', value: 'Load-sharing' },
-            { label: 'Trailer Coupling', value: '3.5T ball coupling' },
-            { label: 'Rims & Tyres', value: '15" rims with 235/75R15' },
+            { label: 'Main Chassis Frame', value: '3.2mm super-gal — Australian made, Australian steel' },
+            { label: 'Cross Members', value: 'Box tube' },
+            { label: 'Suspension', value: 'Roller rocker' },
+            { label: 'Axles', value: 'Tandem' },
             { label: 'Brakes', value: '10" electric' },
+            { label: 'Rims & Tyres', value: '15" — 235/75R15' },
+            { label: 'Wheel Arches', value: 'Galvanised' },
+            { label: 'Water Tanks', value: '2 x 95L freshwater' },
+            { label: 'Tank Protection', value: 'Galvanised sheet' },
+            { label: 'Toolbox', value: 'On A-frame — with gas bottle storage' },
+            { label: 'Gas Bottles', value: '2 x 9kg' },
             { label: 'Rear Bumper', value: '3-bar galvanised' },
-            { label: 'Corner Stands', value: 'Quick drop' },
-            { label: 'A-Frame Toolbox', value: 'Aluminium with 2 x 9kg gas bottles on slide-out' },
-            { label: 'Tank Protection', value: 'Galvanised sheet under tanks' },
-            { label: 'Drawbar Tap', value: 'Included' },
+            { label: 'Entry Step', value: 'Alloy' },
+            { label: 'Quick Drop Corner Stands', value: 'Included' },
+            { label: 'Tap on Drawbar', value: 'Included' },
           ],
         },
         { id: 'solar-power', label: 'Solar & Power', rows: base.solarPower },
