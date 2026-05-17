@@ -417,9 +417,9 @@ export const models = [
         sizes: DEFAULT_SIZES,
         floorPlansBySize: {
           '16-6': '/images/blueprints/generic-16-6.png',
-          '17-6': '/images/blueprints/generic-17-6.png',
-          '18-6': '/images/blueprints/generic-18-6.png',
-          '19-6': '/images/blueprints/generic-19-6.png',
+          '17-6': '/images/blueprints/x-master-standard-17-6.png',
+          '18-6': '/images/blueprints/x-master-standard-18-6.png',
+          '19-6': '/images/blueprints/x-master-standard-19-6.png',
           '20-6': '/images/blueprints/generic-20-6.png',
           '22-6': '/images/blueprints/generic-22-6.png',
         },
