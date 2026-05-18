@@ -549,7 +549,7 @@ export const models = [
       { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/mirage-19-6.png' },
       { build: 'standard', size: '20-6', lounge: 'cafe', bed: null, image: '/images/blueprints/mirage-20-6.png' },
       { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-20-6-recliner.png' },
-      { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'queen', image: '/images/blueprints/generic-21-6.png' },
+      { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'queen', image: '/images/blueprints/mirage-21-6-cafe-queen.png' },
       { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'single', image: '/images/blueprints/generic-21-6.png' },
       { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'queen', image: '/images/blueprints/mirage-recliners.png' },
       { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'single', image: '/images/blueprints/mirage-recliners.png' },

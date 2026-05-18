@@ -144,3 +144,4 @@
 - Added a bunk layout option to the Dune 19'6 — selecting that size now lets you switch between the Queen Bed plan and a Bunks plan, each with its own floor plan drawing.
 - Added a dedicated floor plan drawing for the Dune 22'6 Bunks layout — choosing Bunks at that size now shows its own plan instead of the generic one.
 - Added dedicated floor plan drawings across the Mirage range — the 18'6, 19'6, the 20'6 Cafe Style and Twin Recliner layouts, and the 22'6 Slide-Out now each show their own plan instead of a generic one.
+- Added a dedicated floor plan drawing for the Mirage 21'6 Cafe Style Lounge with Queen Bed — that layout now shows its own plan instead of a generic one.
