@@ -740,10 +740,10 @@ export const models = [
       { key: 'slideout', label: 'Slide-Out', badge: 'Coming soon', blurb: 'A wider family lounge at camp — in development for the Horizon.', blueprint: '/images/blueprints/x-master-slideout.webp', available: false },
     ],
     floorPlans: [
-      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/generic-19-6.png' },
-      { build: 'standard', size: '20-6', lounge: null, bed: null, image: '/images/blueprints/generic-20-6.png' },
-      { build: 'standard', size: '21-6', lounge: null, bed: null, image: '/images/blueprints/generic-21-6.png' },
-      { build: 'standard', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/generic-22-6.png' },
+      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/horizon-19-6.png' },
+      { build: 'standard', size: '20-6', lounge: null, bed: null, image: '/images/blueprints/horizon-20-6.png' },
+      { build: 'standard', size: '21-6', lounge: null, bed: null, image: '/images/blueprints/horizon-21-6.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/horizon-22-6.png' },
     ],
     // Horizon ships in 19'6 and above only — washing machine is always
     // top-loader. Chassis stays Horizon-specific (load-sharing, 3.5T ball
