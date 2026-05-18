@@ -642,7 +642,7 @@ export const models = [
       { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/dune-recliners.png' },
       { build: 'standard', size: '21-6', lounge: null, bed: null, image: '/images/blueprints/generic-21-6.png' },
       { build: 'standard', size: '22-6', lounge: null, bed: 'queen', image: '/images/blueprints/generic-22-6.png' },
-      { build: 'standard', size: '22-6', lounge: null, bed: 'bunk', image: '/images/blueprints/generic-22-6.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: 'bunk', image: '/images/blueprints/dune-22-6-bunk.png' },
     ],
     // Per-size pill values + full build sheets. Sizes that don't appear here
     // (16'6, 17'6) fall back to the model-level `specs` and `technicalSpecs`

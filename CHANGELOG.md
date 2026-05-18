@@ -142,3 +142,4 @@
 - Added two layout choices for the Dune 20'6 — selecting that size now lets you switch between a Cafe Style Lounge and a Twin Recliner Lounge, each with its own floor plan drawing.
 - Added dedicated floor plan drawings for all four Horizon sizes (19'6, 20'6, 21'6 and 22'6) — selecting any size now shows its own layout instead of a generic plan.
 - Added a bunk layout option to the Dune 19'6 — selecting that size now lets you switch between the Queen Bed plan and a Bunks plan, each with its own floor plan drawing.
+- Added a dedicated floor plan drawing for the Dune 22'6 Bunks layout — choosing Bunks at that size now shows its own plan instead of the generic one.
