@@ -467,11 +467,10 @@ export const models = [
       { build: 'standard', size: '17-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-17-6.png' },
       { build: 'standard', size: '18-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-18-6.png' },
       { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-19-6.png' },
-      { build: 'standard', size: '20-6', lounge: null, bed: null, image: '/images/blueprints/generic-20-6.png' },
-      { build: 'standard', size: '21-6', lounge: null, bed: 'queen', image: '/images/blueprints/generic-21-6.png' },
-      { build: 'standard', size: '21-6', lounge: null, bed: 'bunk', image: '/images/blueprints/generic-21-6.png' },
-      { build: 'standard', size: '22-6', lounge: null, bed: 'queen', image: '/images/blueprints/generic-22-6.png' },
-      { build: 'standard', size: '22-6', lounge: null, bed: 'bunk', image: '/images/blueprints/generic-22-6.png' },
+      { build: 'standard', size: '20-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-20-6.png' },
+      { build: 'standard', size: '21-6', lounge: null, bed: 'queen', image: '/images/blueprints/x-master-standard-21-6.png' },
+      { build: 'standard', size: '21-6', lounge: null, bed: 'bunk', image: '/images/blueprints/x-master-standard-21-6-bunk.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-22-6.png' },
       { build: 'slideout', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/x-master-slideout-floorplan.png' },
     ],
   },
@@ -542,17 +541,15 @@ export const models = [
       { key: 'slideout', label: 'Slide-Out', badge: "22'6 size only", blurb: 'A roadside wall that extrudes at camp for a markedly wider lounge.', blueprint: '/images/blueprints/x-master-slideout.webp', available: true },
     ],
     // Floor plans drive the configurator. The lounge toggle (Cafe vs Twin
-    // Recliner) and the bed toggle (Queen vs Twin Single) only appear on the
-    // sizes that list more than one option; smaller sizes carry a single plan.
+    // Recliner) only appears on the sizes that list more than one option;
+    // smaller sizes carry a single plan.
     floorPlans: [
       { build: 'standard', size: '18-6', lounge: null, bed: null, image: '/images/blueprints/mirage-18-6.png' },
       { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/mirage-19-6.png' },
       { build: 'standard', size: '20-6', lounge: 'cafe', bed: null, image: '/images/blueprints/mirage-20-6.png' },
       { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-20-6-recliner.png' },
-      { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'queen', image: '/images/blueprints/mirage-21-6-cafe-queen.png' },
-      { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'single', image: '/images/blueprints/generic-21-6.png' },
-      { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'queen', image: '/images/blueprints/mirage-recliners.png' },
-      { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'single', image: '/images/blueprints/mirage-recliners.png' },
+      { build: 'standard', size: '21-6', lounge: 'cafe', bed: null, image: '/images/blueprints/mirage-21-6-cafe-queen.png' },
+      { build: 'standard', size: '21-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-recliners.png' },
       { build: 'standard', size: '22-6', lounge: 'cafe', bed: null, image: '/images/blueprints/generic-22-6.png' },
       { build: 'standard', size: '22-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-recliners.png' },
       { build: 'slideout', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/mirage-22-6-slideout.png' },
