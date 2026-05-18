@@ -1,13 +1,8 @@
-// The four models in the Sahara range. The Mirage and X-Master each ship with
-// two variants the visitor can switch between on the detail page without a
-// route change. Dune and Horizon stay single-variant; the ModelPage falls back
-// to the top-level fields when `variants` is absent.
-
-// Sahara bodies come in six lengths. Most variants are available in all six;
-// the X-Master Slide-Out is the exception (single 22'6 chassis). Per-size
-// blueprints are looked up via `floorPlansBySize`; missing sizes fall back to
-// the variant's default `floorPlan`.
-export const DEFAULT_SIZES = ['16-6', '17-6', '18-6', '19-6', '20-6', '22-6']
+// The four models in the Sahara range. Each model carries a `buildTypes` list
+// (Standard / Slide-Out) and a flat `floorPlans` list — one entry per
+// (build, size, lounge, bed) combination. The ModelPage configurator derives
+// its build / size / variant steps from `floorPlans`; galleries, features and
+// specs live once per model.
 export const SIZE_LABELS = {
   '16-6': "16'6",
   '17-6': "17'6",
@@ -396,160 +391,88 @@ export const models = [
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the X-Master',
     inclusions: { addOns: AVAILABLE_UPGRADES },
-    // Per-size pill values + full build sheets. Sizes that don't appear here
-    // (16'6, plus the X-Master Slide-Out's chassis package) fall back to the
-    // shared `technicalSpecs` and the variant `specs` further down.
+    // Per-size pill values + full build sheets, keyed by the size the
+    // configurator selects. Sizes not listed here fall back to the model-level
+    // `technicalSpecs` and `specs`.
     specsBySize: X_MASTER_SPECS_BY_SIZE,
     technicalSpecsBySize: X_MASTER_TECH_SPECS_BY_SIZE,
-    // Full manufacturer build sheet — shared across both X-Master variants
-    // and used as the fallback when no per-size data exists. Mirrors the
-    // 22'6 build with the Excel inclusions baseline.
+    // Full manufacturer build sheet — used as the fallback when no per-size
+    // data exists. Mirrors the 22'6 build with the Excel inclusions baseline.
     technicalSpecs: xMasterTech({ chassis: X_MASTER_CHASSIS_BY_SIZE['22-6'] }),
-    variants: [
-      {
-        key: 'standard',
-        label: 'Standard',
-        shortLabel: 'Standard',
-        badge: 'X-Master 196',
-        blurb: 'Compact single-body off-road tourer — tandem axle, full ensuite, designed to go anywhere.',
-        blueprint: '/images/blueprints/x-master-standard.webp',
-        floorPlan: '/images/blueprints/x-master-standard-floorplan.png',
-        sizes: DEFAULT_SIZES,
-        floorPlansBySize: {
-          '16-6': '/images/blueprints/generic-16-6.png',
-          '17-6': '/images/blueprints/x-master-standard-17-6.png',
-          '18-6': '/images/blueprints/x-master-standard-18-6.png',
-          '19-6': '/images/blueprints/x-master-standard-19-6.png',
-          '20-6': '/images/blueprints/generic-20-6.png',
-          '22-6': '/images/blueprints/generic-22-6.png',
-        },
-        description:
-          'The X-Master 196 Standard is the tight, trail-ready version of the range. A single-body off-road tourer on a tandem off-road chassis, with every serious go-anywhere feature you\'d expect — DO35-style hitch, stone-guard nose, checker-plate armor along the underbody, reinforced coil suspension and a full external electrical bay. Inside it\'s every bit as finished as the on-road vans: cafe dinette, 4-burner cooktop with oven, full rear ensuite with laundry, and a private queen bed at the back.',
-        features: [
-          'Matte-black body with deep-red and burgundy graphics',
-          'Tandem off-road suspension with coil + shocks',
-          'DO35-style off-road hitch and stone-guard nose cone',
-          'Full checker-plate armor along the underbody',
-          'External electrical bay — Projecta PM335C DC-DC charger, TechWorld fuse board',
-          'Dometic cassette air-conditioner and Sirocco ceiling fan',
-          'Cafe-style L-dinette with fixed table — converts for an extra sleep',
-          'Full galley — 4-burner gas cooktop with oven, stainless sink, stone benchtop',
-          'Rear private queen bedroom with wrap-around overhead storage',
-          'Full ensuite with separate shower, cassette toilet and marble-look vanity',
-          'External slide-out kitchen shelf for cooking in camp',
-          '"Leak Tight RVs Tested" certified — water-sealed for long trips',
-        ],
-        specs: {
-          sleeps: 'Up to 6',
-          length: 'TBC',
-          tare: 'TBC',
-          atm: 'TBC',
-          suspension: '3.0T independent coil-spring, single axle',
-          water: 'TBC',
-          warranty: 'TBC',
-        },
-        gallery: {
-          exterior: [
-            { src: '/images/models/x-master-standard/exterior-01.jpg', caption: 'Rear-quarter view — "X-Master 196" badge, tandem off-road suspension, low-profile stance.' },
-            { src: '/images/models/x-master-standard/exterior-02.jpg', caption: 'Rear door panel — Sahara crest, LED tail cluster, full checker-plate underbody.' },
-            { src: '/images/models/x-master-standard/exterior-03.jpg', caption: 'Roadside profile — awning rail, large tinted windows, burgundy accent graphics.' },
-            { src: '/images/models/x-master-standard/exterior-04.jpg', caption: 'External slide-out kitchen shelf deployed — stainless sink and gas cooktop for cooking in camp.' },
-            { src: '/images/models/x-master-standard/exterior-05.jpg', caption: 'Awning-side view — entry door, external speakers and reverse-camera housing.' },
-            { src: '/images/models/x-master-standard/exterior-06.jpg', caption: 'Front-quarter — stone-guard nose, jerry-can mounts and external BBQ shelf.' },
-            { src: '/images/models/x-master-standard/exterior-07.jpg', caption: 'Kitchen-shelf wide view — slide-out galley fully extended with the BBQ cover in place.' },
-            { src: '/images/models/x-master-standard/exterior-09.jpg', caption: 'Electrical bay — Projecta PM335C DC-DC charger, TechWorld fuse board, hot-water and gas switches.' },
-          ],
-          interior: [
-            { src: '/images/models/x-master-standard/interior-01.jpg', caption: 'Galley detail — gloss light-grey uppers, dark gloss drawers, stone benchtop with under-bench oven.' },
-            { src: '/images/models/x-master-standard/interior-02.jpg', caption: 'Cafe dinette looking back to the bedroom — Sahara-branded leather-look cushions and a stone-look tabletop.' },
-            { src: '/images/models/x-master-standard/interior-03.jpg', caption: 'Rear queen bedroom — padded headboard, overhead storage, bedside shelves with reading lights.' },
-            { src: '/images/models/x-master-standard/interior-04.jpg', caption: 'Looking through from the bed — galley left, cafe dinette right, entry door to the rear.' },
-            { src: '/images/models/x-master-standard/interior-05.jpg', caption: 'Galley looking toward the bedroom — 4-burner cooktop with oven, large stainless sink, skylight overhead.' },
-            { src: '/images/models/x-master-standard/interior-06.jpg', caption: 'Bedroom from the galley — privacy door to the ensuite, external window, quilted mattress.' },
-            { src: '/images/models/x-master-standard/interior-07.jpg', caption: 'Ensuite — cassette toilet, marble-look vanity with black vessel sink and drawer storage.' },
-            { src: '/images/models/x-master-standard/interior-08.jpg', caption: 'Ensuite wide — stone-look wall tiles, overhead mirror cabinets and a privacy window.' },
-            { src: '/images/models/x-master-standard/interior-09.jpg', caption: 'Separate shower stall — matte-black slide rail, chrome riser and low-step shower tray.' },
-            { src: '/images/models/x-master-standard/interior-10.jpg', caption: 'Shower looking in — frosted glass privacy panel with a matching matte-black frame.' },
-            { src: '/images/models/x-master-standard/interior-11.jpg', caption: 'Dinette from the rear — fridge/microwave tower, Sahara-branded upholstery, panoramic window.' },
-            { src: '/images/models/x-master-standard/interior-12.jpg', caption: 'Ensuite rear view — mirror-fronted upper cabinetry and marble-look benchtop with vessel sink.' },
-            { src: '/images/models/x-master-standard/interior-13.jpg', caption: 'Fridge / microwave column with entry door — black appliances against bright white cabinetry.' },
-            { src: '/images/models/x-master-standard/interior-14.jpg', caption: 'Kitchen rear view — full bench, drawer stack, window over the sink.' },
-            { src: '/images/models/x-master-standard/interior-15.jpg', caption: 'Galley wide — gloss uppers, 4-burner cooktop with oven, black sink and mixer tap.' },
-          ],
-        },
-      },
-      {
-        key: 'slideout',
-        label: 'Slide-Out',
-        shortLabel: 'Slide-Out',
-        badge: 'X-Master 226',
-        blurb: 'Extended 226 body with a side wall that extrudes at camp — markedly wider inside when the slide is deployed.',
-        blueprint: '/images/blueprints/x-master-slideout.webp',
-        floorPlan: '/images/blueprints/x-master-slideout-floorplan.png',
-        sizes: ['22-6'],
-        floorPlansBySize: {
-          '22-6': '/images/blueprints/x-master-slideout-floorplan.png',
-        },
-        description:
-          'The X-Master 226 Slide-Out is the room-to-breathe version of the same off-road tourer. A roadside wall section extrudes at camp to markedly widen the living area, more floor space for dressing, and the galley no longer sharing a walkway. Built around a hybrid PVC-ply frame, composite honeycomb floor and one-piece moulded roof — the kind of construction that lets it carry 840W of solar, 400Ah of lithium and a full diesel-heating loop without weight penalty.',
-        features: [
-          'Hybrid frame with full PVC ply walls, one-piece moulded roof and composite honeycomb floor',
-          'Allytech awning windows throughout — including a 600mm slider over the dinette',
-          'Extending slide-out wall — markedly wider interior when deployed',
-          'Off-road suspension on 245/75/R15 rims and tyres',
-          'DO35 coupling with 2-metre extended drawbar, stone guard and mesh-on-frame protection',
-          '900mm black chequer-plate skirt and twin slide-out toolboxes',
-          '4x 210W solar panels (840W) with Projecta regulator and charging system',
-          '2x 200Ah lithium batteries (400Ah) with a 3000W iTech inverter and dual kitchen powerpoints',
-          'AU Focus diesel heater and 2x freshwater tanks plus a grey-water tank for off-grid stays',
-          'Galley with 3-in-one microwave, mini grill, compressor fridge, stainless sink, Carafan rangehood and soft-close drawers',
-          'Front private queen bedroom with full-height robes either side of a 32" TV',
-          'Full ensuite with separate shower, cassette toilet, top-load washing machine and linen drawer',
-          'All-black tapware, round basin, shower frame and glass throughout the ensuite',
-          'Black reading lights, white overhead strip lighting, orange bug lights and 12V fans in the bed area',
-          'External slide-out BBQ, fold-out picnic table and exterior TV box for camp setup',
-        ],
-        specs: {
-          sleeps: 'Up to 6',
-          length: 'TBC',
-          tare: 'TBC',
-          atm: 'TBC',
-          suspension: '3.5T independent coil-spring, dual axle',
-          water: 'TBC',
-          warranty: 'TBC',
-        },
-        gallery: {
-          exterior: [
-            { src: '/images/models/x-master-slideout/exterior-01.jpg', caption: 'Roadside profile — "X-Master 226" badge, full matte-black finish with silver-grey accent panels.' },
-            { src: '/images/models/x-master-slideout/exterior-02.jpg', caption: 'Off-side rear quarter — tandem off-road wheels, full checker-plate armor, awning rail.' },
-            { src: '/images/models/x-master-slideout/exterior-03.jpg', caption: 'Roadside front view — entry door, pull-out step, external storage hatches.' },
-            { src: '/images/models/x-master-slideout/exterior-04.jpg', caption: 'Rear view — Sahara crest lightbox, LED tail cluster, full-width reinforced bumper.' },
-            { src: '/images/models/x-master-slideout/exterior-05.jpg', caption: 'Front-quarter at the yard — twin gas-bottle hitch, drawbar and stone-guard nose.' },
-            { src: '/images/models/x-master-slideout/exterior-06.jpg', caption: 'Parked alongside the Sahara blue workshop van — the 226 silhouette in context.' },
-          ],
-          interior: [
-            { src: '/images/models/x-master-slideout/interior-01.jpg', caption: 'Mid-ship ensuite — cassette toilet, drawer storage, marble-look vanity with vessel sink.' },
-            { src: '/images/models/x-master-slideout/interior-02.jpg', caption: 'Ensuite wide — full-height mirror, matte-black mixer tap, privacy window.' },
-            { src: '/images/models/x-master-slideout/interior-03.jpg', caption: 'Separate shower stall — chrome slide rail, wet-wall panels, ambient overhead light.' },
-            { src: '/images/models/x-master-slideout/interior-04.jpg', caption: 'Wardrobe / cabinet column beside the bed — plenty of hanging space and deep drawer storage.' },
-            { src: '/images/models/x-master-slideout/interior-05.jpg', caption: 'Front queen bedroom — mattress with the storage base lifted, bedside cabinets to either side.' },
-            { src: '/images/models/x-master-slideout/interior-06.jpg', caption: 'U-lounge with the slide deployed — big enough for four adults plus a slide-in table.' },
-            { src: '/images/models/x-master-slideout/interior-07.jpg', caption: 'Deployed lounge wide — wrap-around cushions, extra skylight and natural light from both sides.' },
-            { src: '/images/models/x-master-slideout/interior-08.jpg', caption: 'Bedroom from the foot of the bed — extra headroom through the pop-top skylight.' },
-            { src: '/images/models/x-master-slideout/interior-09.jpg', caption: 'Galley detail — matte-grey uppers, dark gloss lowers, stone benchtop with under-bench oven.' },
-            { src: '/images/models/x-master-slideout/interior-10.jpg', caption: 'Lounge looking back to the bedroom — slide-out wall visible on the right, galley on the left.' },
-            { src: '/images/models/x-master-slideout/interior-11.jpg', caption: 'Galley looking toward the bedroom — long bench run, big sink, oven and cooktop.' },
-            { src: '/images/models/x-master-slideout/interior-12.jpg', caption: 'Lounge corner — Sahara-branded leather-look cushions, slide-in table, panoramic window.' },
-            { src: '/images/models/x-master-slideout/interior-13.jpg', caption: 'Ensuite looking in — vanity, toilet and shower aligned along a single wall for easy use.' },
-            { src: '/images/models/x-master-slideout/interior-14.jpg', caption: 'Bedroom showing the ensuite doorway — mid-ship placement keeps the walkway short.' },
-            { src: '/images/models/x-master-slideout/interior-15.jpg', caption: 'Kitchen from the lounge — fridge/microwave tower, entry door, wood-look flooring.' },
-            { src: '/images/models/x-master-slideout/interior-16.jpg', caption: 'Bedroom from the hall — privacy sliding door, large wall mirror and built-in wardrobe.' },
-            { src: '/images/models/x-master-slideout/interior-17.jpg', caption: 'Ensuite detail — marble-look vanity, stone-look wall tiles, chrome and matte-black fittings.' },
-            { src: '/images/models/x-master-slideout/interior-18.jpg', caption: 'Bedroom under the pop-top — oversized skylight floods the space with natural light.' },
-            { src: '/images/models/x-master-slideout/interior-19.jpg', caption: 'Vanity close-up — vessel sink, mixer tap, drawer stack and shelving to either side.' },
-          ],
-        },
-      },
+    specs: {
+      sleeps: 'Up to 6',
+      length: 'TBC',
+      tare: 'TBC',
+      atm: 'TBC',
+      suspension: '3.0T independent coil-spring, single axle',
+      water: 'TBC',
+      warranty: 'TBC',
+    },
+    features: [
+      'Matte-black body with deep-red and burgundy graphics',
+      'Tandem off-road suspension with coil + shocks',
+      'DO35-style off-road hitch and stone-guard nose cone',
+      'Full checker-plate armor along the underbody',
+      'External electrical bay — Projecta PM335C DC-DC charger, TechWorld fuse board',
+      'Dometic cassette air-conditioner and Sirocco ceiling fan',
+      'Cafe-style L-dinette with fixed table — converts for an extra sleep',
+      'Full galley — 4-burner gas cooktop with oven, stainless sink, stone benchtop',
+      'Rear private queen bedroom with wrap-around overhead storage',
+      'Full ensuite with separate shower, cassette toilet and marble-look vanity',
+      'External slide-out kitchen shelf for cooking in camp',
+      '"Leak Tight RVs Tested" certified — water-sealed for long trips',
+    ],
+    gallery: {
+      exterior: [
+        { src: '/images/models/x-master-standard/exterior-01.jpg', caption: 'Rear-quarter view — "X-Master 196" badge, tandem off-road suspension, low-profile stance.' },
+        { src: '/images/models/x-master-standard/exterior-02.jpg', caption: 'Rear door panel — Sahara crest, LED tail cluster, full checker-plate underbody.' },
+        { src: '/images/models/x-master-standard/exterior-03.jpg', caption: 'Roadside profile — awning rail, large tinted windows, burgundy accent graphics.' },
+        { src: '/images/models/x-master-standard/exterior-04.jpg', caption: 'External slide-out kitchen shelf deployed — stainless sink and gas cooktop for cooking in camp.' },
+        { src: '/images/models/x-master-standard/exterior-05.jpg', caption: 'Awning-side view — entry door, external speakers and reverse-camera housing.' },
+        { src: '/images/models/x-master-standard/exterior-06.jpg', caption: 'Front-quarter — stone-guard nose, jerry-can mounts and external BBQ shelf.' },
+        { src: '/images/models/x-master-standard/exterior-07.jpg', caption: 'Kitchen-shelf wide view — slide-out galley fully extended with the BBQ cover in place.' },
+        { src: '/images/models/x-master-standard/exterior-09.jpg', caption: 'Electrical bay — Projecta PM335C DC-DC charger, TechWorld fuse board, hot-water and gas switches.' },
+        { src: '/images/models/x-master-slideout/exterior-01.jpg', caption: 'Slide-Out roadside profile — "X-Master 226" badge, full matte-black finish with silver-grey accent panels.' },
+        { src: '/images/models/x-master-slideout/exterior-02.jpg', caption: 'Slide-Out off-side rear quarter — tandem off-road wheels, full checker-plate armor, awning rail.' },
+        { src: '/images/models/x-master-slideout/exterior-04.jpg', caption: 'Slide-Out rear view — Sahara crest lightbox, LED tail cluster, full-width reinforced bumper.' },
+        { src: '/images/models/x-master-slideout/exterior-05.jpg', caption: 'Slide-Out front-quarter at the yard — twin gas-bottle hitch, drawbar and stone-guard nose.' },
+      ],
+      interior: [
+        { src: '/images/models/x-master-standard/interior-01.jpg', caption: 'Galley detail — gloss light-grey uppers, dark gloss drawers, stone benchtop with under-bench oven.' },
+        { src: '/images/models/x-master-standard/interior-02.jpg', caption: 'Cafe dinette looking back to the bedroom — Sahara-branded leather-look cushions and a stone-look tabletop.' },
+        { src: '/images/models/x-master-standard/interior-03.jpg', caption: 'Rear queen bedroom — padded headboard, overhead storage, bedside shelves with reading lights.' },
+        { src: '/images/models/x-master-standard/interior-04.jpg', caption: 'Looking through from the bed — galley left, cafe dinette right, entry door to the rear.' },
+        { src: '/images/models/x-master-standard/interior-05.jpg', caption: 'Galley looking toward the bedroom — 4-burner cooktop with oven, large stainless sink, skylight overhead.' },
+        { src: '/images/models/x-master-standard/interior-06.jpg', caption: 'Bedroom from the galley — privacy door to the ensuite, external window, quilted mattress.' },
+        { src: '/images/models/x-master-standard/interior-07.jpg', caption: 'Ensuite — cassette toilet, marble-look vanity with black vessel sink and drawer storage.' },
+        { src: '/images/models/x-master-standard/interior-08.jpg', caption: 'Ensuite wide — stone-look wall tiles, overhead mirror cabinets and a privacy window.' },
+        { src: '/images/models/x-master-standard/interior-09.jpg', caption: 'Separate shower stall — matte-black slide rail, chrome riser and low-step shower tray.' },
+        { src: '/images/models/x-master-standard/interior-11.jpg', caption: 'Dinette from the rear — fridge/microwave tower, Sahara-branded upholstery, panoramic window.' },
+        { src: '/images/models/x-master-standard/interior-15.jpg', caption: 'Galley wide — gloss uppers, 4-burner cooktop with oven, black sink and mixer tap.' },
+        { src: '/images/models/x-master-slideout/interior-06.jpg', caption: 'Slide-Out U-lounge with the slide deployed — big enough for four adults plus a slide-in table.' },
+        { src: '/images/models/x-master-slideout/interior-07.jpg', caption: 'Slide-Out deployed lounge wide — wrap-around cushions, extra skylight and natural light from both sides.' },
+        { src: '/images/models/x-master-slideout/interior-05.jpg', caption: 'Slide-Out front queen bedroom — mattress with the storage base lifted, bedside cabinets to either side.' },
+        { src: '/images/models/x-master-slideout/interior-10.jpg', caption: 'Slide-Out lounge looking back to the bedroom — slide-out wall visible on the right, galley on the left.' },
+      ],
+    },
+    buildTypes: [
+      { key: 'standard', label: 'Standard', badge: '', blurb: 'Compact single-body off-road tourer — tandem axle, full ensuite, designed to go anywhere.', blueprint: '/images/blueprints/x-master-standard.webp', available: true },
+      { key: 'slideout', label: 'Slide-Out', badge: "22'6 size only", blurb: 'Extended body with a roadside wall that extrudes at camp — markedly wider inside when deployed.', blueprint: '/images/blueprints/x-master-slideout.webp', available: true },
+    ],
+    // Floor plans are the single source of truth for the configurator. Each
+    // entry is one (build, size, lounge, bed) combination; the picker derives
+    // its build / size / variant options from this list. `lounge` and `bed`
+    // are null where that size offers no such choice.
+    floorPlans: [
+      { build: 'standard', size: '17-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-17-6.png' },
+      { build: 'standard', size: '18-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-18-6.png' },
+      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/x-master-standard-19-6.png' },
+      { build: 'standard', size: '20-6', lounge: null, bed: null, image: '/images/blueprints/generic-20-6.png' },
+      { build: 'standard', size: '21-6', lounge: null, bed: 'queen', image: '/images/blueprints/generic-21-6.png' },
+      { build: 'standard', size: '21-6', lounge: null, bed: 'bunk', image: '/images/blueprints/generic-21-6.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: 'queen', image: '/images/blueprints/generic-22-6.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: 'bunk', image: '/images/blueprints/generic-22-6.png' },
+      { build: 'slideout', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/x-master-slideout-floorplan.png' },
     ],
   },
   {
@@ -564,249 +487,75 @@ export const models = [
     highlights: ['Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Mirage',
     inclusions: { addOns: AVAILABLE_UPGRADES },
-    // Per-size pill values + full build sheets. The four Mirage variants are
-    // *layout* variants (Cafe / Recliners / Queen / Single) on the same body,
-    // so all four share these per-size chassis and power specs.
+    // Per-size pill values + full build sheets, keyed by the size the
+    // configurator selects. Lounge / bed layout choices share these per-size
+    // chassis and power specs.
     specsBySize: MIRAGE_SPECS_BY_SIZE,
     technicalSpecsBySize: MIRAGE_TECH_SPECS_BY_SIZE,
-    // Full manufacturer build sheet — shared across all Mirage variants
-    // and used as the fallback when no per-size data exists. Mirrors the
-    // 18'6 build with the Excel inclusions baseline.
+    // Full manufacturer build sheet — used as the fallback when no per-size
+    // data exists. Mirrors the 18'6 build with the Excel inclusions baseline.
     technicalSpecs: mirageTech({ raiser: '2"' }),
-    variants: [
-      {
-        key: 'cafe',
-        label: 'Cafe Style',
-        shortLabel: 'Cafe',
-        badge: 'Mirage · Cafe Lounge',
-        blurb: 'Fixed L-shaped cafe dinette with pedestal table — seats the whole family for meals and folds out for an extra bed.',
-        blueprint: '/images/blueprints/mirage-cafe.webp',
-        floorPlan: '/images/blueprints/generic.png',
-        sizes: DEFAULT_SIZES,
-        floorPlansBySize: {},
-        description:
-          'The Cafe-style Mirage keeps things classic. A fixed L-shaped dinette with a solid pedestal table gives you a proper spot for meals, laptops, card games and long cups of tea on a rainy afternoon. Gloss white upper cabinetry, stone-look benchtops and a hex-tile ensuite give the whole space a bright, premium feel — while the rear queen bedroom stays tucked away for an easy night.',
-        features: [
-          'Fixed L-shaped cafe dinette with solid pedestal table',
-          'Converts into an extra double bed for guests',
-          'Gloss white upper cabinetry and dark gloss lower drawers',
-          'Full kitchen — 4-burner cooktop with oven, stainless sink, stone-look bench',
-          'Rear private queen bed with wrap-around storage',
-          'Full ensuite with separate shower, cassette toilet and vanity',
-          'Hexagon-tile ensuite floor with marble-look vanity top',
-          'Dometic cassette air-conditioner and Sirocco ceiling fan',
-          'Large panoramic windows — bright, light-filled interior',
-        ],
-        specs: {
-          sleeps: 'Up to 6',
-          length: 'TBC',
-          tare: 'TBC',
-          atm: 'TBC',
-          suspension: 'Roller rocker',
-          water: 'TBC',
-          warranty: 'TBC',
-        },
-        gallery: {
-          exterior: [
-            {
-              src: '/images/models/mirage-cafe/exterior-01.jpg',
-              caption: 'Mirage 206 front-quarter — twin gas-bottle hitch, off-road-ready drawbar, white body with charcoal and green graphics.',
-            },
-            {
-              src: '/images/models/mirage-cafe/exterior-02.jpg',
-              caption: 'Rear view — reflective tail strip, spare wheel mount, full checker-plate stone guard along the underbody.',
-            },
-            {
-              src: '/images/models/mirage-cafe/exterior-03.jpg',
-              caption: 'Mirage 186 front — twin gas bottles and off-road drawbar, Sahara Caravans branding in green and charcoal.',
-            },
-          ],
-          interior: [
-            { src: '/images/models/mirage-cafe/interior-01.jpg', caption: 'Ensuite corner — gloss white cabinetry, hex-tile floor and the edge of the separate shower stall.' },
-            { src: '/images/models/mirage-cafe/interior-02.jpg', caption: 'Cafe dinette looking back to the bedroom — bench seats with a fixed stone-look table and a skylight over the lounge.' },
-            { src: '/images/models/mirage-cafe/interior-03.jpg', caption: 'Separate shower stall — chrome hand-held, slide rail and slip-resistant base set in bright white wet-wall panels.' },
-            { src: '/images/models/mirage-cafe/interior-04.jpg', caption: 'Dinette from the galley side — L-lounge with fixed table, fridge and microwave column on the right, skylight overhead.' },
-            { src: '/images/models/mirage-cafe/interior-05.jpg', caption: 'Cafe dinette from the kitchen — cushioned bench seats, fixed table, fridge column and entry door alongside.' },
-            { src: '/images/models/mirage-cafe/interior-06.jpg', caption: 'Dinette wide angle — cafe seating on the right, galley on the left, skylight drawing daylight into the main living.' },
-            { src: '/images/models/mirage-cafe/interior-07.jpg', caption: 'Galley wide — gloss white uppers, grey lower drawers, stone benchtop with under-bench oven and stainless sink.' },
-            { src: '/images/models/mirage-cafe/interior-08.jpg', caption: 'Ensuite — cassette toilet, front-loading washer column, marble-look vanity with vessel basin and mirrored cabinets.' },
-            { src: '/images/models/mirage-cafe/interior-09.jpg', caption: 'Private queen bedroom — quilted mattress, overhead cabinetry, bedside shelves with reading lights on both sides.' },
-            { src: '/images/models/mirage-cafe/interior-10.jpg', caption: 'Cafe dinette in detail — fixed stone-look table between padded bench seats, fridge column and entry door on the right.' },
-            { src: '/images/models/mirage-cafe/interior-11.jpg', caption: 'Kitchen from the rear — gloss uppers, stone benchtop, 4-burner cooktop with oven and a glimpse of the bed beyond.' },
-            { src: '/images/models/mirage-cafe/interior-12.jpg', caption: 'Ensuite detail — front-loading washer, marble-look vanity with vessel sink, mirror-fronted overhead cabinet.' },
-          ],
-        },
-      },
-      {
-        key: 'recliners',
-        label: 'Twin Recliners',
-        shortLabel: 'Recliners',
-        badge: 'Mirage · Recliner Lounge',
-        blurb: 'Two individual reclining chairs with a shared side table — the relaxed evenings-in layout for couples.',
-        blueprint: '/images/blueprints/mirage-recliners.webp',
-        floorPlan: '/images/blueprints/mirage-recliners.png',
-        sizes: DEFAULT_SIZES,
-        floorPlansBySize: {},
-        floorPlanNote: 'Sample layout — the Twin Recliner is available in every Mirage size and on other layouts as a custom build.',
-        description:
-          'The Recliner-layout Mirage swaps the fixed dinette for two individual reclining lounge chairs with a small shared side table. It\'s the evenings-in, movie-night layout — everyone gets their own seat, and there\'s nothing hard to knock a knee on. Everything else is the same Mirage you know: full galley, ensuite with laundry and a private rear queen bedroom.',
-        features: [
-          'Twin individual reclining lounge chairs with side table',
-          'Relaxed, living-room feel — no shared bench seat',
-          'Full kitchen — 4-burner cooktop with oven, stainless sink, stone-look bench',
-          'Rear private queen bed with wrap-around storage',
-          'Full ensuite with separate shower, cassette toilet and vanity',
-          'Marble-look vanity top with matte black tapware',
-          'Gloss white upper cabinetry and dark gloss lower drawers',
-          'Dometic cassette air-conditioner and ceiling ventilation',
-          'Twin gas-bottle mount, off-road-ready hitch and drawbar',
-        ],
-        specs: {
-          sleeps: 'Up to 4',
-          length: 'TBC',
-          tare: 'TBC',
-          atm: 'TBC',
-          suspension: 'Roller rocker',
-          water: 'TBC',
-          warranty: 'TBC',
-        },
-        gallery: {
-          exterior: [
-            { src: '/images/models/mirage-recliners/exterior-01.jpg', caption: 'Mirage 206 front — twin gas-bottle hitch, off-road drawbar, aerodynamic nose cone.' },
-            { src: '/images/models/mirage-recliners/exterior-02.jpg', caption: 'Full side profile — single-axle on-road build, white body with charcoal and green graphics.' },
-            { src: '/images/models/mirage-recliners/exterior-03.jpg', caption: 'Rear view — spare wheel, reflective tail strip, full stone-guard underbody.' },
-            { src: '/images/models/mirage-recliners/exterior-04.jpg', caption: 'Mirage 206 driver-side profile at sunset — tandem axles, large lounge window with green honeycomb graphic, full stone-guard along the lower flank.' },
-          ],
-          interior: [
-            { src: '/images/models/mirage-recliners/interior-01.jpg', caption: 'Front queen bed with quilted mattress — gloss white overhead cabinetry, marble-look bedside tables, twin ceiling fans and reading lights overhead.' },
-            { src: '/images/models/mirage-recliners/interior-02.jpg', caption: 'Galley wall — gloss white uppers, marble-look benchtop with under-bench oven and stainless sink, fridge and microwave tower on the right.' },
-            { src: '/images/models/mirage-recliners/interior-03.jpg', caption: 'Ensuite — marble-look vanity with vessel basin, framed mirror, gloss white overhead cabinets and a cassette toilet alongside.' },
-            { src: '/images/models/mirage-recliners/interior-04.jpg', caption: 'Bedroom from the foot of the bed — quilted mattress, twin reading-light fans on the ceiling, marble-look bedside tables and full-height bedside wardrobes.' },
-            { src: '/images/models/mirage-recliners/interior-05.jpg', caption: 'Looking from the lounge toward the bed — twin black recliner chairs on the left, galley with fridge tower on the right, skylight overhead.' },
-            { src: '/images/models/mirage-recliners/interior-06.jpg', caption: 'Shower stall — chrome hand-held with slide rail, glass door and bright white wet-wall panels with a non-slip base.' },
-            { src: '/images/models/mirage-recliners/interior-07.jpg', caption: 'Twin recliner detail — black bucket seats, marble-look shared side-table and TV mount on the wall, Dometic cassette air-con overhead.' },
-          ],
-        },
-      },
-      {
-        key: 'queen-bed',
-        label: 'Queen Bed Layout',
-        shortLabel: 'Queen Bed',
-        badge: 'Mirage · Queen Bed',
-        blurb: 'Compact Mirage 166 built around a rear queen bed — a simple padded bench lounge keeps the floor plan tidy for couples.',
-        blueprint: '/images/blueprints/mirage-queenbed.webp',
-        floorPlan: '/images/blueprints/generic.png',
-        sizes: DEFAULT_SIZES,
-        floorPlansBySize: {
-          '16-6': '/images/blueprints/generic-16-6.png',
-          '17-6': '/images/blueprints/generic-17-6.png',
-          '18-6': '/images/blueprints/generic-18-6.png',
-          '19-6': '/images/blueprints/generic-19-6.png',
-          '20-6': '/images/blueprints/generic-20-6.png',
-          '22-6': '/images/blueprints/generic-22-6.png',
-        },
-        description:
-          'The Queen Bed Mirage is the compact couples\' floor plan. A full-size rear queen bed sits under gloss white overhead cabinetry with a padded headboard and reading lights on either side, and a simple cushioned bench lounge keeps the living area uncluttered. The full galley, ensuite with separate shower and twin-gas-bottle off-road hitch all stay — just in a shorter, lighter body that\'s easier to tow and park.',
-        features: [
-          'Rear private queen bed with padded headboard and reading lights',
-          'Full-height bedside wardrobes and overhead cabinetry',
-          'Padded bench lounge with overhead storage and side window',
-          'Full kitchen — 4-burner cooktop with oven, stainless sink, stone-look bench',
-          'Fridge / microwave column beside the ensuite entry',
-          'Full ensuite with separate shower, cassette toilet and vanity',
-          'Compact Mirage 166 body — easier to tow and easier to park',
-          'Twin gas-bottle mount, off-road-ready hitch and checker-plate stone guard',
-          'Dometic cassette air-conditioner and large awning windows',
-        ],
-        specs: {
-          sleeps: 'Up to 2',
-          length: 'TBC',
-          tare: '2180 kg',
-          gtm: '2626 kg',
-          atm: '2800 kg',
-          suspension: 'Roller rocker',
-          water: 'TBC',
-          warranty: 'TBC',
-        },
-        gallery: {
-          exterior: [
-            { src: '/images/models/mirage-queenbed/exterior-01.jpg', caption: 'Mirage 166 front-on — twin gas-bottle hitch, off-road drawbar, checker-plate stone guard and Sahara Caravans branding.' },
-            { src: '/images/models/mirage-queenbed/exterior-02.jpg', caption: 'Front-quarter view — nose-cone body, white upper panels with black checker-plate skirt along the underbody.' },
-            { src: '/images/models/mirage-queenbed/exterior-03.jpg', caption: 'Front-quarter from the opposite side — aerodynamic profile, large side windows and oversized stone guard.' },
-            { src: '/images/models/mirage-queenbed/exterior-04.jpg', caption: 'Full side profile — single-axle on-road build, checker-plate skirt and alloy wheel.' },
-            { src: '/images/models/mirage-queenbed/exterior-05.jpg', caption: 'Kerb-side view — entry door and external service hatch to the front tunnel boot.' },
-          ],
-          interior: [
-            { src: '/images/models/mirage-queenbed/interior-01.jpg', caption: 'Rear queen bed — quilted mattress, dark padded headboard, gloss white overhead cabinetry and reading lights on both sides.' },
-            { src: '/images/models/mirage-queenbed/interior-02.jpg', caption: 'Padded bench lounge — cushioned seat-back, overhead cabinetry, awning window and power outlet panel within easy reach.' },
-            { src: '/images/models/mirage-queenbed/interior-03.jpg', caption: 'Lounge from the entry — bench seating, side window and a glimpse of the galley just around the corner.' },
-            { src: '/images/models/mirage-queenbed/interior-04.jpg', caption: 'Living area looking back to the bedroom — bench seat, overhead lockers and wood-look flooring through to the rear bed.' },
-            { src: '/images/models/mirage-queenbed/interior-05.jpg', caption: 'Galley from the bedroom — gloss white uppers and lowers, under-bench oven with 4-burner cooktop and fridge / microwave tower.' },
-            { src: '/images/models/mirage-queenbed/interior-06.jpg', caption: 'Full kitchen — stone-look bench, stainless sink, awning window above and fridge column alongside the ensuite.' },
-            { src: '/images/models/mirage-queenbed/interior-07.jpg', caption: 'Kitchen in detail — 4-burner cooktop with oven below, deep drawer stack and utility cupboards under the bench.' },
-            { src: '/images/models/mirage-queenbed/interior-08.jpg', caption: 'Ensuite — cassette toilet, gloss white cabinetry, wet-wall panels and marble-look vanity top.' },
-            { src: '/images/models/mirage-queenbed/interior-09.jpg', caption: 'Separate shower stall — chrome hand-held, slide rail and slip-resistant base set in bright wet-wall.' },
-            { src: '/images/models/mirage-queenbed/interior-10.jpg', caption: 'Vanity detail — marble-look top with vessel basin, mirror-fronted overhead cabinet and matte-black tapware.' },
-          ],
-        },
-      },
-      {
-        key: 'single-bed',
-        label: 'Single Bed Layout',
-        shortLabel: 'Single Beds',
-        badge: 'Mirage · Twin Singles',
-        blurb: 'Compact Mirage 166 with two rear single beds split by a central cabinet — flexible for families, friends or gear.',
-        blueprint: '/images/blueprints/mirage-singlebed.webp',
-        sizes: DEFAULT_SIZES,
-        floorPlansBySize: {
-          '16-6': '/images/blueprints/mirage-singlebed-16-6.png',
-        },
-        description:
-          'The Single Bed Mirage swaps the queen for two independent single beds at the rear, split by a central cabinet column with overhead storage and an oversized skylight above. It\'s the flexible layout — two friends who want their own space, parents sharing with a teenager, or anyone who needs the extra stowage the central column provides. The rest of the build stays true to the Mirage: full galley, ensuite with separate shower and a cushioned lounge in the living area.',
-        features: [
-          'Two rear single beds with quilted mattresses and overhead shelves',
-          'Central cabinet column between the beds with storage and skylight above',
-          'Cushioned lounge / bench seating in the main living area',
-          'Full kitchen — 4-burner cooktop with oven, stainless sink, stone-look bench',
-          'Fridge / microwave column with Dometic cassette air-conditioner overhead',
-          'Full ensuite with separate shower, cassette toilet and vanity',
-          'Compact Mirage 166 body — easier to tow and easier to park',
-          'Twin gas-bottle mount, off-road-ready hitch and checker-plate stone guard',
-          'Large awning windows each side of the bedroom for airflow',
-        ],
-        specs: {
-          sleeps: 'Up to 2',
-          length: 'TBC',
-          tare: '2021 kg',
-          gtm: '2600 kg',
-          atm: '2750 kg',
-          suspension: 'Roller rocker',
-          water: 'TBC',
-          warranty: 'TBC',
-        },
-        gallery: {
-          exterior: [
-            { src: '/images/models/mirage-singlebed/exterior-01.jpg', caption: 'Mirage 166 kerb side on gravel — green and charcoal graphics, oversized windows, checker-plate stone guard and single-axle alloy wheel.' },
-            { src: '/images/models/mirage-singlebed/exterior-02.jpg', caption: 'Full front view — twin gas bottles on the off-road drawbar, nose-cone body and bright white upper panels.' },
-            { src: '/images/models/mirage-singlebed/exterior-03.jpg', caption: 'Full side profile — checker-plate skirt along the length, awning bar and entry step folded down.' },
-            { src: '/images/models/mirage-singlebed/exterior-04.jpg', caption: 'Front-quarter detail — SW66 suspension badge, stone guard and reflective strip along the underbody.' },
-            { src: '/images/models/mirage-singlebed/exterior-05.jpg', caption: 'Off-side view — rear corner with reflective tail strip and full stone-guard skirt.' },
-          ],
-          interior: [
-            { src: '/images/models/mirage-singlebed/interior-01.jpg', caption: 'Twin single beds at the rear — quilted mattresses, central cabinet column with overhead shelves, skylight above and large awning windows on both sides.' },
-            { src: '/images/models/mirage-singlebed/interior-02.jpg', caption: 'Single beds from the lounge — wood-look flooring, gloss white cabinetry and the edge of the galley just in frame.' },
-            { src: '/images/models/mirage-singlebed/interior-03.jpg', caption: 'Lounge area — padded bench seat with cushioned back, overhead lockers and awning window onto the outside.' },
-            { src: '/images/models/mirage-singlebed/interior-04.jpg', caption: 'Living area — cushioned bench, gloss white overhead storage, wood-look flooring and view through to the bedroom.' },
-            { src: '/images/models/mirage-singlebed/interior-05.jpg', caption: 'Lounge looking forward — padded seating, side window and TV mount in the corner.' },
-            { src: '/images/models/mirage-singlebed/interior-06.jpg', caption: 'Galley looking back to the beds — Dometic cassette air-con overhead, gloss white uppers, under-bench oven, fridge / microwave tower and entry to the ensuite.' },
-            { src: '/images/models/mirage-singlebed/interior-07.jpg', caption: 'Fridge column beside the ensuite — black 3-way fridge with microwave on top, gloss white cabinetry and wood-look flooring.' },
-            { src: '/images/models/mirage-singlebed/interior-08.jpg', caption: 'Ensuite — cassette toilet and shower stall, gloss white cabinetry and wet-wall panels.' },
-            { src: '/images/models/mirage-singlebed/interior-09.jpg', caption: 'Ensuite in use — vanity with marble-look top, mirror-fronted overhead cabinet and matte-black tapware.' },
-            { src: '/images/models/mirage-singlebed/interior-10.jpg', caption: 'Separate shower stall — chrome hand-held, slide rail and bright wet-wall panels.' },
-            { src: '/images/models/mirage-singlebed/interior-11.jpg', caption: 'Cassette toilet — full-height wet-wall panels, compact footprint alongside the vanity.' },
-          ],
-        },
-      },
+    specs: {
+      sleeps: 'Up to 6',
+      length: 'TBC',
+      tare: 'TBC',
+      atm: 'TBC',
+      suspension: 'Roller rocker',
+      water: 'TBC',
+      warranty: 'TBC',
+    },
+    features: [
+      'Fixed L-shaped cafe dinette or twin reclining lounge chairs',
+      'Converts into an extra double bed for guests',
+      'Gloss white upper cabinetry and dark gloss lower drawers',
+      'Full kitchen — 4-burner cooktop with oven, stainless sink, stone-look bench',
+      'Rear private queen bed or twin single beds with wrap-around storage',
+      'Full ensuite with separate shower, cassette toilet and vanity',
+      'Hexagon-tile ensuite floor with marble-look vanity top',
+      'Dometic cassette air-conditioner and Sirocco ceiling fan',
+      'Large panoramic windows — bright, light-filled interior',
+    ],
+    gallery: {
+      exterior: [
+        { src: '/images/models/mirage-cafe/exterior-01.jpg', caption: 'Mirage 206 front-quarter — twin gas-bottle hitch, off-road-ready drawbar, white body with charcoal and green graphics.' },
+        { src: '/images/models/mirage-cafe/exterior-02.jpg', caption: 'Rear view — reflective tail strip, spare wheel mount, full checker-plate stone guard along the underbody.' },
+        { src: '/images/models/mirage-cafe/exterior-03.jpg', caption: 'Mirage 186 front — twin gas bottles and off-road drawbar, Sahara Caravans branding in green and charcoal.' },
+        { src: '/images/models/mirage-recliners/exterior-04.jpg', caption: 'Mirage 206 driver-side profile at sunset — tandem axles, large lounge window with green honeycomb graphic, full stone-guard along the lower flank.' },
+      ],
+      interior: [
+        { src: '/images/models/mirage-cafe/interior-02.jpg', caption: 'Cafe dinette looking back to the bedroom — bench seats with a fixed stone-look table and a skylight over the lounge.' },
+        { src: '/images/models/mirage-cafe/interior-04.jpg', caption: 'Dinette from the galley side — L-lounge with fixed table, fridge and microwave column on the right, skylight overhead.' },
+        { src: '/images/models/mirage-cafe/interior-06.jpg', caption: 'Dinette wide angle — cafe seating on the right, galley on the left, skylight drawing daylight into the main living.' },
+        { src: '/images/models/mirage-cafe/interior-07.jpg', caption: 'Galley wide — gloss white uppers, grey lower drawers, stone benchtop with under-bench oven and stainless sink.' },
+        { src: '/images/models/mirage-cafe/interior-09.jpg', caption: 'Private queen bedroom — quilted mattress, overhead cabinetry, bedside shelves with reading lights on both sides.' },
+        { src: '/images/models/mirage-cafe/interior-08.jpg', caption: 'Ensuite — cassette toilet, front-loading washer column, marble-look vanity with vessel basin and mirrored cabinets.' },
+        { src: '/images/models/mirage-cafe/interior-03.jpg', caption: 'Separate shower stall — chrome hand-held, slide rail and slip-resistant base set in bright white wet-wall panels.' },
+        { src: '/images/models/mirage-cafe/interior-11.jpg', caption: 'Kitchen from the rear — gloss uppers, stone benchtop, 4-burner cooktop with oven and a glimpse of the bed beyond.' },
+        { src: '/images/models/mirage-recliners/interior-05.jpg', caption: 'Twin Recliner layout — black recliner chairs on the left, galley with fridge tower on the right, skylight overhead.' },
+        { src: '/images/models/mirage-recliners/interior-07.jpg', caption: 'Twin recliner detail — black bucket seats, marble-look shared side-table and TV mount on the wall.' },
+        { src: '/images/models/mirage-queenbed/interior-01.jpg', caption: 'Queen bed layout — quilted mattress, dark padded headboard, gloss white overhead cabinetry and reading lights on both sides.' },
+        { src: '/images/models/mirage-singlebed/interior-01.jpg', caption: 'Twin single bed layout — quilted mattresses, central cabinet column with overhead shelves and skylight above.' },
+      ],
+    },
+    buildTypes: [
+      { key: 'standard', label: 'Standard', badge: '', blurb: 'The streamlined Mirage body — easy to tow and fully self-contained.', blueprint: '/images/blueprints/x-master-standard.webp', available: true },
+      { key: 'slideout', label: 'Slide-Out', badge: "22'6 size only", blurb: 'A roadside wall that extrudes at camp for a markedly wider lounge.', blueprint: '/images/blueprints/x-master-slideout.webp', available: true },
+    ],
+    // Floor plans drive the configurator. The lounge toggle (Cafe vs Twin
+    // Recliner) and the bed toggle (Queen vs Twin Single) only appear on the
+    // sizes that list more than one option; smaller sizes carry a single plan.
+    floorPlans: [
+      { build: 'standard', size: '18-6', lounge: null, bed: null, image: '/images/blueprints/mirage-18-6.png' },
+      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/generic-19-6.png' },
+      { build: 'standard', size: '20-6', lounge: 'cafe', bed: null, image: '/images/blueprints/mirage-20-6.png' },
+      { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-recliners.png' },
+      { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'queen', image: '/images/blueprints/generic-21-6.png' },
+      { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'single', image: '/images/blueprints/generic-21-6.png' },
+      { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'queen', image: '/images/blueprints/mirage-recliners.png' },
+      { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'single', image: '/images/blueprints/mirage-recliners.png' },
+      { build: 'standard', size: '22-6', lounge: 'cafe', bed: null, image: '/images/blueprints/generic-22-6.png' },
+      { build: 'standard', size: '22-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-recliners.png' },
+      { build: 'slideout', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/generic-22-6.png' },
     ],
   },
   {
@@ -881,16 +630,19 @@ export const models = [
     highlights: ['Toilet', 'Shower', 'Kitchenette', 'Off-Grid'],
     ctaLabel: 'Enquire about the Dune',
     inclusions: { addOns: AVAILABLE_UPGRADES },
-    sizes: DEFAULT_SIZES,
-    floorPlan: '/images/blueprints/generic.png',
-    floorPlansBySize: {
-      '16-6': '/images/blueprints/generic-16-6.png',
-      '17-6': '/images/blueprints/generic-17-6.png',
-      '18-6': '/images/blueprints/generic-18-6.png',
-      '19-6': '/images/blueprints/generic-19-6.png',
-      '20-6': '/images/blueprints/generic-20-6.png',
-      '22-6': '/images/blueprints/generic-22-6.png',
-    },
+    buildTypes: [
+      { key: 'standard', label: 'Standard', badge: '', blurb: 'The free-camping Dune body on 3.3T independent coil-spring suspension.', blueprint: '/images/blueprints/x-master-standard.webp', available: true },
+      { key: 'slideout', label: 'Slide-Out', badge: 'Coming soon', blurb: 'A wider living area at camp — in development for the Dune.', blueprint: '/images/blueprints/x-master-slideout.webp', available: false },
+    ],
+    floorPlans: [
+      { build: 'standard', size: '18-6', lounge: null, bed: null, image: '/images/blueprints/generic-18-6.png' },
+      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/generic-19-6.png' },
+      { build: 'standard', size: '20-6', lounge: 'cafe', bed: null, image: '/images/blueprints/dune-20-6.png' },
+      { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/dune-recliners.png' },
+      { build: 'standard', size: '21-6', lounge: null, bed: null, image: '/images/blueprints/generic-21-6.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: 'queen', image: '/images/blueprints/generic-22-6.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: 'bunk', image: '/images/blueprints/generic-22-6.png' },
+    ],
     // Per-size pill values + full build sheets. Sizes that don't appear here
     // (16'6, 17'6) fall back to the model-level `specs` and `technicalSpecs`
     // below.
@@ -983,14 +735,16 @@ export const models = [
     highlights: ['Bunks', 'Toilet', 'Shower', 'Laundry', 'Kitchenette'],
     ctaLabel: 'Enquire about the Horizon',
     inclusions: { addOns: AVAILABLE_UPGRADES },
-    sizes: ['19-6', '20-6', '21-6', '22-6'],
-    floorPlan: '/images/blueprints/generic.png',
-    floorPlansBySize: {
-      '19-6': '/images/blueprints/generic-19-6.png',
-      '20-6': '/images/blueprints/generic-20-6.png',
-      '21-6': '/images/blueprints/generic-21-6.png',
-      '22-6': '/images/blueprints/generic-22-6.png',
-    },
+    buildTypes: [
+      { key: 'standard', label: 'Standard', badge: '', blurb: 'The full Horizon family layout — rear queen plus four full-length bunks.', blueprint: '/images/blueprints/x-master-standard.webp', available: true },
+      { key: 'slideout', label: 'Slide-Out', badge: 'Coming soon', blurb: 'A wider family lounge at camp — in development for the Horizon.', blueprint: '/images/blueprints/x-master-slideout.webp', available: false },
+    ],
+    floorPlans: [
+      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/generic-19-6.png' },
+      { build: 'standard', size: '20-6', lounge: null, bed: null, image: '/images/blueprints/generic-20-6.png' },
+      { build: 'standard', size: '21-6', lounge: null, bed: null, image: '/images/blueprints/generic-21-6.png' },
+      { build: 'standard', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/generic-22-6.png' },
+    ],
     // Horizon ships in 19'6 and above only — washing machine is always
     // top-loader. Chassis stays Horizon-specific (load-sharing, 3.5T ball
     // coupling). The six non-chassis sections come from `commonBaseline`
@@ -1046,13 +800,75 @@ export function getModelBySlug(slug) {
   return models.find((m) => m.slug === slug)
 }
 
-export function getPrimaryVariant(model) {
-  return model?.variants?.[0] ?? null
+// Human-readable labels for the Step 3 variant toggles. The configurator
+// reads option keys off the `floorPlans` list and looks the labels up here.
+export const LOUNGE_LABELS = {
+  cafe: 'Cafe Style Lounge',
+  recliner: 'Twin Recliner Lounge',
+}
+export const BED_LABELS = {
+  queen: 'Queen Bed',
+  single: 'Twin Single Beds',
+  bunk: 'Bunks',
 }
 
-export function getVariantByKey(model, key) {
-  if (!model?.variants) return null
-  return model.variants.find((v) => v.key === key) ?? model.variants[0]
+// Canonical size ordering — used to sort the size pills regardless of the
+// order floor plans happen to be listed in.
+const SIZE_ORDER = ['16-6', '17-6', '18-6', '19-6', '20-6', '21-6', '22-6']
+
+// The body lengths offered for a given build type, in size order.
+export function getSizesForBuild(model, build) {
+  const present = new Set(
+    (model.floorPlans ?? []).filter((p) => p.build === build).map((p) => p.size),
+  )
+  return SIZE_ORDER.filter((s) => present.has(s))
+}
+
+// The distinct lounge / bed options available for a (build, size) pair.
+// A dimension with 0 or 1 options means that toggle is not shown.
+export function getVariantOptions(model, build, size) {
+  const plans = (model.floorPlans ?? []).filter(
+    (p) => p.build === build && p.size === size,
+  )
+  const lounges = [...new Set(plans.map((p) => p.lounge).filter(Boolean))]
+  const beds = [...new Set(plans.map((p) => p.bed).filter(Boolean))]
+  return { lounges, beds }
+}
+
+// Resolve the floor plan entry for a full selection. A plan with a null
+// lounge/bed matches any selection on that dimension.
+export function getFloorPlan(model, build, size, lounge, bed) {
+  const plans = (model.floorPlans ?? []).filter(
+    (p) => p.build === build && p.size === size,
+  )
+  return (
+    plans.find(
+      (p) =>
+        (p.lounge == null || p.lounge === lounge) &&
+        (p.bed == null || p.bed === bed),
+    ) ?? plans[0] ?? null
+  )
+}
+
+// Validate a (possibly partial or stale) selection against the model data and
+// fill in defaults — used on first paint, on URL restore and after every
+// change so build / size / variant stay mutually consistent.
+export function resolveSelection(model, { build, size, lounge, bed } = {}) {
+  const builds = model.buildTypes ?? []
+  const isAvailable = (key) =>
+    builds.some((b) => b.key === key && b.available !== false)
+  const validBuild = isAvailable(build)
+    ? build
+    : builds.find((b) => b.available !== false)?.key ?? builds[0]?.key ?? null
+
+  const sizes = getSizesForBuild(model, validBuild)
+  const validSize = sizes.includes(size) ? size : sizes[0] ?? null
+
+  const { lounges, beds } = getVariantOptions(model, validBuild, validSize)
+  const validLounge = lounges.includes(lounge) ? lounge : lounges[0] ?? null
+  const validBed = beds.includes(bed) ? bed : beds[0] ?? null
+
+  return { build: validBuild, size: validSize, lounge: validLounge, bed: validBed }
 }
 
 // Normalise a single-variant model's legacy `gallery: string[]` into the

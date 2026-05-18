@@ -223,175 +223,12 @@
 .section--alt .model-page__feature-card { background: #fff; border-color: var(--color-border-on-light); }
 .section--alt .model-page__feature-card:hover { border-color: rgba(14, 14, 15, 0.22); }
 
-.model-page__variants { padding-top: 64px; }
-.model-page__variants + .model-page__intro { padding-top: 64px; }
-
 /* On white "breather" sections, the inactive tab-count chip uses
  * accent-overlay (cream alpha) which disappears on white. Give it a
  * subtle dark chip so the count stays readable; the active state keeps
  * its existing dark-on-gold treatment. */
 .section--alt .model-page__feature-tab-count {
   background: rgba(14, 14, 15, 0.06);
-}
-
-/* Force pure white (matches the floor-plan image background) regardless
- * of which tone slot the alternation lands it in. Light-mode token
- * overrides keep text dark on the pure-white surface. */
-.model-page__floorplan {
-  text-align: center;
-  background: #fff;
-  color: #0E0E0F;
-  --color-text: #0E0E0F;
-  --color-text-soft: rgba(14, 14, 15, 0.68);
-  --color-muted: rgba(14, 14, 15, 0.50);
-}
-
-.model-page__floorplan .section-label {
-  color: #0E0E0F;
-  margin-bottom: 0;
-}
-
-.model-page__floorplan-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 1100px;
-  margin: 32px auto 0;
-}
-
-/* Size tabs sit above "See the layout." — pill buttons mirroring the
- * feature-tab look but tuned for a centred row on a white surface. */
-.model-page__size-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px 10px;
-  margin: 0 auto 28px;
-  max-width: 1100px;
-}
-
-.model-page__size-tabs-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(14, 14, 15, 0.55);
-  margin-right: 6px;
-}
-
-.model-page__size-tab {
-  display: inline-flex;
-  align-items: center;
-  padding: 9px 16px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(14, 14, 15, 0.18);
-  background: transparent;
-  color: rgba(14, 14, 15, 0.68);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  transition:
-    border-color var(--transition-fast),
-    color var(--transition-fast),
-    background var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.model-page__size-tab:hover,
-.model-page__size-tab:focus-visible {
-  border-color: var(--color-gold);
-  color: #0E0E0F;
-  transform: translateY(-1px);
-}
-
-.model-page__size-tab.is-active {
-  border-color: var(--color-gold);
-  background: var(--color-gold);
-  color: #0E0E0F;
-  box-shadow: 0 10px 28px rgba(190, 150, 70, 0.30);
-}
-
-.model-page__floorplan-asterisk {
-  font-size: 0.55em;
-  color: var(--color-gold);
-  margin-left: 4px;
-  vertical-align: super;
-  line-height: 0;
-}
-
-.model-page__floorplan-note {
-  max-width: 1100px;
-  margin: 16px auto 0;
-  font-size: 13px;
-  font-style: italic;
-  color: rgba(14, 14, 15, 0.55);
-  text-align: center;
-}
-
-.model-page__floorplan-placeholder {
-  max-width: 1100px;
-  margin: 32px auto 0;
-  padding: 56px 24px;
-  border: 1px dashed rgba(14, 14, 15, 0.20);
-  border-radius: var(--radius-md);
-  color: rgba(14, 14, 15, 0.55);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-.model-page__floorplan-placeholder-headline {
-  font-size: 14px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.model-page__floorplan-placeholder-note {
-  margin: 0;
-  max-width: 56ch;
-  font-size: 13px;
-  font-style: italic;
-  color: rgba(14, 14, 15, 0.55);
-}
-
-.model-page__floorplan-placeholder-link {
-  appearance: none;
-  background: transparent;
-  border: 0;
-  padding: 8px 4px;
-  margin-top: 2px;
-  font: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--color-gold);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  cursor: pointer;
-  min-height: 44px;
-}
-
-.model-page__floorplan-placeholder-link:hover {
-  color: var(--color-text);
-}
-
-.model-page__floorplan-placeholder-link:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-@media (max-width: 600px) {
-  .model-page__size-tabs { gap: 6px 8px; }
-  .model-page__size-tabs-label { width: 100%; text-align: center; margin: 0 0 4px; }
-  .model-page__size-tab { padding: 8px 13px; font-size: 12.5px; }
 }
 
 .model-page__gallery-groups {
@@ -783,4 +620,64 @@
   .model-page__tech-row { padding: 12px 0; }
   .model-page__tech-row-label { font-size: 13px; }
   .model-page__tech-row-value { font-size: 13px; }
+}
+
+/* ── Build switcher section (dark) ────────────────────────────────────
+ * The Standard / Slide-Out cards, on the dark baseline right below the hero. */
+.model-page__build { padding-top: 64px; }
+.model-page__build .section-eyebrow { display: block; margin-bottom: 22px; }
+
+/* ── Floor plan section ───────────────────────────────────────────────
+ * Forced pure white (matches the floor-plan image background) regardless of
+ * the tone slot the alternation lands it in. Holds the size / layout picker,
+ * then "See the layout." and the resolved floor plan. */
+.model-page__floorplan {
+  text-align: center;
+  background: #fff;
+  color: #0E0E0F;
+  --color-text: #0E0E0F;
+  --color-text-soft: rgba(14, 14, 15, 0.68);
+  --color-muted: rgba(14, 14, 15, 0.50);
+}
+
+.model-page__floorplan .section-label {
+  color: #0E0E0F;
+  margin-bottom: 0;
+}
+
+.model-page__floorplan-asterisk {
+  font-size: 0.55em;
+  color: var(--color-gold);
+  margin-left: 4px;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.model-page__floorplan-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 1000px;
+  margin: 32px auto 0;
+}
+
+.model-page__floorplan-placeholder {
+  max-width: 1000px;
+  margin: 32px auto 0;
+  padding: 56px 24px;
+  border: 1px dashed rgba(14, 14, 15, 0.20);
+  border-radius: var(--radius-md);
+  color: rgba(14, 14, 15, 0.55);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.model-page__floorplan-note {
+  max-width: 1000px;
+  margin: 16px auto 0;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(14, 14, 15, 0.55);
+  text-align: center;
 }

@@ -1,13 +1,23 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom'
 import { ArrowRight, Check, Expand, Plus } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import RevealOnScroll from '../components/ui/RevealOnScroll.jsx'
 import SpecPill from '../components/ui/SpecPill.jsx'
 import ModelCard from '../components/ui/ModelCard.jsx'
-import VariantSwitcher from '../components/ui/VariantSwitcher.jsx'
+import BuildSwitcher from '../components/ui/BuildSwitcher.jsx'
+import ModelConfigurator from '../components/ui/ModelConfigurator.jsx'
 import Lightbox from '../components/ui/Lightbox.jsx'
-import { models, getModelBySlug, getVariantByKey, normaliseGallery, SIZE_LABELS } from '../content/models.js'
+import {
+  models,
+  getModelBySlug,
+  normaliseGallery,
+  resolveSelection,
+  getFloorPlan,
+  SIZE_LABELS,
+  LOUNGE_LABELS,
+  BED_LABELS,
+} from '../content/models.js'
 import './ModelPage.css'
 
 const GALLERY_PREVIEW_COUNT = 3
@@ -122,57 +132,6 @@ function categoriseFeatures(features) {
   return tabs
 }
 
-function resolveFields(model, variant) {
-  if (!variant) {
-    return {
-      heroImage: model.heroImage,
-      description: model.description,
-      features: model.features ?? [],
-      specs: model.specs ?? {},
-      specsBySize: model.specsBySize ?? null,
-      gallery: normaliseGallery(model),
-      floorPlan: model.floorPlan ?? null,
-      floorPlanNote: model.floorPlanNote ?? null,
-      sizes: model.sizes ?? null,
-      floorPlansBySize: model.floorPlansBySize ?? null,
-      ctaLabel: model.ctaLabel,
-      inclusions: model.inclusions ?? null,
-      technicalSpecs: model.technicalSpecs ?? null,
-      technicalSpecsBySize: model.technicalSpecsBySize ?? null,
-    }
-  }
-  return {
-    heroImage: variant.heroImage ?? model.heroImage,
-    description: variant.description ?? model.description,
-    features: variant.features ?? model.features ?? [],
-    specs: variant.specs ?? model.specs ?? {},
-    specsBySize: variant.specsBySize ?? model.specsBySize ?? null,
-    gallery: variant.gallery ?? normaliseGallery(model),
-    floorPlan: variant.floorPlan ?? model.floorPlan ?? null,
-    floorPlanNote: variant.floorPlanNote ?? model.floorPlanNote ?? null,
-    sizes: variant.sizes ?? model.sizes ?? null,
-    floorPlansBySize: variant.floorPlansBySize ?? model.floorPlansBySize ?? null,
-    ctaLabel: variant.ctaLabel ?? model.ctaLabel,
-    inclusions: variant.inclusions ?? model.inclusions ?? null,
-    technicalSpecs: variant.technicalSpecs ?? model.technicalSpecs ?? null,
-    technicalSpecsBySize: variant.technicalSpecsBySize ?? model.technicalSpecsBySize ?? null,
-  }
-}
-
-// Prefer a size that actually has a floor plan so first paint shows the layout
-// rather than a "coming soon" placeholder. Falls back to the first size when
-// no per-size plans are defined.
-function pickDefaultSize(fields) {
-  const sizes = fields.sizes ?? []
-  if (sizes.length === 0) return null
-  const map = fields.floorPlansBySize
-  if (map && Object.keys(map).length > 0) {
-    const withPlan = sizes.find((s) => map[s])
-    if (withPlan) return withPlan
-  }
-  return sizes[0]
-}
-
 export default function ModelPage() {
   const { slug } = useParams()
   const location = useLocation()
@@ -181,21 +140,26 @@ export default function ModelPage() {
   const model = getModelBySlug(slug)
   if (!model) return <Navigate to="/range" replace />
 
-  const hasVariants = Array.isArray(model.variants) && model.variants.length > 0
-  const initialKey = useMemo(() => {
-    if (!hasVariants) return null
+  // The configurator selection — build / size / lounge / bed. `resolveSelection`
+  // keeps it internally consistent; the floor plan, specs and headings all key
+  // off it.
+  const defaultSelection = useMemo(() => resolveSelection(model, {}), [model])
+  const [selection, setSelection] = useState(() => {
     const params = new URLSearchParams(location.search)
-    const fromUrl = params.get('v')
-    const match = model.variants.find((v) => v.key === fromUrl)
-    return match?.key ?? model.variants[0].key
-  }, [hasVariants, location.search, model.variants])
+    return resolveSelection(model, {
+      build: params.get('build'),
+      size: params.get('size'),
+      lounge: params.get('lounge'),
+      bed: params.get('bed'),
+    })
+  })
+  const applySelection = (partial) =>
+    setSelection((cur) => resolveSelection(model, { ...cur, ...partial }))
 
-  const [activeKey, setActiveKey] = useState(initialKey)
-  const activeVariant = hasVariants ? getVariantByKey(model, activeKey) : null
-  const fields = resolveFields(model, activeVariant)
-
-  const featureTabs = useMemo(() => categoriseFeatures(fields.features), [fields.features])
-  const useFeatureTabs = fields.features.length >= FEATURE_TAB_THRESHOLD && featureTabs.length > 1
+  const gallery = useMemo(() => normaliseGallery(model), [model])
+  const features = model.features ?? []
+  const featureTabs = useMemo(() => categoriseFeatures(features), [features])
+  const useFeatureTabs = features.length >= FEATURE_TAB_THRESHOLD && featureTabs.length > 1
   const [activeFeatureTab, setActiveFeatureTab] = useState(featureTabs[0]?.id ?? null)
   useEffect(() => {
     if (!featureTabs.some((t) => t.id === activeFeatureTab)) {
@@ -203,26 +167,17 @@ export default function ModelPage() {
     }
   }, [featureTabs, activeFeatureTab])
   const activeBucket = featureTabs.find((t) => t.id === activeFeatureTab) ?? featureTabs[0]
-  const visibleFeatures = useFeatureTabs ? (activeBucket?.items ?? []) : fields.features
+  const visibleFeatures = useFeatureTabs ? (activeBucket?.items ?? []) : features
 
-  // Size selector for the floor-plan section. Caravans come in six body
-  // lengths; the X-Master Slide-Out is single-size (22'6). When floorPlansBySize
-  // has any entries, sizes not in it show the "coming soon" placeholder. An
-  // empty floorPlansBySize means "default applies to every size".
-  const [activeSize, setActiveSize] = useState(() => {
-    const fromUrl = new URLSearchParams(location.search).get('size')
-    if (fromUrl && fields.sizes?.includes(fromUrl)) return fromUrl
-    return pickDefaultSize(fields)
-  })
-
-  // Resolve specs and the technical-spec build sheet from the per-size maps
-  // (sourced from the equivalent old-site listings) and fall back to the
-  // variant-/model-level defaults for sizes the old site doesn't cover (16'6
-  // and the X-Master Slide-Out's chassis package).
-  const sizeSpecs = activeSize ? fields.specsBySize?.[activeSize] : null
-  const currentSpecs = sizeSpecs ? { ...fields.specs, ...sizeSpecs } : fields.specs
-  const sizeTechSpecs = activeSize ? fields.technicalSpecsBySize?.[activeSize] : null
-  const currentTechnicalSpecs = sizeTechSpecs ?? fields.technicalSpecs
+  // Specs and the technical build sheet are looked up by the selected size,
+  // falling back to the model-level defaults for sizes the build sheets don't
+  // cover.
+  const currentSpecs = useMemo(() => {
+    const bySize = model.specsBySize?.[selection.size]
+    return bySize ? { ...(model.specs ?? {}), ...bySize } : (model.specs ?? {})
+  }, [model, selection.size])
+  const currentTechnicalSpecs =
+    model.technicalSpecsBySize?.[selection.size] ?? model.technicalSpecs ?? null
 
   const [activeTechSpecTab, setActiveTechSpecTab] = useState(currentTechnicalSpecs?.[0]?.id ?? null)
   useEffect(() => {
@@ -230,74 +185,51 @@ export default function ModelPage() {
       setActiveTechSpecTab(currentTechnicalSpecs[0]?.id ?? null)
     }
   }, [currentTechnicalSpecs, activeTechSpecTab])
-  const activeTechSpec = currentTechnicalSpecs?.find((t) => t.id === activeTechSpecTab) ?? currentTechnicalSpecs?.[0]
-  const prevActiveKey = useRef(activeKey)
-  useEffect(() => {
-    // If the current size isn't valid in the new variant, reset (e.g. Standard
-    // → Slide-Out where sizes drops to ['22-6']).
-    if (fields.sizes && !fields.sizes.includes(activeSize)) {
-      setActiveSize(pickDefaultSize(fields))
-      prevActiveKey.current = activeKey
-      return
-    }
-    // On variant change only: if the kept size has no plan in the new variant
-    // but the variant does have plans elsewhere, jump to a size with a plan so
-    // the user always lands on a drawn layout instead of "coming soon".
-    if (prevActiveKey.current !== activeKey) {
-      prevActiveKey.current = activeKey
-      const map = fields.floorPlansBySize
-      if (map && Object.keys(map).length > 0 && !map[activeSize]) {
-        setActiveSize(pickDefaultSize(fields))
-      }
-    }
-  }, [activeKey, fields.sizes, fields.floorPlansBySize, activeSize])
-  const hasSizeMap =
-    fields.floorPlansBySize && Object.keys(fields.floorPlansBySize).length > 0
-  const currentFloorPlan = activeSize && hasSizeMap
-    ? fields.floorPlansBySize[activeSize] ?? null
-    : fields.floorPlan
-  const firstSizeWithPlan = hasSizeMap
-    ? fields.sizes?.find((s) => fields.floorPlansBySize[s]) ?? null
-    : null
+  const activeTechSpec =
+    currentTechnicalSpecs?.find((t) => t.id === activeTechSpecTab) ?? currentTechnicalSpecs?.[0]
+
+  const floorPlanEntry = getFloorPlan(
+    model,
+    selection.build,
+    selection.size,
+    selection.lounge,
+    selection.bed,
+  )
+  const currentFloorPlan = floorPlanEntry?.image ?? null
+  const floorPlanLabel = [
+    SIZE_LABELS[selection.size] ?? selection.size,
+    selection.lounge ? LOUNGE_LABELS[selection.lounge] : null,
+    selection.bed ? BED_LABELS[selection.bed] : null,
+  ].filter(Boolean).join(' · ')
 
   const [lightbox, setLightbox] = useState({ open: false, images: [], index: 0 })
   const openLightbox = (images, index) => setLightbox({ open: true, images, index })
   const closeLightbox = () => setLightbox((s) => ({ ...s, open: false }))
 
+  // Keep the configured van in the URL so it survives reload / back-button and
+  // is shareable. Params equal to the default selection are dropped for a
+  // clean URL.
   useEffect(() => {
-    if (!hasVariants) return
     const params = new URLSearchParams(window.location.search)
-    if (activeKey && activeKey !== model.variants[0].key) {
-      params.set('v', activeKey)
-    } else {
-      params.delete('v')
+    const sync = (key, value, fallback) => {
+      if (value && value !== fallback) params.set(key, value)
+      else params.delete(key)
     }
+    sync('build', selection.build, defaultSelection.build)
+    sync('size', selection.size, defaultSelection.size)
+    sync('lounge', selection.lounge, defaultSelection.lounge)
+    sync('bed', selection.bed, defaultSelection.bed)
     const search = params.toString()
     const next = `${window.location.pathname}${search ? `?${search}` : ''}${window.location.hash}`
     window.history.replaceState(window.history.state, '', next)
-  }, [activeKey, hasVariants, model.variants])
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const defaultSize = pickDefaultSize(fields)
-    if (activeSize && activeSize !== defaultSize) {
-      params.set('size', activeSize)
-    } else {
-      params.delete('size')
-    }
-    const search = params.toString()
-    const next = `${window.location.pathname}${search ? `?${search}` : ''}${window.location.hash}`
-    window.history.replaceState(window.history.state, '', next)
-  }, [activeSize, fields])
+  }, [selection, defaultSelection])
 
   const related = models.filter((m) => m.slug !== model.slug)
-  const variantLabel = activeVariant ? ` — ${activeVariant.label}` : ''
   const shortName = model.name.replace('Sahara ', '')
 
-  // Alternating tone helper — first content section is light (white breather),
-  // then dark, then light, etc. Counter only ticks for sections that actually
-  // render, so the rhythm holds when optional sections (floor plan / inclusions)
-  // are absent.
+  // Alternating tone helper — first content section after the configurator is
+  // light (white breather), then dark, then light, etc. Counter only ticks for
+  // sections that actually render.
   let toneIdx = 0
   const nextTone = () => {
     const tone = toneIdx % 2 === 0 ? 'section--alt' : 'section--dark'
@@ -308,14 +240,14 @@ export default function ModelPage() {
   return (
     <main className="model-page">
       <SEO
-        title={`${model.name}${variantLabel} — ${model.type}`}
-        description={`${model.name}${variantLabel}: ${model.tagline} — ${fields.description.slice(0, 140)}…`}
+        title={`${model.name} — ${model.type}`}
+        description={`${model.name}: ${model.tagline} — ${model.description.slice(0, 140)}…`}
         path={`/models/${model.slug}`}
       />
 
       <section className="model-page__hero">
         <div className="model-page__hero-media">
-          <img src={fields.heroImage} alt={`${model.name} exterior`} fetchpriority="high" />
+          <img src={model.heroImage} alt={`${model.name} exterior`} fetchpriority="high" />
           <div className="model-page__hero-gradient" />
         </div>
         <div className="container model-page__hero-inner">
@@ -325,104 +257,67 @@ export default function ModelPage() {
         </div>
       </section>
 
-      {hasVariants && (
-        <section className="model-page__variants section">
-          <div className="container">
-            <RevealOnScroll>
-              <VariantSwitcher
-                variants={model.variants}
-                activeKey={activeKey}
-                onChange={setActiveKey}
-                label={`Choose your ${shortName}`}
-              />
-            </RevealOnScroll>
-          </div>
-        </section>
-      )}
+      <section className="model-page__build section">
+        <div className="container">
+          <RevealOnScroll>
+            <span className="section-eyebrow">Choose your build</span>
+          </RevealOnScroll>
+          <RevealOnScroll delay={0.05}>
+            <BuildSwitcher
+              builds={model.buildTypes}
+              value={selection.build}
+              onChange={(key) => applySelection({ build: key })}
+            />
+          </RevealOnScroll>
+        </div>
+      </section>
 
-      {(fields.floorPlan || (fields.sizes && fields.sizes.length > 0)) && (
-        <section className={`model-page__floorplan section ${nextTone()}`}>
-          <div className="container">
-            {fields.sizes && fields.sizes.length > 0 && (
-              <RevealOnScroll>
-                <div className="model-page__size-tabs" role="tablist" aria-label="Body length">
-                  <span className="model-page__size-tabs-label">Sizes</span>
-                  {fields.sizes.map((size) => (
-                    <button
-                      key={size}
-                      type="button"
-                      role="tab"
-                      aria-selected={size === activeSize}
-                      aria-controls="floorplan-image"
-                      className={`model-page__size-tab ${size === activeSize ? 'is-active' : ''}`}
-                      onClick={() => setActiveSize(size)}
-                    >
-                      {SIZE_LABELS[size] ?? size}
-                    </button>
-                  ))}
-                </div>
-              </RevealOnScroll>
+      <section className={`model-page__floorplan section ${nextTone()}`}>
+        <div className="container">
+          <RevealOnScroll>
+            <ModelConfigurator
+              model={model}
+              selection={selection}
+              onChange={applySelection}
+            />
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={0.05}>
+            <h2 className="section-label">
+              See the layout.
+              <sup className="model-page__floorplan-asterisk" aria-hidden="true">*</sup>
+            </h2>
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={0.1}>
+            {currentFloorPlan ? (
+              <img
+                src={currentFloorPlan}
+                alt={`${model.name} — ${floorPlanLabel} floor plan`}
+                className="model-page__floorplan-img"
+                loading="lazy"
+              />
+            ) : (
+              <p className="model-page__floorplan-placeholder">Floor plan coming soon.</p>
             )}
-            <RevealOnScroll>
-              <h2 className="section-label">
-                See the layout.<sup className="model-page__floorplan-asterisk" aria-hidden="true">*</sup>
-              </h2>
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.1}>
-              {currentFloorPlan ? (
-                <img
-                  id="floorplan-image"
-                  src={currentFloorPlan}
-                  alt={`${model.name}${activeVariant ? ` ${activeVariant.label}` : ''}${activeSize ? ` ${SIZE_LABELS[activeSize] ?? activeSize}` : ''} floor plan`}
-                  className="model-page__floorplan-img"
-                  loading="lazy"
-                />
-              ) : (
-                <div
-                  id="floorplan-image"
-                  role="tabpanel"
-                  className="model-page__floorplan-placeholder"
-                >
-                  <span className="model-page__floorplan-placeholder-headline">
-                    Floor plan coming soon.
-                  </span>
-                  {firstSizeWithPlan && firstSizeWithPlan !== activeSize && (
-                    <>
-                      <p className="model-page__floorplan-placeholder-note">
-                        Floor plans are largely the same — variations are due to size only.
-                      </p>
-                      <button
-                        type="button"
-                        className="model-page__floorplan-placeholder-link"
-                        onClick={() => setActiveSize(firstSizeWithPlan)}
-                      >
-                        See the {SIZE_LABELS[firstSizeWithPlan] ?? firstSizeWithPlan} layout
-                      </button>
-                    </>
-                  )}
-                </div>
-              )}
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.15}>
-              <p className="model-page__floorplan-note">
-                <span aria-hidden="true">*</span>{' '}
-                {fields.floorPlanNote ?? 'Sample layout — every Sahara is fully customisable to suit how you travel.'}
-              </p>
-            </RevealOnScroll>
-          </div>
-        </section>
-      )}
+          </RevealOnScroll>
+
+          <RevealOnScroll delay={0.15}>
+            <p className="model-page__floorplan-note">
+              <span aria-hidden="true">*</span>{' '}
+              {model.floorPlanNote ??
+                'Sample layout — every Sahara is fully customisable to suit how you travel.'}
+            </p>
+          </RevealOnScroll>
+        </div>
+      </section>
 
       <section className={`model-page__features-section section ${nextTone()}`}>
         <div className="container">
           <RevealOnScroll>
-            <span className="section-eyebrow">
-              About the {shortName}{activeVariant ? ` ${activeVariant.label}` : ''}
-            </span>
-            <h2 className="section-label">
-              What's in the {shortName}{activeVariant ? ` ${activeVariant.label}` : ''}.
-            </h2>
-            <p className="model-page__intro-body">{fields.description}</p>
+            <span className="section-eyebrow">About the {shortName}</span>
+            <h2 className="section-label">What's in the {shortName}.</h2>
+            <p className="model-page__intro-body">{model.description}</p>
             {useFeatureTabs && (
               <p className="section-sub">
                 Tap a category below to focus on the parts of the build that matter to you.
@@ -497,15 +392,15 @@ export default function ModelPage() {
           <div className="model-page__gallery-groups">
             <GalleryGroup
               heading="Outside"
-              images={fields.gallery.exterior}
+              images={gallery.exterior}
               modelName={model.name}
-              onOpen={(i) => openLightbox(fields.gallery.exterior, i)}
+              onOpen={(i) => openLightbox(gallery.exterior, i)}
             />
             <GalleryGroup
               heading="Inside"
-              images={fields.gallery.interior}
+              images={gallery.interior}
               modelName={model.name}
-              onOpen={(i) => openLightbox(fields.gallery.interior, i)}
+              onOpen={(i) => openLightbox(gallery.interior, i)}
             />
           </div>
         </div>
@@ -601,7 +496,7 @@ export default function ModelPage() {
         </section>
       )}
 
-      {fields.inclusions && (
+      {model.inclusions && (
         <section className={`model-page__inclusions section ${nextTone()}`}>
           <div className="container">
             <RevealOnScroll>
@@ -613,14 +508,14 @@ export default function ModelPage() {
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
               <div className="model-page__inclusions-grid">
-                {fields.inclusions.included?.length > 0 && (
+                {model.inclusions.included?.length > 0 && (
                   <div className="model-page__inclusions-card model-page__inclusions-card--standard">
                     <div className="model-page__inclusions-head">
                       <span className="model-page__inclusions-label">Standard</span>
-                      <span className="model-page__inclusions-count">{fields.inclusions.included.length} items</span>
+                      <span className="model-page__inclusions-count">{model.inclusions.included.length} items</span>
                     </div>
                     <ul className="model-page__inclusions-list">
-                      {fields.inclusions.included.map((item) => (
+                      {model.inclusions.included.map((item) => (
                         <li key={item}>
                           <Check size={16} strokeWidth={2.4} aria-hidden="true" />
                           <span>{item}</span>
@@ -629,14 +524,14 @@ export default function ModelPage() {
                     </ul>
                   </div>
                 )}
-                {fields.inclusions.addOns?.length > 0 && (
+                {model.inclusions.addOns?.length > 0 && (
                   <div className="model-page__inclusions-card model-page__inclusions-card--addon">
                     <div className="model-page__inclusions-head">
                       <span className="model-page__inclusions-label">Available upgrades</span>
-                      <span className="model-page__inclusions-count">{fields.inclusions.addOns.length} items</span>
+                      <span className="model-page__inclusions-count">{model.inclusions.addOns.length} items</span>
                     </div>
                     <ul className="model-page__inclusions-list">
-                      {fields.inclusions.addOns.map((item) => (
+                      {model.inclusions.addOns.map((item) => (
                         <li key={item}>
                           <Plus size={16} strokeWidth={2.4} aria-hidden="true" />
                           <span>{item}</span>
@@ -658,14 +553,14 @@ export default function ModelPage() {
         <div className="container model-page__cta-inner">
           <RevealOnScroll>
             <h2 className="model-page__cta-title">
-              Ready to take the {shortName}{activeVariant ? ` ${activeVariant.label}` : ''} for a walk-through?
+              Ready to take the {shortName} for a walk-through?
             </h2>
             <p className="model-page__cta-body">
               Visit our Campbellfield workshop or a dealer near you. We'll walk you through the build top to bottom.
             </p>
             <div className="model-page__cta-actions">
               <Link to="/contact" className="model-page__cta-primary">
-                <span>{fields.ctaLabel}</span>
+                <span>{model.ctaLabel}</span>
                 <ArrowRight size={17} strokeWidth={2.2} aria-hidden="true" />
               </Link>
               <Link to="/dealers" className="model-page__cta-secondary">Find a dealer</Link>
