@@ -653,25 +653,7 @@
   line-height: 0;
 }
 
-.model-page__floorplan-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 1000px;
-  margin: 32px auto 0;
-}
-
-.model-page__floorplan-placeholder {
-  max-width: 1000px;
-  margin: 32px auto 0;
-  padding: 56px 24px;
-  border: 1px dashed rgba(14, 14, 15, 0.20);
-  border-radius: var(--radius-md);
-  color: rgba(14, 14, 15, 0.55);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
+/* Floor plan blueprint + its skeleton loader live in FloorPlanImage.css. */
 
 .model-page__floorplan-note {
   max-width: 1000px;

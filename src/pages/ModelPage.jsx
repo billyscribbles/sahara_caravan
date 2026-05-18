@@ -7,6 +7,7 @@ import SpecPill from '../components/ui/SpecPill.jsx'
 import ModelCard from '../components/ui/ModelCard.jsx'
 import BuildSwitcher from '../components/ui/BuildSwitcher.jsx'
 import ModelConfigurator from '../components/ui/ModelConfigurator.jsx'
+import FloorPlanImage from '../components/ui/FloorPlanImage.jsx'
 import Lightbox from '../components/ui/Lightbox.jsx'
 import {
   models,
@@ -290,16 +291,10 @@ export default function ModelPage() {
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.1}>
-            {currentFloorPlan ? (
-              <img
-                src={currentFloorPlan}
-                alt={`${model.name} — ${floorPlanLabel} floor plan`}
-                className="model-page__floorplan-img"
-                loading="lazy"
-              />
-            ) : (
-              <p className="model-page__floorplan-placeholder">Floor plan coming soon.</p>
-            )}
+            <FloorPlanImage
+              src={currentFloorPlan}
+              alt={`${model.name} — ${floorPlanLabel} floor plan`}
+            />
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.15}>

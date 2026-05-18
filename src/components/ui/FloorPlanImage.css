@@ -1,0 +1,58 @@
+/* Floor plan blueprint with skeleton loader.
+ * The wrapper holds a fixed 16:9 box so the page never jumps when the
+ * skeleton appears or the blueprint loads. Blueprints vary in proportion,
+ * so the image is `contain`-fitted inside the box — any margin is white,
+ * invisible against the white floor-plan section. */
+.floorplan-image {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 32px auto 0;
+  aspect-ratio: 16 / 9;
+}
+
+.floorplan-image__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.floorplan-image__img.is-loaded {
+  opacity: 1;
+}
+
+/* Bone-toned rectangle that gently pulses opacity while the blueprint
+ * loads — calm and on-brand, no shimmer sweep. */
+.floorplan-image__skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: rgba(14, 14, 15, 0.06);
+  animation: floorplan-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes floorplan-skeleton-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floorplan-image__skeleton { animation: none; }
+  .floorplan-image__img { transition: none; }
+}
+
+/* Shown when a model has no blueprint, or one fails to load. */
+.floorplan-image__placeholder {
+  max-width: 1000px;
+  margin: 32px auto 0;
+  padding: 56px 24px;
+  border: 1px dashed rgba(14, 14, 15, 0.20);
+  border-radius: var(--radius-md);
+  color: rgba(14, 14, 15, 0.55);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
