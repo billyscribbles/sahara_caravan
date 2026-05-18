@@ -636,7 +636,8 @@ export const models = [
     ],
     floorPlans: [
       { build: 'standard', size: '18-6', lounge: null, bed: null, image: '/images/blueprints/generic-18-6.png' },
-      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/generic-19-6.png' },
+      { build: 'standard', size: '19-6', lounge: null, bed: 'queen', image: '/images/blueprints/generic-19-6.png' },
+      { build: 'standard', size: '19-6', lounge: null, bed: 'bunk', image: '/images/blueprints/dune-19-6-bunk.png' },
       { build: 'standard', size: '20-6', lounge: 'cafe', bed: null, image: '/images/blueprints/dune-20-6.png' },
       { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/dune-recliners.png' },
       { build: 'standard', size: '21-6', lounge: null, bed: null, image: '/images/blueprints/generic-21-6.png' },

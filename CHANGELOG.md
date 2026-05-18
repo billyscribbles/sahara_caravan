@@ -141,3 +141,4 @@
 - Every van page now has a step-by-step picker — choose the build (Standard or Slide-Out), then the size, then the layout where there's a choice — and the floor plan updates as you go. Slide-Out shows on every model, marked "Coming soon" on the models that don't offer it yet.
 - Added two layout choices for the Dune 20'6 — selecting that size now lets you switch between a Cafe Style Lounge and a Twin Recliner Lounge, each with its own floor plan drawing.
 - Added dedicated floor plan drawings for all four Horizon sizes (19'6, 20'6, 21'6 and 22'6) — selecting any size now shows its own layout instead of a generic plan.
+- Added a bunk layout option to the Dune 19'6 — selecting that size now lets you switch between the Queen Bed plan and a Bunks plan, each with its own floor plan drawing.
