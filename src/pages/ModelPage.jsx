@@ -85,54 +85,6 @@ const SPEC_ORDER = [
   ['warranty', 'Warranty'],
 ]
 
-const FEATURE_CATEGORIES = {
-  build: {
-    label: 'Build & Off-Road',
-    test: /(chassis|suspension|hitch|drawbar|armou?r|che(ck|qu)er[- ]plate|honeycomb|axle|tyres?|rims?|coupling|stone[- ]guard|skirt|toolbox|do35|matte[- ]?black|graphics|leak[- ]tight|certified|terrain|hybrid frame|moulded roof|pvc[- ]ply|reinforced|sealed)/i,
-  },
-  kitchen: {
-    label: 'Kitchen',
-    test: /(galley|cooktop|oven|sink|fridge|microwave|bbq|kitchenette|benchtop|rangehood|carafan|cooking)/i,
-  },
-  bath: {
-    label: 'Bathroom',
-    test: /(ensuite|shower|toilet|vanity|washing[- ]machine|washer|laundry|basin|hex[- ]?(agon)?[- ]?tile|tapware|wet[- ]wall)/i,
-  },
-  power: {
-    label: 'Power & Climate',
-    test: /(solar|lithium|battery|batteries|inverter|charger|electrical|fuse|regulator|projecta|techworld|diesel heater|air[- ]?con|sirocco|ceiling fan|fresh[- ]?water|grey[- ]?water|water tank|powerpoint|gas[- ]bottle)/i,
-  },
-  living: {
-    label: 'Inside & Living',
-    test: /(dinette|lounge|recliner|bed(room|s|side)?|queen|single|headboard|wardrobe|robe|cushion|cafe|sofa|seating|sleep|sleeping|skylight|panoramic|window|tv\b|reading light|cabinetry)/i,
-  },
-}
-const FEATURE_MATCH_ORDER = ['build', 'kitchen', 'bath', 'power', 'living']
-const FEATURE_DISPLAY_ORDER = ['build', 'living', 'kitchen', 'bath', 'power']
-const FEATURE_TAB_THRESHOLD = 7
-
-function categoriseFeatures(features) {
-  const buckets = {}
-  const fallback = []
-  for (const f of features) {
-    let matchedId = null
-    for (const id of FEATURE_MATCH_ORDER) {
-      if (FEATURE_CATEGORIES[id].test.test(f)) { matchedId = id; break }
-    }
-    if (matchedId) {
-      if (!buckets[matchedId]) buckets[matchedId] = []
-      buckets[matchedId].push(f)
-    } else {
-      fallback.push(f)
-    }
-  }
-  const tabs = FEATURE_DISPLAY_ORDER
-    .filter((id) => buckets[id]?.length > 0)
-    .map((id) => ({ id, label: FEATURE_CATEGORIES[id].label, items: buckets[id] }))
-  if (fallback.length > 0) tabs.push({ id: 'more', label: 'More', items: fallback })
-  return tabs
-}
-
 export default function ModelPage() {
   const { slug } = useParams()
   const location = useLocation()
@@ -158,17 +110,6 @@ export default function ModelPage() {
     setSelection((cur) => resolveSelection(model, { ...cur, ...partial }))
 
   const gallery = useMemo(() => normaliseGallery(model), [model])
-  const features = model.features ?? []
-  const featureTabs = useMemo(() => categoriseFeatures(features), [features])
-  const useFeatureTabs = features.length >= FEATURE_TAB_THRESHOLD && featureTabs.length > 1
-  const [activeFeatureTab, setActiveFeatureTab] = useState(featureTabs[0]?.id ?? null)
-  useEffect(() => {
-    if (!featureTabs.some((t) => t.id === activeFeatureTab)) {
-      setActiveFeatureTab(featureTabs[0]?.id ?? null)
-    }
-  }, [featureTabs, activeFeatureTab])
-  const activeBucket = featureTabs.find((t) => t.id === activeFeatureTab) ?? featureTabs[0]
-  const visibleFeatures = useFeatureTabs ? (activeBucket?.items ?? []) : features
 
   // Specs and the technical build sheet are looked up by the selected size,
   // falling back to the model-level defaults for sizes the build sheets don't
@@ -313,62 +254,9 @@ export default function ModelPage() {
             <span className="section-eyebrow">About the {shortName}</span>
             <h2 className="section-label">What's in the {shortName}.</h2>
             <p className="model-page__intro-body">{model.description}</p>
-            {useFeatureTabs && (
-              <p className="section-sub">
-                Tap a category below to focus on the parts of the build that matter to you.
-              </p>
-            )}
           </RevealOnScroll>
 
-          {useFeatureTabs && (
-            <RevealOnScroll delay={0.05}>
-              <div
-                className="model-page__feature-tabs"
-                role="tablist"
-                aria-label="Feature categories"
-              >
-                {featureTabs.map((tab) => {
-                  const isActive = tab.id === activeBucket?.id
-                  return (
-                    <button
-                      key={tab.id}
-                      type="button"
-                      role="tab"
-                      id={`feature-tab-${tab.id}`}
-                      aria-selected={isActive}
-                      aria-controls={`feature-panel-${tab.id}`}
-                      className={`model-page__feature-tab${isActive ? ' is-active' : ''}`}
-                      onClick={() => setActiveFeatureTab(tab.id)}
-                    >
-                      <span>{tab.label}</span>
-                      <span className="model-page__feature-tab-count">{tab.items.length}</span>
-                    </button>
-                  )
-                })}
-              </div>
-            </RevealOnScroll>
-          )}
-
           <RevealOnScroll delay={0.1}>
-            <ul
-              className="model-page__feature-cards"
-              {...(useFeatureTabs && activeBucket
-                ? {
-                    id: `feature-panel-${activeBucket.id}`,
-                    role: 'tabpanel',
-                    'aria-labelledby': `feature-tab-${activeBucket.id}`,
-                  }
-                : {})}
-            >
-              {visibleFeatures.map((f) => (
-                <li key={f} className="model-page__feature-card">
-                  <span className="model-page__feature-card-icon">
-                    <Check size={18} strokeWidth={2.4} aria-hidden="true" />
-                  </span>
-                  <p className="model-page__feature-card-text">{f}</p>
-                </li>
-              ))}
-            </ul>
             <p className="model-page__specs-note">
               All of our vans can be built in aluminium frame or hybrid pvc/meranti.
             </p>

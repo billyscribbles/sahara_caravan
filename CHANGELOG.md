@@ -149,3 +149,4 @@
 - Refreshed the X-Master floor plan drawings and added dedicated plans for every size — the 17'6, 18'6, 19'6, 20'6, both 21'6 layouts, and the 22'6 now each show their own plan instead of a generic one.
 - Removed the separate bed choices on the X-Master 22'6 — that size now shows a single layout.
 - When switching caravan sizes on a model page, the floor plan area now shows a loading placeholder until the correct plan for that size has fully loaded, then fades it in.
+- Removed the categorised feature list from each caravan page — the tabbed checklist of inside, kitchen, bathroom and power features no longer appears, as this is now covered by the specifications.
