@@ -546,16 +546,16 @@ export const models = [
     // sizes that list more than one option; smaller sizes carry a single plan.
     floorPlans: [
       { build: 'standard', size: '18-6', lounge: null, bed: null, image: '/images/blueprints/mirage-18-6.png' },
-      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/generic-19-6.png' },
+      { build: 'standard', size: '19-6', lounge: null, bed: null, image: '/images/blueprints/mirage-19-6.png' },
       { build: 'standard', size: '20-6', lounge: 'cafe', bed: null, image: '/images/blueprints/mirage-20-6.png' },
-      { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-recliners.png' },
+      { build: 'standard', size: '20-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-20-6-recliner.png' },
       { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'queen', image: '/images/blueprints/generic-21-6.png' },
       { build: 'standard', size: '21-6', lounge: 'cafe', bed: 'single', image: '/images/blueprints/generic-21-6.png' },
       { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'queen', image: '/images/blueprints/mirage-recliners.png' },
       { build: 'standard', size: '21-6', lounge: 'recliner', bed: 'single', image: '/images/blueprints/mirage-recliners.png' },
       { build: 'standard', size: '22-6', lounge: 'cafe', bed: null, image: '/images/blueprints/generic-22-6.png' },
       { build: 'standard', size: '22-6', lounge: 'recliner', bed: null, image: '/images/blueprints/mirage-recliners.png' },
-      { build: 'slideout', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/generic-22-6.png' },
+      { build: 'slideout', size: '22-6', lounge: null, bed: null, image: '/images/blueprints/mirage-22-6-slideout.png' },
     ],
   },
   {
